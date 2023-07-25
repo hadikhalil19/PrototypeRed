@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
-    public bool IsDead { get; private set; }
+    public bool IsDead {get; private set;}
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private float knockBackThrustAmount = 5f;
-
     [SerializeField] private float damageRecoveryTime = 0.5f;
 
     private int currentHealth;
@@ -61,7 +60,6 @@ public class PlayerHealth : Singleton<PlayerHealth>
         StartCoroutine(DamageRecoveryRoutine());
         UpdateHealthSlider();
         CheckIfPlayerDeath();
-
     }
 
     private void CheckIfPlayerDeath() {
