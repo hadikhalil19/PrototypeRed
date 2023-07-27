@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class DialogueEditor : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace Proto.Dialogue.Editor {
+    public class DialogueEditor : EditorWindow {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [MenuItem("Window/Dialogue Editor")]
+        private static void ShowEditorWindow() {
+            var window = GetWindow<DialogueEditor>();
+            window.titleContent = new GUIContent("Dialogue");
+            window.Show();
+        }
+
+        private void OnGUI() {
+            
+        }
     }
 }
+
