@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Proto.Dialogue {
 
     [System.Serializable]
-    public class DailogueNode 
+    public class DialogueNode 
     {
         public string uniqueID;
         public string text;
