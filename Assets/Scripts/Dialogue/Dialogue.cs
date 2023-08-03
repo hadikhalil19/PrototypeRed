@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +13,9 @@ namespace Proto.Dialogue {
 #if UNITY_EDITOR
         private void Awake() {
             if (nodes.Count == 0) {
-                nodes.Add(new DialogueNode());
+                DialogueNode rootNode = new DialogueNode();
+                rootNode.uniqueID = Guid.NewGuid().ToString();
+                nodes.Add(rootNode);
             }
             OnValidate();
         }
@@ -43,6 +45,15 @@ namespace Proto.Dialogue {
                     yield return nodeLookup[childID];
                 }
             }
+        }
+
+        public void CreateNode(DialogueNode parent)
+        {
+            DialogueNode newNode = new DialogueNode();
+            newNode.uniqueID = Guid.NewGuid().ToString();
+            parent.children.Add(newNode.uniqueID);
+            nodes.Add(newNode);
+            OnValidate();
         }
     }
 }
