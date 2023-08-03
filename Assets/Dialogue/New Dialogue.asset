@@ -14,47 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - uniqueID: 1
-    text: ab
-    children: []
-    position:
+    text: Can I help?
+    children:
+    - 2
+    - 3
+    rect:
       serializedVersion: 2
-      x: 20
-      y: 20
+      x: 13
+      y: 254
       width: 200
-      height: 100
+      height: 150
   - uniqueID: 2
-    text: bc
-    children: []
-    position:
+    text: Yes
+    children:
+    - 4
+    - 5
+    rect:
       serializedVersion: 2
-      x: 20
-      y: 300
+      x: 256
+      y: 79
       width: 200
-      height: 100
+      height: 150
   - uniqueID: 3
-    text: cb
-    children: []
-    position:
+    text: No
+    children:
+    - 5
+    rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 255
+      y: 320
+      width: 200
+      height: 150
   - uniqueID: 4
-    text: wow
+    text: How can I help?
     children: []
-    position:
+    rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 543
+      y: 32
+      width: 200
+      height: 150
   - uniqueID: 5
-    text: gfdjf
+    text: Okay
     children: []
-    position:
+    rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 572
+      y: 284
+      width: 200
+      height: 150
