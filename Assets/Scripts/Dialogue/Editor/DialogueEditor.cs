@@ -14,6 +14,13 @@ namespace Proto.Dialogue.Editor {
         [NonSerialized] Vector2 draggingOffset;
         [NonSerialized] DialogueNode creatingNode = null;
         [NonSerialized] DialogueNode deletingNode = null;
+        [NonSerialized] DialogueNode linkingParentNode = null;
+        Vector2 scrollPosition;
+        [NonSerialized] bool draggingCanvas = false;
+        [NonSerialized] Vector2 draggingCanvasOffset;
+
+        const float canvasSize = 4000;
+        const float backgroundSize = 50;
 
         [MenuItem("Window/Dialogue Editor")]
         private static void ShowEditorWindow() {
@@ -60,6 +67,15 @@ namespace Proto.Dialogue.Editor {
                 EditorGUILayout.LabelField("No Dialogue Selected.");
             } else {
                 ProcessEvents();
+
+                scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+                //Debug.Log(scrollPosition);
+
+                Rect canvas = GUILayoutUtility.GetRect(canvasSize, canvasSize);
+                Texture2D backgroundTex = Resources.Load("background") as Texture2D;
+                Rect texCoords = new Rect(0, 0, canvasSize / backgroundSize, canvasSize / backgroundSize);
+                GUI.DrawTextureWithTexCoords(canvas, backgroundTex, texCoords);
+
                 foreach (DialogueNode node in selectedDialogue.GetAllNodes())
                 {
                     DrawConnections(node);
@@ -68,6 +84,9 @@ namespace Proto.Dialogue.Editor {
                 {
                     DrawNode(node);
                 }
+
+                EditorGUILayout.EndScrollView();
+
                 if (creatingNode != null) 
                 {
                     Undo.RecordObject(selectedDialogue, "Added Dialogue Node");
@@ -88,10 +107,13 @@ namespace Proto.Dialogue.Editor {
         {
             if (Event.current.type == EventType.MouseDown && draggingNode == null)
             {
-                draggingNode = GetNodeAtPoint(Event.current.mousePosition);
+                draggingNode = GetNodeAtPoint(Event.current.mousePosition + scrollPosition);
                 if (draggingNode != null)
                 {
                     draggingOffset = draggingNode.rect.position - Event.current.mousePosition;
+                } else {
+                    draggingCanvas = true;
+                    draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
                 }
             }
             else if (Event.current.type == EventType.MouseDrag && draggingNode != null)
@@ -99,10 +121,20 @@ namespace Proto.Dialogue.Editor {
                 Undo.RecordObject(selectedDialogue, "Move Dialogue Node");
                 draggingNode.rect.position = Event.current.mousePosition + draggingOffset;
                 GUI.changed = true;
+            } 
+            else if (Event.current.type == EventType.MouseDrag && draggingCanvas)
+            {
+                scrollPosition = draggingCanvasOffset - Event.current.mousePosition;
+
+                GUI.changed = true;
             }
             else if (Event.current.type == EventType.MouseUp && draggingNode != null)
             {
                 draggingNode = null;
+            }
+            else if (Event.current.type == EventType.MouseUp && draggingCanvas)
+            {
+                draggingCanvas = false;
             }
         }
 
@@ -125,6 +157,7 @@ namespace Proto.Dialogue.Editor {
             {
                 creatingNode = node;
             }
+            DrawLinkButtons(node);
             if (GUILayout.Button("-"))
             {
                 deletingNode = node;
@@ -132,6 +165,42 @@ namespace Proto.Dialogue.Editor {
 
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
+        }
+
+        private void DrawLinkButtons(DialogueNode node)
+        {
+            if (linkingParentNode == null)
+            {
+                if (GUILayout.Button("link"))
+                {
+                    linkingParentNode = node;
+                }
+            }
+            else if (linkingParentNode == node)
+            {
+                if (GUILayout.Button("cancel"))
+                {
+                    linkingParentNode = null;
+                }
+            }
+            else if (linkingParentNode.children.Contains(node.uniqueID))
+            {
+                if (GUILayout.Button("unlink"))
+                {
+                    Undo.RecordObject(selectedDialogue, "Remove Dialogue Link");
+                    linkingParentNode.children.Remove(node.uniqueID);
+                    linkingParentNode = null;
+                }
+            }
+            else
+            {
+                if (GUILayout.Button("child"))
+                {
+                    Undo.RecordObject(selectedDialogue, "Add Dialogue Link");
+                    linkingParentNode.children.Add(node.uniqueID);
+                    linkingParentNode = null;
+                }
+            }
         }
 
          private void DrawConnections(DialogueNode node) {
