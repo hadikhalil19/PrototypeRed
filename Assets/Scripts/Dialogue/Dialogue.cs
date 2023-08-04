@@ -55,5 +55,20 @@ namespace Proto.Dialogue {
             nodes.Add(newNode);
             OnValidate();
         }
+
+        public void DeleteNode(DialogueNode nodeToDelete)
+        {
+            nodes.Remove(nodeToDelete);
+            OnValidate();
+            CleanDanglingChildren(nodeToDelete);
+        }
+
+        private void CleanDanglingChildren(DialogueNode nodeToDelete)  //removes the pointer to a deleted child from a parent
+        {
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                node.children.Remove(nodeToDelete.uniqueID);
+            }
+        }
     }
 }

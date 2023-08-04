@@ -13,6 +13,7 @@ namespace Proto.Dialogue.Editor {
         [NonSerialized] DialogueNode draggingNode = null;
         [NonSerialized] Vector2 draggingOffset;
         [NonSerialized] DialogueNode creatingNode = null;
+        [NonSerialized] DialogueNode deletingNode = null;
 
         [MenuItem("Window/Dialogue Editor")]
         private static void ShowEditorWindow() {
@@ -73,6 +74,12 @@ namespace Proto.Dialogue.Editor {
                     selectedDialogue.CreateNode(creatingNode);
                     creatingNode = null;
                 }
+                 if (deletingNode != null)
+                {
+                    Undo.RecordObject(selectedDialogue, "Deleted Dialogue Node");
+                    selectedDialogue.DeleteNode(deletingNode);
+                    deletingNode = null;
+                }
             }
             
         }
@@ -111,11 +118,19 @@ namespace Proto.Dialogue.Editor {
                 Undo.RecordObject(selectedDialogue, "Update Dialogue Text");
                 node.text = newText;
             }
+
+            GUILayout.BeginHorizontal();
+
             if (GUILayout.Button("+"))
             {
                 creatingNode = node;
             }
-            
+            if (GUILayout.Button("-"))
+            {
+                deletingNode = node;
+            }
+
+            GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
 
