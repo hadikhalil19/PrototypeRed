@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4732789297050863155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 16c27319-b5af-4906-b8cf-a6a693ce79ce
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 780
+    y: 107
+    width: 200
+    height: 100
+--- !u!114 &-4457689567642641662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 335032bd-40d2-461f-a845-fa2d28784d2b
+  m_EditorClassIdentifier: 
+  text: khghg
+  children:
+  - 16c27319-b5af-4906-b8cf-a6a693ce79ce
+  rect:
+    serializedVersion: 2
+    x: 449
+    y: 117
+    width: 200
+    height: 100
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f12997c01d6b647b4d4e6197b56f08, type: 3}
+  m_Name: New Dialogue 1
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 2942067560930583340}
+  - {fileID: -4457689567642641662}
+  - {fileID: -4732789297050863155}
+--- !u!114 &2942067560930583340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 18bf6188-ada1-4c6e-bf7b-8b6d8ac91889
+  m_EditorClassIdentifier: 
+  text: tesr
+  children:
+  - 335032bd-40d2-461f-a845-fa2d28784d2b
+  rect:
+    serializedVersion: 2
+    x: 65
+    y: 111
+    width: 200
+    height: 100

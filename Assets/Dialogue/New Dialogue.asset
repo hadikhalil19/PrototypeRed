@@ -34,7 +34,8 @@ MonoBehaviour:
   m_Name: 6ce7d070-f8da-49c7-a40b-a8204f81f32a
   m_EditorClassIdentifier: 
   text: 
-  children: []
+  children:
+  - 996bcc13-588f-4081-a8d2-7dbc4045ad4b
   rect:
     serializedVersion: 2
     x: 459
@@ -58,6 +59,7 @@ MonoBehaviour:
   - {fileID: -8387447009244452711}
   - {fileID: 1922253306904255791}
   - {fileID: -6402781636561512642}
+  - {fileID: 1976927241771398664}
 --- !u!114 &1922253306904255791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +76,29 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 940
-    y: 151
+    x: 1134
+    y: 186
+    width: 200
+    height: 100
+--- !u!114 &1976927241771398664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 996bcc13-588f-4081-a8d2-7dbc4045ad4b
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - 431e5c56-cc9f-417c-951f-372dfd429684
+  rect:
+    serializedVersion: 2
+    x: 761
+    y: 362
     width: 200
     height: 100
 --- !u!114 &7584674926341902138
@@ -96,7 +119,7 @@ MonoBehaviour:
   - 6ce7d070-f8da-49c7-a40b-a8204f81f32a
   rect:
     serializedVersion: 2
-    x: 130
-    y: 102
+    x: 121
+    y: 110
     width: 200
     height: 100
