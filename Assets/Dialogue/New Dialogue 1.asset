@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
   m_Name: 16c27319-b5af-4906-b8cf-a6a693ce79ce
   m_EditorClassIdentifier: 
-  text: 
+  text: testing123
   children: []
   rect:
     serializedVersion: 2
