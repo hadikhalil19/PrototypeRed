@@ -7,16 +7,12 @@ using UnityEditor;
 namespace Proto.Dialogue {
 
     [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue", order = 0)]
-    public class Dialogue : ScriptableObject {
+    public class Dialogue : ScriptableObject, ISerializationCallbackReceiver {
         [SerializeField] List<DialogueNode> nodes = new List<DialogueNode>();
         Dictionary<string, DialogueNode> nodeLookup = new Dictionary<string, DialogueNode>();
 
 #if UNITY_EDITOR
         private void Awake() {
-            if (nodes.Count == 0) {
-                CreateNode(null);
-                Debug.Log("Creating Node");
-            }
             OnValidate();
         }
 #endif
@@ -75,6 +71,29 @@ namespace Proto.Dialogue {
             {
                 node.children.Remove(nodeToDelete.name);
             }
+        }
+
+        public void OnBeforeSerialize()
+        {
+            // if (nodes.Count == 0)
+            // {
+            //     CreateNode(null);
+            // }
+
+            if (AssetDatabase.GetAssetPath(this) != "")
+            {
+                foreach (DialogueNode node in GetAllNodes())
+                {
+                    if (AssetDatabase.GetAssetPath(node) == "")
+                    {
+                        AssetDatabase.AddObjectToAsset(node, this);
+                    }
+                }
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
         }
     }
 }
