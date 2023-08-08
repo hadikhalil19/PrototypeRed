@@ -12,33 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f12997c01d6b647b4d4e6197b56f08, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  nodes:
-  - uniqueID: 0cc9d276-e267-4999-99a0-7372a1da7ed7
-    text: 
-    children:
-    - aa2ee4f5-40a7-42b3-9953-418ce8f88b03
-    rect:
-      serializedVersion: 2
-      x: 19
-      y: 189
-      width: 200
-      height: 100
-  - uniqueID: aa2ee4f5-40a7-42b3-9953-418ce8f88b03
-    text: 
-    children:
-    - 4497847c-dc34-4dda-ac06-9586b014d64d
-    rect:
-      serializedVersion: 2
-      x: 289
-      y: 90
-      width: 200
-      height: 100
-  - uniqueID: 4497847c-dc34-4dda-ac06-9586b014d64d
-    text: 
-    children: []
-    rect:
-      serializedVersion: 2
-      x: 551
-      y: 176
-      width: 200
-      height: 100
+  nodes: []

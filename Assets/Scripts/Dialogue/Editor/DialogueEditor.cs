@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -65,11 +66,17 @@ namespace Proto.Dialogue.Editor {
         private void OnGUI() {
             if (selectedDialogue == null){
                 EditorGUILayout.LabelField("No Dialogue Selected.");
-            } else {
+                return;
+            }
+
+             if (selectedDialogue.GetAllNodes().Count() == 0)
+            {
+                Debug.Log("No Nodes found, creating new node.");
+                selectedDialogue.CreateNode(null);
+            } 
                 ProcessEvents();
 
                 scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
-                //Debug.Log(scrollPosition);
 
                 Rect canvas = GUILayoutUtility.GetRect(canvasSize, canvasSize);
                 Texture2D backgroundTex = Resources.Load("background") as Texture2D;
@@ -99,7 +106,7 @@ namespace Proto.Dialogue.Editor {
                     selectedDialogue.DeleteNode(deletingNode);
                     deletingNode = null;
                 }
-            }
+            
             
         }
 
@@ -111,9 +118,11 @@ namespace Proto.Dialogue.Editor {
                 if (draggingNode != null)
                 {
                     draggingOffset = draggingNode.rect.position - Event.current.mousePosition;
+                    Selection.activeObject = draggingNode;
                 } else {
                     draggingCanvas = true;
                     draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
+                    Selection.activeObject = selectedDialogue;
                 }
             }
             else if (Event.current.type == EventType.MouseDrag && draggingNode != null)
@@ -183,12 +192,12 @@ namespace Proto.Dialogue.Editor {
                     linkingParentNode = null;
                 }
             }
-            else if (linkingParentNode.children.Contains(node.uniqueID))
+            else if (linkingParentNode.children.Contains(node.name))
             {
                 if (GUILayout.Button("unlink"))
                 {
                     Undo.RecordObject(selectedDialogue, "Remove Dialogue Link");
-                    linkingParentNode.children.Remove(node.uniqueID);
+                    linkingParentNode.children.Remove(node.name);
                     linkingParentNode = null;
                 }
             }
@@ -197,7 +206,7 @@ namespace Proto.Dialogue.Editor {
                 if (GUILayout.Button("child"))
                 {
                     Undo.RecordObject(selectedDialogue, "Add Dialogue Link");
-                    linkingParentNode.children.Add(node.uniqueID);
+                    linkingParentNode.children.Add(node.name);
                     linkingParentNode = null;
                 }
             }
