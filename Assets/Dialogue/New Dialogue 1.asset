@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6698509286140031822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 042a7768-3b96-4215-9ac8-3d04708e124b
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Okay and leave
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1429
+    y: 40
+    width: 200
+    height: 100
+--- !u!114 &-5728358877751423744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: d73dc6da-4fe4-41b3-a79f-b9f535161015
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Piss off.
+  children:
+  - fb9f660a-a5ab-444c-be2a-69b54bef2c80
+  rect:
+    serializedVersion: 2
+    x: 700
+    y: 274
+    width: 200
+    height: 100
 --- !u!114 &-4732789297050863155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,12 +55,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
   m_Name: 16c27319-b5af-4906-b8cf-a6a693ce79ce
   m_EditorClassIdentifier: 
-  text: testing123
-  children: []
+  isPlayerSpeaking: 0
+  text: There is construction ahead
+  children:
+  - 042a7768-3b96-4215-9ac8-3d04708e124b
   rect:
     serializedVersion: 2
-    x: 780
-    y: 107
+    x: 1052
+    y: 53
     width: 200
     height: 100
 --- !u!114 &-4457689567642641662
@@ -32,13 +77,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
   m_Name: 335032bd-40d2-461f-a845-fa2d28784d2b
   m_EditorClassIdentifier: 
-  text: khghg
+  isPlayerSpeaking: 1
+  text: Why not?
   children:
   - 16c27319-b5af-4906-b8cf-a6a693ce79ce
   rect:
     serializedVersion: 2
+    x: 444
+    y: 53
+    width: 200
+    height: 100
+--- !u!114 &-3629958218733440137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 20bed4ba-1701-475f-9e3f-35875cda0a3e
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I need to get to a wedding
+  children:
+  - 4823986e-ab23-450d-9aba-6ad20fa5b8a7
+  rect:
+    serializedVersion: 2
     x: 449
-    y: 117
+    y: 170
+    width: 200
+    height: 100
+--- !u!114 &-3108348796131586972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 4823986e-ab23-450d-9aba-6ad20fa5b8a7
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: I dont care.
+  children:
+  - 16c27319-b5af-4906-b8cf-a6a693ce79ce
+  rect:
+    serializedVersion: 2
+    x: 699
+    y: 169
+    width: 200
+    height: 100
+--- !u!114 &-1081818425335313721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 08a7bab7-24d1-497e-b7e0-68fce4a65f59
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I thought trolls ask for a toll
+  children:
+  - d73dc6da-4fe4-41b3-a79f-b9f535161015
+  rect:
+    serializedVersion: 2
+    x: 450
+    y: 274
     width: 200
     height: 100
 --- !u!114 &11400000
@@ -57,6 +169,33 @@ MonoBehaviour:
   - {fileID: 2942067560930583340}
   - {fileID: -4457689567642641662}
   - {fileID: -4732789297050863155}
+  - {fileID: -6698509286140031822}
+  - {fileID: -3629958218733440137}
+  - {fileID: -1081818425335313721}
+  - {fileID: -3108348796131586972}
+  - {fileID: -5728358877751423744}
+  - {fileID: 2174904545116275631}
+--- !u!114 &2174904545116275631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: fb9f660a-a5ab-444c-be2a-69b54bef2c80
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Okay and leave.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 951
+    y: 274
+    width: 200
+    height: 100
 --- !u!114 &2942067560930583340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,9 +208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
   m_Name: 18bf6188-ada1-4c6e-bf7b-8b6d8ac91889
   m_EditorClassIdentifier: 
-  text: tesr
+  isPlayerSpeaking: 0
+  text: You cant cross the bridge.
   children:
   - 335032bd-40d2-461f-a845-fa2d28784d2b
+  - 20bed4ba-1701-475f-9e3f-35875cda0a3e
+  - 08a7bab7-24d1-497e-b7e0-68fce4a65f59
   rect:
     serializedVersion: 2
     x: 65

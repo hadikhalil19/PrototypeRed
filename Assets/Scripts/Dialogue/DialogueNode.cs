@@ -9,12 +9,18 @@ namespace Proto.Dialogue {
     public class DialogueNode : ScriptableObject
     {
         [SerializeField]
+        bool isPlayerSpeaking = false;
+        [SerializeField]
         string text;
         [SerializeField]
         List<string> children = new List<string>();
         [SerializeField]
         Rect rect = new Rect(0, 0, 200, 100);
 
+        public bool IsPlayerSpeaking()
+        {
+            return isPlayerSpeaking;
+        }
         public Rect GetRect()
         {
             return rect;
@@ -31,6 +37,14 @@ namespace Proto.Dialogue {
         }
 
 #if UNITY_EDITOR
+        
+        public void SetPlayerIsSpeaking(bool newIsPlayerSpeaking)
+        {
+            Undo.RecordObject(this, "Changed Dialogue Node Speaker");
+            isPlayerSpeaking = newIsPlayerSpeaking;
+            EditorUtility.SetDirty(this);
+        }
+        
         public void SetPosition(Vector2 newPosition)
         {
             Undo.RecordObject(this, "Move Dialogue Node");
@@ -61,6 +75,7 @@ namespace Proto.Dialogue {
             children.Remove(childID);
             EditorUtility.SetDirty(this);
         }
+        
 #endif
     }
 }

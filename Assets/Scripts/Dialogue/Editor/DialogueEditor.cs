@@ -11,6 +11,7 @@ namespace Proto.Dialogue.Editor {
 
         Dialogue selectedDialogue = null;
         [NonSerialized] GUIStyle nodeStyle;
+        [NonSerialized] GUIStyle playerNodeStyle;
         [NonSerialized] DialogueNode draggingNode = null;
         [NonSerialized] Vector2 draggingOffset;
         [NonSerialized] DialogueNode creatingNode = null;
@@ -34,7 +35,7 @@ namespace Proto.Dialogue.Editor {
 
         [OnOpenAsset(1)]
         public static bool OnOpenDialogueAsset(int instanceID, int line) {
-            
+         
            if(EditorUtility.InstanceIDToObject(instanceID) is Dialogue dialogue){
                 ShowEditorWindow();
                 return true;
@@ -50,6 +51,12 @@ namespace Proto.Dialogue.Editor {
             nodeStyle.normal.textColor = Color.white;
             nodeStyle.padding = new RectOffset(20, 20, 20, 20);
             nodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+             playerNodeStyle = new GUIStyle();
+            playerNodeStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
+            playerNodeStyle.normal.textColor = Color.white;
+            playerNodeStyle.padding = new RectOffset(20, 20, 20, 20);
+            playerNodeStyle.border = new RectOffset(12, 12, 12, 12);
         }
         private void OnSelectionChanged() {
             Dialogue newDialogue = Selection.activeObject as Dialogue;
@@ -144,7 +151,13 @@ namespace Proto.Dialogue.Editor {
 
         private void DrawNode(DialogueNode node)
         {
-            GUILayout.BeginArea(node.GetRect(), nodeStyle);
+            GUIStyle style = nodeStyle;
+            if (node.IsPlayerSpeaking())
+            {
+                style = playerNodeStyle;
+            }
+            
+            GUILayout.BeginArea(node.GetRect(), style);
 
             node.SetText(EditorGUILayout.TextField(node.GetText()));
 
