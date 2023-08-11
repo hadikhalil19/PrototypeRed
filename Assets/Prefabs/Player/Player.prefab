@@ -153,9 +153,10 @@ GameObject:
   - component: {fileID: 3624555790854191780}
   - component: {fileID: 8852271540352840724}
   - component: {fileID: 8559983924176489745}
+  - component: {fileID: 5845608565179345203}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +177,7 @@ Transform:
   - {fileID: 4312850326926371867}
   - {fileID: 3258703751215189758}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2546070043240375892
 SpriteRenderer:
@@ -445,6 +446,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5089d71863d626e4eb1b388f938c0efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenManaRefresh: 0.5
+--- !u!114 &5845608565179345203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475173484666347351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ddf5ef3e63ae8418a592bf0f3f46cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDialogue: {fileID: 11400000, guid: 65776287ae701d844a7a166ea16d5fce, type: 2}
 --- !u!1 &7455831018399215473
 GameObject:
   m_ObjectHideFlags: 0
