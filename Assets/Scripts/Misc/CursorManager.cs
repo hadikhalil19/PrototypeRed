@@ -15,9 +15,11 @@ public class CursorManager : MonoBehaviour
         Cursor.visible = false;
 
         if (Application.isPlaying) {
-            Cursor.lockState = CursorLockMode.None;
+            //uncomment the next line if need to use
+            //Cursor.lockState = CursorLockMode.None;
         
         } else {
+            //uncomment the next line if need to use
             Cursor.lockState = CursorLockMode.Confined;
         }
 

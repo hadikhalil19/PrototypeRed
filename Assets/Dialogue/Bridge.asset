@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70f12997c01d6b647b4d4e6197b56f08, type: 3}
-  m_Name: New Dialogue 1
+  m_Name: Bridge
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 2942067560930583340}
@@ -216,7 +216,7 @@ MonoBehaviour:
   - 08a7bab7-24d1-497e-b7e0-68fce4a65f59
   rect:
     serializedVersion: 2
-    x: 65
+    x: 66
     y: 111
     width: 200
     height: 100
