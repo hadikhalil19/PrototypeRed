@@ -12,11 +12,11 @@ namespace Proto.Dialogue {
         [NonSerialized] Vector2 newNodeOffset = new Vector2(250, 0);
         [NonSerialized] Dictionary<string, DialogueNode> nodeLookup = new Dictionary<string, DialogueNode>();
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         private void Awake() {
             OnValidate();
         }
-#endif
+//#endif
 
         private void OnValidate() {
             if(nodes.Count==0) CreateNode(null); //create a new node.

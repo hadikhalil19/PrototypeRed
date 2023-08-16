@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Proto.Dialogue {
 public class AIConversant : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+[SerializeField] Dialogue dialogue = null;
+
+   void OnTriggerStay2D(Collider2D other) 
+ {
+    if(other.gameObject.tag == "Player")
     {
-        
-    }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if (dialogue == null) {return;}
+
+            other.GetComponent<PlayerConversant>().StartDialogue(dialogue);
+
+        }
+        }
+ } 
+
+
+}
 }
