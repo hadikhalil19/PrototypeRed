@@ -8,6 +8,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     private PlayerControls playerControls;
 
     public bool WeaponChanged = false;
+    public bool disableAttack = false;
 
     protected override void Awake() {
         base.Awake();
@@ -41,13 +42,14 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     }
 
     private void Attack() {
+        if (disableAttack) {return;}
         if (CurrentActiveWeapon) {
             (CurrentActiveWeapon as IWeapon).Attack();
         }
-        
     }
 
     private void SecondaryAttackStart() {
+        if (disableAttack) {return;}
         if (CurrentActiveWeapon) {
             (CurrentActiveWeapon as IWeapon).SecondaryAttackStart();
         }
@@ -55,6 +57,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     }
 
     private void SecondaryAttackStop() {
+        if (disableAttack) {return;}
         if (CurrentActiveWeapon) {
             (CurrentActiveWeapon as IWeapon).SecondaryAttackStop();
         }

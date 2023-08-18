@@ -1,42 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Proto.Dialogue;
 using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    public Vector2 LastFacingDirection { get {return lastFacingDirection;}}
-    [SerializeField] private float moveSpeed = 1f;
-
+    
+    
     
     PlayerControls playerControls;
-    public Vector2 movement {get; set;}
-    private Rigidbody2D myRigidBody;
-
-    private Animator myAnimator;
-    private SpriteRenderer mySpriteRender;
-
-    private ActiveWeapon activeWeapon;
-
-    private Vector2 lastFacingDirection; // added Vector2 variable to store the last facing direction
-
-    private SwordAttack swordAttack;
-
+    
+    [SerializeField] private float moveSpeed = 1f;
     [SerializeField] float attackMoveThurst = 10f; 
     [SerializeField] float attackMoveTime = 0.2f;
+    public Vector2 LastFacingDirection { get {return lastFacingDirection;}}
     public bool AttackMoving {get; set;}
-
     public bool AttackDirectionLock {get; set;}
-
     public bool SpriteFlipLock {get; set;}
-
     public bool MoveLock {get; set;}
     public bool AttackLock {get; set;}
+    public Vector2 movement {get; set;}
 
     Vector2 direction = new Vector2 (0,0);
     private float mouseFollowDelay = 0.2f;
-
     private MousePosition mousePosition;
     private KnockBack knockBack;
+    private Rigidbody2D myRigidBody;
+    private Animator myAnimator;
+    private SpriteRenderer mySpriteRender;
+    private ActiveWeapon activeWeapon;
+    private Vector2 lastFacingDirection; // added Vector2 variable to store the last facing direction
+    //private SwordAttack swordAttack;
+    private PlayerConversant playerConversant;
 
     readonly int CHANGEWEAPON_HASH = Animator.StringToHash("ChangeWeapon");
     readonly int ISATTACKING_HASH = Animator.StringToHash("isAttacking");
@@ -55,10 +50,12 @@ public class PlayerController : Singleton<PlayerController>
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
-        swordAttack = GetComponentInChildren<SwordAttack>();
+        //swordAttack = GetComponentInChildren<SwordAttack>();
         mousePosition = GetComponent<MousePosition>();
         knockBack = GetComponent<KnockBack>();
         activeWeapon = GetComponentInChildren<ActiveWeapon>();
+        playerConversant = GetComponent<PlayerConversant>();
+
     }
 
     private void Start() {
@@ -78,8 +75,14 @@ public class PlayerController : Singleton<PlayerController>
     }
     
     private void FixedUpdate() {
+        if (playerConversant.isTalking) { // if in dialogue disable active weapon attacks and secondary attacks 
+            ActiveWeapon.Instance.disableAttack = true;
+            return;
+        } else {
+            ActiveWeapon.Instance.disableAttack = false;
+        }
         if (!AttackMoving) {  
-             Move();          
+            Move();          
             AdjustPlayerFacingDirection();
         } else {
             attackMove();
@@ -88,7 +91,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void PlayerInput() {
-        if (MoveLock == false) {
+        if (MoveLock == false && !playerConversant.isTalking) { // if not movelock and not currently in a dialogue
             movement = playerControls.Movement.Move.ReadValue<Vector2>();
         } else {
             movement = new Vector2 (0,0);
@@ -158,13 +161,6 @@ public class PlayerController : Singleton<PlayerController>
         } else {
             mySpriteRender.flipX = false;
         }
-
-        //if (lastFacingDirection.x < 0)
-        //{
-         //   mySpriteRender.flipX = true;
-        //} else {
-        //    mySpriteRender.flipX = false;
-        //}
 
     }
 

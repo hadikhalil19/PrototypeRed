@@ -12,6 +12,8 @@ namespace Proto.Dialogue {
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
         bool isChoosing = false;
+        
+        public bool isTalking  {get; private set;}
 
         public event Action onConversationUpdated;
 
@@ -26,6 +28,7 @@ namespace Proto.Dialogue {
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
             onConversationUpdated();
+            isTalking = true;
         }
 
         public void Quit()
@@ -34,6 +37,7 @@ namespace Proto.Dialogue {
             currentNode = null;
             isChoosing = false;
             onConversationUpdated();
+            isTalking = false;
         }
 
         public bool IsActive()
