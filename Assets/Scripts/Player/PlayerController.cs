@@ -20,6 +20,7 @@ public class PlayerController : Singleton<PlayerController>
     public bool MoveLock {get; set;}
     public bool AttackLock {get; set;}
     public Vector2 movement {get; set;}
+    public Vector3 playerLookAt {get; set;}
 
     Vector2 direction = new Vector2 (0,0);
     private float mouseFollowDelay = 0.2f;
@@ -77,6 +78,7 @@ public class PlayerController : Singleton<PlayerController>
     private void FixedUpdate() {
         if (playerConversant.isTalking) { // if in dialogue disable active weapon attacks and secondary attacks 
             ActiveWeapon.Instance.disableAttack = true;
+            ForcePlayerLookAt();
             return;
         } else {
             ActiveWeapon.Instance.disableAttack = false;
@@ -184,6 +186,18 @@ public class PlayerController : Singleton<PlayerController>
             myAnimator.SetBool(RELOADARROW_HASH, false);
         }
      }
+
+    private void ForcePlayerLookAt() {
+        Vector2 talkingDirection = (playerLookAt - transform.position).normalized;
+        myAnimator.SetFloat("idleX", talkingDirection.x);
+        myAnimator.SetFloat("idleY", talkingDirection.y);
+        if (playerLookAt.x > transform.position.x) {
+            mySpriteRender.flipX = false;
+        } else {
+            mySpriteRender.flipX = true;
+        }
+
+    }
 
 }
 
