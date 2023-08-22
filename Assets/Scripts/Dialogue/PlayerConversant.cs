@@ -27,6 +27,7 @@ namespace Proto.Dialogue {
         {
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
+            TriggerEnterAction();
             onConversationUpdated();
             isTalking = true;
         }
@@ -34,6 +35,7 @@ namespace Proto.Dialogue {
         public void Quit()
         {
             currentDialogue = null;
+            TriggerExitAction();
             currentNode = null;
             isChoosing = false;
             onConversationUpdated();
@@ -69,6 +71,7 @@ namespace Proto.Dialogue {
          public void SelectChoice(DialogueNode chosenNode)
         {
             currentNode = chosenNode;
+            TriggerEnterAction();
             isChoosing = false;
             Next();
         }
@@ -79,6 +82,7 @@ namespace Proto.Dialogue {
             if (numPlayerResponses > 0)
             {
                 isChoosing = true;
+                TriggerExitAction();
                 onConversationUpdated();
                 return;
             }
@@ -90,13 +94,31 @@ namespace Proto.Dialogue {
                 return;
             }
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
+            TriggerExitAction();
             currentNode = children[randomIndex];
+            TriggerEnterAction();
             onConversationUpdated();
         }
 
         public bool HasNext()
         {
             return currentDialogue.GetAllChildren(currentNode).Count() > 0;
+        }
+
+         private void TriggerEnterAction()
+        {
+            if (currentNode != null && currentNode.GetOnEnterAction() != "")
+            {
+                Debug.Log(currentNode.GetOnEnterAction());
+            }
+        }
+
+        private void TriggerExitAction()
+        {
+            if (currentNode != null && currentNode.GetOnExitAction() != "")
+            {
+                Debug.Log(currentNode.GetOnExitAction());
+            }
         }
     }
 

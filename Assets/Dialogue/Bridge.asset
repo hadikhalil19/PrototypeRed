@@ -17,10 +17,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1429
-    y: 40
+    x: 1362
+    y: 144
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-5728358877751423744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,12 +39,15 @@ MonoBehaviour:
   text: Piss off.
   children:
   - fb9f660a-a5ab-444c-be2a-69b54bef2c80
+  - 4514ebbc-9ad7-4d2e-8739-2061ddacc659
   rect:
     serializedVersion: 2
     x: 700
     y: 274
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-4732789297050863155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,12 +64,15 @@ MonoBehaviour:
   text: There is construction ahead
   children:
   - 042a7768-3b96-4215-9ac8-3d04708e124b
+  - 4514ebbc-9ad7-4d2e-8739-2061ddacc659
   rect:
     serializedVersion: 2
     x: 1052
     y: 53
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-4457689567642641662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +95,8 @@ MonoBehaviour:
     y: 53
     width: 200
     height: 100
+  onEnterAction: TestSelection
+  onExitAction: 
 --- !u!114 &-3629958218733440137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +119,8 @@ MonoBehaviour:
     y: 170
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-3108348796131586972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,9 +140,11 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 699
-    y: 169
+    y: 170
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: TestNext
 --- !u!114 &-1081818425335313721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +167,8 @@ MonoBehaviour:
     y: 274
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +191,30 @@ MonoBehaviour:
   - {fileID: -3108348796131586972}
   - {fileID: -5728358877751423744}
   - {fileID: 2174904545116275631}
+  - {fileID: 112341702153771377}
+--- !u!114 &112341702153771377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 4514ebbc-9ad7-4d2e-8739-2061ddacc659
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Attack
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1356
+    y: 34
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: Attack
 --- !u!114 &2174904545116275631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,10 +232,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 951
-    y: 274
+    x: 1139
+    y: 251
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &2942067560930583340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +262,5 @@ MonoBehaviour:
     y: 111
     width: 200
     height: 100
+  onEnterAction: TestRootEntry
+  onExitAction: 
