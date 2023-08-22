@@ -19,6 +19,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     const string HEALTH_SLIDER_TEXT = "Health Slider";
     const string CAMP_TEXT = "Camp";
     readonly int DEATH_HASH = Animator.StringToHash("Death");
+    //readonly int RELOAD_HASH = Animator.StringToHash("Reload");
 
 
 
@@ -75,6 +76,9 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private IEnumerator DeathLoadSceneRoutine() {
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
+        //GetComponent<Animator>().SetTrigger(RELOAD_HASH);
+        //currentHealth = maxHealth;
+        //UpdateHealthSlider();
         SceneManager.LoadScene(CAMP_TEXT);
     }
 

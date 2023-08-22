@@ -11,6 +11,7 @@ namespace Proto.Dialogue {
         //[SerializeField] Dialogue testDialogue;
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
+        AIConversant currentConversant = null;
         bool isChoosing = false;
         
         public bool isTalking  {get; private set;}
@@ -23,8 +24,9 @@ namespace Proto.Dialogue {
         //     StartDialogue(testDialogue);
         // }
 
-        public void StartDialogue(Dialogue newDialogue)
+        public void StartDialogue(AIConversant newConversant, Dialogue newDialogue)
         {
+            currentConversant = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
             TriggerEnterAction();
@@ -38,6 +40,7 @@ namespace Proto.Dialogue {
             TriggerExitAction();
             currentNode = null;
             isChoosing = false;
+            currentConversant = null;
             onConversationUpdated();
             isTalking = false;
         }
@@ -107,17 +110,27 @@ namespace Proto.Dialogue {
 
          private void TriggerEnterAction()
         {
-            if (currentNode != null && currentNode.GetOnEnterAction() != "")
+            if (currentNode != null)
             {
-                Debug.Log(currentNode.GetOnEnterAction());
+                TriggerAction(currentNode.GetOnEnterAction());
             }
         }
 
         private void TriggerExitAction()
         {
-            if (currentNode != null && currentNode.GetOnExitAction() != "")
+            if (currentNode != null)
             {
-                Debug.Log(currentNode.GetOnExitAction());
+                TriggerAction(currentNode.GetOnExitAction());
+            }
+        }
+
+        private void TriggerAction(string action)
+        {
+            if (action == "") return;
+
+            foreach (DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
+            {
+                trigger.Trigger(action);
             }
         }
     }

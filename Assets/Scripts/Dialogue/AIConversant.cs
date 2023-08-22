@@ -38,7 +38,7 @@ public class AIConversant : MonoBehaviour
         {
             if (dialogue == null) {return;}
             SetPlayerLookAt();
-            playerConversant.StartDialogue(dialogue);
+            playerConversant.StartDialogue(this, dialogue);
 
         }
     }
