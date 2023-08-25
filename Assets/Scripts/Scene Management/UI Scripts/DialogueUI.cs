@@ -15,6 +15,7 @@ namespace Proto.SceneManagement.UI {
         [SerializeField] Transform choiceRoot;
         [SerializeField] GameObject choicePrefab;
         [SerializeField] Button quitButton;
+        [SerializeField] TextMeshProUGUI conversantName;
 
 
 
@@ -34,6 +35,7 @@ namespace Proto.SceneManagement.UI {
             gameObject.SetActive(playerConversant.IsActive());
             if (!playerConversant.IsActive()) {return;}
 
+            conversantName.text = playerConversant.GetCurrentConversantName();
             AIResponse.SetActive(!playerConversant.IsChoosing());
             //AIResponse.SetActive(true); // AI response always show even when player is choosing
             choiceRoot.gameObject.SetActive(playerConversant.IsChoosing());

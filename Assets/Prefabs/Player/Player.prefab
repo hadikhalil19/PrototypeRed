@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponChanged: 0
+  disableAttack: 0
 --- !u!1 &6475173484666347351
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ddf5ef3e63ae8418a592bf0f3f46cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: Red
 --- !u!1 &7455831018399215473
 GameObject:
   m_ObjectHideFlags: 0

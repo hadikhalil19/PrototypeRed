@@ -7,6 +7,7 @@ public class AIConversant : MonoBehaviour
 {
 
     [SerializeField] Dialogue dialogue = null;
+    [SerializeField] string conversantName;
 
     private bool inTalkingDistance = false;
     PlayerConversant playerConversant;
@@ -42,6 +43,11 @@ public class AIConversant : MonoBehaviour
 
         }
     }
+
+    public string GetName()
+        {
+            return conversantName;
+        }
 
     private void SetPlayerLookAt() {
         PlayerController.Instance.playerLookAt = this.transform.position; 

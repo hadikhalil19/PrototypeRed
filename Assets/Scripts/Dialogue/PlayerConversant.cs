@@ -9,6 +9,7 @@ namespace Proto.Dialogue {
     {
         
         //[SerializeField] Dialogue testDialogue;
+        [SerializeField] string playerName;
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
         AIConversant currentConversant = null;
@@ -64,6 +65,18 @@ namespace Proto.Dialogue {
             }
             
             return currentNode.GetText();
+        }
+
+        public string GetCurrentConversantName()
+        {
+            if (isChoosing)
+            {
+                return playerName;
+            }
+            else
+            {
+                return currentConversant.GetName();
+            }
         }
 
         public IEnumerable<DialogueNode> GetChoices()
