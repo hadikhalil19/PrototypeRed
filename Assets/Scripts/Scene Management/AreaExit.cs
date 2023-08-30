@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+namespace Proto.SceneManagement {
+
 public class AreaExit : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
@@ -15,6 +17,10 @@ public class AreaExit : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>()) {
             SceneManagement.Instance.SetTransitionName(sceneTransitionName);
             UIFade.Instance.FadeIn();
+
+            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
+            wrapper.Save();
+            
             StartCoroutine(LoadSceneRoutine());
         }
     }
@@ -22,6 +28,9 @@ public class AreaExit : MonoBehaviour
     private IEnumerator LoadSceneRoutine() {
         yield return  new WaitForSeconds(waitToLoadTime);
         SceneManager.LoadScene(sceneToLoad);
-            
+        
     }
 }
+
+}
+

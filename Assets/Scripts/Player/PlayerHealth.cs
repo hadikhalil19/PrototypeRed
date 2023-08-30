@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Proto.Saving;
+using Proto.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 {
