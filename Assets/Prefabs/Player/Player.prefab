@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 8852271540352840724}
   - component: {fileID: 8559983924176489745}
   - component: {fileID: 5845608565179345203}
+  - component: {fileID: 2993892413810798406}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -396,6 +397,7 @@ MonoBehaviour:
   maxHealth: 3
   knockBackThrustAmount: 5
   damageRecoveryTime: 0.5
+  deathSceneTransitionName: 
 --- !u!114 &8859033387838843745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +463,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Red
+--- !u!114 &2993892413810798406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475173484666347351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 
 --- !u!1 &7455831018399215473
 GameObject:
   m_ObjectHideFlags: 0

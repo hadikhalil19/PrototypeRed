@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Proto.Dialogue;
 using UnityEngine;
+using Proto.Saving;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : Singleton<PlayerController>, ISaveable
 {
     
     
@@ -188,9 +189,9 @@ public class PlayerController : Singleton<PlayerController>
      }
 
     private void ForcePlayerLookAt() {
-        Vector2 talkingDirection = (playerLookAt - transform.position).normalized;
-        myAnimator.SetFloat("idleX", talkingDirection.x);
-        myAnimator.SetFloat("idleY", talkingDirection.y);
+        Vector2 lookAtDirection = (playerLookAt - transform.position).normalized;
+        myAnimator.SetFloat("idleX", lookAtDirection.x);
+        myAnimator.SetFloat("idleY", lookAtDirection.y);
         if (playerLookAt.x > transform.position.x) {
             mySpriteRender.flipX = false;
         } else {
@@ -198,6 +199,19 @@ public class PlayerController : Singleton<PlayerController>
         }
 
     }
+
+     public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
+        }
+
+        public void RestoreState(object state)
+        {
+            SerializableVector3 position = (SerializableVector3)state;
+            //GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = position.ToVector();
+            //GetComponent<NavMeshAgent>().enabled = true;
+        }
 
 }
 
