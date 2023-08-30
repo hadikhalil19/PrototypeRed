@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Proto.Saving;
 
-public class PlayerMana : Singleton<PlayerMana>
+public class PlayerMana : Singleton<PlayerMana>, ISaveable
 {
    public int CurrentMana { get; private set; }
     [SerializeField] private float timeBetweenManaRefresh = 0.5F;
@@ -67,6 +68,17 @@ public class PlayerMana : Singleton<PlayerMana>
         }
 
     }
+
+    public object CaptureState()
+        {
+            return CurrentMana;
+        }
+
+        public void RestoreState(object state)
+        {
+            CurrentMana = (int)state;
+            UpdateManaSlider();
+        }
 
 
 }

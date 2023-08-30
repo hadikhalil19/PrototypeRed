@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Proto.Saving;
 
-public class PlayerHealth : Singleton<PlayerHealth>
+public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 {
     public bool IsDead {get; private set;}
     [SerializeField] private int maxHealth = 3;
@@ -110,5 +111,17 @@ public class PlayerHealth : Singleton<PlayerHealth>
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
     }
+
+    public object CaptureState()
+        {
+            return currentHealth;
+        }
+
+        public void RestoreState(object state)
+        {
+            currentHealth = (int)state;
+            UpdateHealthSlider();
+            CheckIfPlayerDeath();
+        }
 
 }
