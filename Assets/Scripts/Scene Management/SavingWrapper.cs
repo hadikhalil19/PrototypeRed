@@ -9,7 +9,7 @@ public class SavingWrapper : MonoBehaviour
 {
 
     const string defaultSaveFile = "save";
-    [SerializeField] float fadeInTime = 0.2f;
+    [SerializeField] float fadeInTime = 2f;
 
         IEnumerator Start() {
             UIFade.Instance.FadeIn();
@@ -24,7 +24,8 @@ public class SavingWrapper : MonoBehaviour
     {
        if (Input.GetKeyDown(KeyCode.L))
             {
-                Load();
+                
+                StartCoroutine(LoadFadeRoutine());
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -40,6 +41,14 @@ public class SavingWrapper : MonoBehaviour
         public void Load()
         {
             GetComponent<SavingSystem>().Load(defaultSaveFile);
+        }
+
+        private IEnumerator LoadFadeRoutine() {
+        UIFade.Instance.FadeIn();
+        yield return  new WaitForSeconds(fadeInTime);
+        Load();
+        yield return  new WaitForSeconds(fadeInTime);
+        UIFade.Instance.FadeOut();
         }
 }
 
