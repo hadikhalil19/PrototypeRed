@@ -1,0 +1,269 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8708143485186014121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 2ee47b36-df31-4d01-ad56-312be879d824
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Ask to trade
+  children:
+  - 00e572e2-f64a-4bba-b77d-fd7935ae1e68
+  rect:
+    serializedVersion: 2
+    x: 253
+    y: -2
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &-5995245818265032980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 7a8496d5-4e73-42f4-b716-41f3aba4b4da
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Ask when will it open?
+  children:
+  - 7df55949-e506-4989-9b32-d6b6449a2396
+  rect:
+    serializedVersion: 2
+    x: 1001
+    y: -1
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &-5842181666643315211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 194cefd8-c9a1-428f-b3b1-9d0ce0815c08
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Sure thing.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2060
+    y: 122
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f12997c01d6b647b4d4e6197b56f08, type: 3}
+  m_Name: BlackSmith
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 9202841941832641101}
+  - {fileID: -8708143485186014121}
+  - {fileID: 6159942163273226998}
+  - {fileID: 7398496825445740345}
+  - {fileID: 5304441675488567491}
+  - {fileID: -5995245818265032980}
+  - {fileID: 7861942554270971194}
+  - {fileID: 7939433843345910648}
+  - {fileID: 3643019900404451951}
+  - {fileID: -5842181666643315211}
+--- !u!114 &3643019900404451951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Leave.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1795
+    y: 284
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &5304441675488567491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 46ae6108-a5d4-4ca5-ae78-7ed3648421e4
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Maybe come back later.
+  children:
+  - 7a8496d5-4e73-42f4-b716-41f3aba4b4da
+  - 14df4f9d-0a3f-4416-8ad3-cdbe415d4505
+  - 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
+  rect:
+    serializedVersion: 2
+    x: 751
+    y: -1
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &6159942163273226998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 14df4f9d-0a3f-4416-8ad3-cdbe415d4505
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Ask to repair equipment
+  children:
+  - 194cefd8-c9a1-428f-b3b1-9d0ce0815c08
+  rect:
+    serializedVersion: 2
+    x: 1799
+    y: 134
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &7398496825445740345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 00e572e2-f64a-4bba-b77d-fd7935ae1e68
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Sorry lass, shop aint open I am afraid
+  children:
+  - 46ae6108-a5d4-4ca5-ae78-7ed3648421e4
+  rect:
+    serializedVersion: 2
+    x: 503
+    y: -2
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &7861942554270971194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 7df55949-e506-4989-9b32-d6b6449a2396
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: To be honest with ya, I don't have any materials to work with.
+  children:
+  - a6b9cc7f-0696-4773-8c39-78ee96eb24f9
+  rect:
+    serializedVersion: 2
+    x: 1261
+    y: -1
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &7939433843345910648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: a6b9cc7f-0696-4773-8c39-78ee96eb24f9
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: If you can help find me some good quality ore I could make something for
+    ya.
+  children:
+  - 14df4f9d-0a3f-4416-8ad3-cdbe415d4505
+  - 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
+  rect:
+    serializedVersion: 2
+    x: 1501
+    y: -1
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &9202841941832641101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 5fa39b69-5da7-4da7-9c65-6216a428bbf5
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Aye Lass, what can I do for yer?
+  children:
+  - 2ee47b36-df31-4d01-ad56-312be879d824
+  - 14df4f9d-0a3f-4416-8ad3-cdbe415d4505
+  - 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
