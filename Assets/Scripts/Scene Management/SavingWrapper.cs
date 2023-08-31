@@ -9,6 +9,17 @@ public class SavingWrapper : MonoBehaviour
 {
 
     const string defaultSaveFile = "save";
+    [SerializeField] float fadeInTime = 0.2f;
+
+        IEnumerator Start() {
+            UIFade.Instance.FadeIn();
+
+            yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
+            CameraController.Instance.SetPlayerCameraFollow();
+
+            yield return new WaitForSeconds(fadeInTime);
+            UIFade.Instance.FadeOut();
+        }
     void Update()
     {
        if (Input.GetKeyDown(KeyCode.L))

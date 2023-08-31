@@ -91,10 +91,12 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         currentHealth = maxHealth;
         UpdateHealthSlider();
         IsDead = false;
-        SceneManager.LoadScene(CAMP_TEXT);
         
+        //CameraController.Instance.SetPlayerCameraFollow();
         ActiveWeapon.Instance.disableAttack = false; 
-        GetComponent<Animator>().SetTrigger(RELOAD_HASH);   
+        GetComponent<Animator>().SetTrigger(RELOAD_HASH);
+        //UIFade.Instance.FadeOut();
+        SceneManager.LoadScene(CAMP_TEXT);   
     }
 
 

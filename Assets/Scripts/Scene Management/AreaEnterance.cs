@@ -6,6 +6,7 @@ namespace Proto.SceneManagement {
 public class AreaEnterance : MonoBehaviour
 {
    [SerializeField] private string transitionName;
+   [SerializeField] private float autoSaveDelay = 0.2f;
 
     private void Start() {
         if (transitionName == SceneManagement.Instance.SceneTransitionName) {
@@ -16,10 +17,16 @@ public class AreaEnterance : MonoBehaviour
             PlayerController.Instance.transform.position = this.transform.position;
             CameraController.Instance.SetPlayerCameraFollow();
 
-            wrapper.Save();
-
             UIFade.Instance.FadeOut();
+
+            StartCoroutine(checkpointSave());
         }
+    }
+
+    private IEnumerator checkpointSave() {
+        yield return new WaitForSeconds(autoSaveDelay);
+        SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
+        wrapper.Save();
     }
 }
 }
