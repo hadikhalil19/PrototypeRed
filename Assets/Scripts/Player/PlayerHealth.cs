@@ -116,15 +116,15 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     }
 
     public object CaptureState()
-        {
-            return currentHealth;
-        }
+    {
+        return currentHealth;
+    }
 
-        public void RestoreState(object state)
-        {
-            currentHealth = (int)state;
-            UpdateHealthSlider();
-            CheckIfPlayerDeath();
-        }
+    public void RestoreState(object state)
+    {
+        currentHealth = (int)state;
+        UpdateHealthSlider();
+        CheckIfPlayerDeath();
+    }
 
 }
