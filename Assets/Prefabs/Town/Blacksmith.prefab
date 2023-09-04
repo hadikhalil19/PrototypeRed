@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4077218810202460699}
   - component: {fileID: 9192913373986915137}
   - component: {fileID: 4034081451760094904}
+  - component: {fileID: 2709699363134876859}
   m_Layer: 0
   m_Name: Blacksmith
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 6085176536473661432}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5531851908548975009
 SpriteRenderer:
@@ -157,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e976f8b093df9d04f994e2b9e82c8af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 65776287ae701d844a7a166ea16d5fce, type: 2}
+  dialogue: {fileID: 11400000, guid: 77144e12e4ca6fb4fb84c6f04f746734, type: 2}
   conversantName: Blacksmith
   interactIcon: {fileID: 6792541128271715616}
 --- !u!70 &4034081451760094904
@@ -192,9 +193,37 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.021373272, y: -0.72822857}
-  m_Size: {x: 2.1998205, y: 2.1998205}
+  m_Offset: {x: -0.0034775734, y: -0.5373347}
+  m_Size: {x: 1.3288698, y: 1.4839711}
   m_Direction: 0
+--- !u!114 &2709699363134876859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936514204224348339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a24b075fa7f954489e29c5a5236b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: Barter
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 936514204224348339}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6792541128271715616
 GameObject:
   m_ObjectHideFlags: 0
