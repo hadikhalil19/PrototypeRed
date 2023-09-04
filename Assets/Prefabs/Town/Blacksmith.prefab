@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: 65776287ae701d844a7a166ea16d5fce, type: 2}
   conversantName: Blacksmith
+  interactIcon: {fileID: 6792541128271715616}
 --- !u!70 &4034081451760094904
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

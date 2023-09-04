@@ -9,6 +9,8 @@ public class AIConversant : MonoBehaviour
     [SerializeField] Dialogue dialogue = null;
     [SerializeField] string conversantName;
 
+    [SerializeField] private GameObject interactIcon;
+
     private bool inTalkingDistance = false;
     PlayerConversant playerConversant;
 
@@ -24,6 +26,7 @@ public class AIConversant : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             inTalkingDistance = true;
+            interactIcon.SetActive(true);
         }
     }
 
@@ -31,6 +34,7 @@ public class AIConversant : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             inTalkingDistance = false;
+            interactIcon.SetActive(false);
         }
     }
 
