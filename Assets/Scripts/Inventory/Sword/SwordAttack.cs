@@ -13,7 +13,9 @@ public class SwordAttack : MonoBehaviour, IWeapon
     public bool Clockwise  {get; private set;}
     private bool hasSlashEffect = false;
 
-    //private bool secondaryAttack = false;
+    private bool secondaryAttack = false;
+
+    private bool shieldAction = false;
     [SerializeField] private Transform SlashCollider;
 
     private SwordAnimHandler swordAnimHandler;
@@ -47,6 +49,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     private void FixedUpdate() {
         AttackAnimEnd();
         toggleSlashHitbox();
+        PlayerShield();
     }
 
     public void Attack() {
@@ -74,18 +77,29 @@ public class SwordAttack : MonoBehaviour, IWeapon
 
     public void SecondaryAttackStart() {
         if (PlayerController.Instance.AttackLock) {return;}
-        if (isAttacking) { return;}
-        //secondaryAttack = true;
-        myAnimator.SetTrigger(SECONDARY_HASH);
-        myAnimator.SetBool(SHIELDUP_HASH, true);
-        lockMovement();
+        //if (isAttacking) { return;}
+        secondaryAttack = true;
+        //myAnimator.SetTrigger(SECONDARY_HASH);
+        //myAnimator.SetBool(SHIELDUP_HASH, true);
+        //lockMovement();
     }
 
     public void SecondaryAttackStop() {
         if (isAttacking) { return;}
-        //secondaryAttack = false;
+        secondaryAttack = false;
+        shieldAction = false;
         myAnimator.SetBool(SHIELDUP_HASH, false);
         unlockMovement();
+    }
+
+    private void PlayerShield() {
+        if (isAttacking) { return;}
+        if (secondaryAttack && !shieldAction) {
+            shieldAction = true;
+            myAnimator.SetTrigger(SECONDARY_HASH);
+            myAnimator.SetBool(SHIELDUP_HASH, true);
+            lockMovement();
+        }
     }
 
     public WeaponInfo GetWeaponInfo() {
