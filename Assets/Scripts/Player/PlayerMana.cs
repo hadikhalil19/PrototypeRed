@@ -7,7 +7,7 @@ using Proto.Saving;
 public class PlayerMana : Singleton<PlayerMana>, ISaveable
 {
    public int CurrentMana { get; private set; }
-    [SerializeField] private float timeBetweenManaRefresh = 0.5F;
+    [SerializeField] private float timeBetweenManaRefresh = 0.2F;
 
     private Slider healthSlider;
     private int startingMana = 100;

@@ -9,8 +9,13 @@ using Proto.SceneManagement;
 public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 {
     public bool IsDead {get; private set;}
+    public bool shieldActive = false;
+
+    public int shieldManaCost = 0;
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private float knockBackThrustAmount = 5f;
+
+    [SerializeField] private float ShieldKnockBackThrust = 2f;
     [SerializeField] private float damageRecoveryTime = 0.5f;
     [SerializeField] private string deathSceneTransitionName;
 
@@ -23,7 +28,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     const string CAMP_TEXT = "Camp";
     readonly int DEATH_HASH = Animator.StringToHash("Death");
     readonly int RELOAD_HASH = Animator.StringToHash("Reload");
-
+    readonly int SHILEDHIT_HASH = Animator.StringToHash("ShieldHit");
 
 
     protected override void Awake() {
@@ -56,6 +61,13 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     public void TakeDamage(int damageAmount,  Transform hitTransform) {
         if (!canTakeDamage) { return; }
         ScreenShakeManager.Instance.ShakeScreen();
+        if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
+            knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
+            PlayerMana.Instance.UseMana(shieldManaCost);
+            GetComponent<Animator>().SetTrigger(SHILEDHIT_HASH);
+            return;
+        }
+        
         canTakeDamage = false;
         currentHealth -= damageAmount;
         knockback.GetKnockedBack(hitTransform, knockBackThrustAmount);

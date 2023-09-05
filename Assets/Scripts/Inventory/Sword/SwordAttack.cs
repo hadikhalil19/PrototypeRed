@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.Rendering.Universal;
 
 public class SwordAttack : MonoBehaviour, IWeapon
 {
@@ -16,6 +17,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     private bool secondaryAttack = false;
 
     private bool shieldAction = false;
+
     [SerializeField] private Transform SlashCollider;
 
     private SwordAnimHandler swordAnimHandler;
@@ -49,7 +51,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     private void FixedUpdate() {
         AttackAnimEnd();
         toggleSlashHitbox();
-        PlayerShield();
+        PlayerShieldAnim();
     }
 
     public void Attack() {
@@ -89,16 +91,30 @@ public class SwordAttack : MonoBehaviour, IWeapon
         secondaryAttack = false;
         shieldAction = false;
         myAnimator.SetBool(SHIELDUP_HASH, false);
+        PlayerHealth.Instance.shieldActive = false;
         unlockMovement();
     }
 
-    private void PlayerShield() {
+    private void PlayerShieldAnim() {
         if (isAttacking) { return;}
         if (secondaryAttack && !shieldAction) {
             shieldAction = true;
             myAnimator.SetTrigger(SECONDARY_HASH);
             myAnimator.SetBool(SHIELDUP_HASH, true);
             lockMovement();
+        } else if (shieldAction) {
+            ShieldBlock();
+        }
+    }
+
+    private void ShieldBlock() {
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShieldIdle")) {
+            PlayerHealth.Instance.shieldActive = true;
+            PlayerHealth.Instance.shieldManaCost = weaponInfo.weaponManaCost;
+        }
+        else {
+            PlayerHealth.Instance.shieldActive = false;
+            PlayerHealth.Instance.shieldManaCost = 0;
         }
     }
 
