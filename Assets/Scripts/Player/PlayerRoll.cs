@@ -101,4 +101,14 @@ public class PlayerRoll : MonoBehaviour
         
     }
 
+    private void RollIframeStartEvent () {
+        PlayerHealth.Instance.canTakeDamage = false;
+
+    }
+
+    private void RollIframeEndEvent () {
+        PlayerHealth.Instance.canTakeDamage = true;
+    }
+
+
 }

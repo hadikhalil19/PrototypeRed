@@ -46,9 +46,11 @@ public class Projectile : MonoBehaviour
         PlayerHealth player = other.gameObject.GetComponent<PlayerHealth>();
 
         if ((player && isEnemyProjectile)) {
-                player?.TakeDamage(1, transform);
-                Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-                Destroy(gameObject);
+                if (player.canTakeDamage) {
+                    player?.TakeDamage(1, transform);
+                    Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
             } else if (enemyHealth && !isEnemyProjectile) {
                 enemyHealth?.TakeDamage(projectileDamage);
                 Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);

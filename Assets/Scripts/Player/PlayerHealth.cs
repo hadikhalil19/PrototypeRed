@@ -20,7 +20,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     [SerializeField] private string deathSceneTransitionName;
 
     private int currentHealth;
-    private bool canTakeDamage =  true;
+    public bool canTakeDamage =  true;
     private KnockBack knockback;
     private Flash flash;
     private Slider healthSlider;
