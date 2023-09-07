@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1784367031472108994}
   - component: {fileID: 5814669841842967202}
   - component: {fileID: 6173250652843732499}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LampTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

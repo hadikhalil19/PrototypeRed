@@ -179,7 +179,7 @@ Transform:
   - {fileID: 4312850326926371867}
   - {fileID: 3258703751215189758}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2546070043240375892
 SpriteRenderer:
@@ -394,10 +394,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a22f2370474d84bb7fc7a0ec7d6961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldActive: 0
+  shieldManaCost: 0
   maxHealth: 3
   knockBackThrustAmount: 5
+  ShieldKnockBackThrust: 2
   damageRecoveryTime: 0.5
-  deathSceneTransitionName: 
+  deathSceneTransitionName: Camp_East
+  canTakeDamage: 1
 --- !u!114 &8859033387838843745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5089d71863d626e4eb1b388f938c0efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenManaRefresh: 0.5
+  timeBetweenManaRefresh: 0.2
 --- !u!114 &5845608565179345203
 MonoBehaviour:
   m_ObjectHideFlags: 0

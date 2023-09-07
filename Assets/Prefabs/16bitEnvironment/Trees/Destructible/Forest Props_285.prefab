@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7320969777992076069}
   - component: {fileID: 886390047174864195}
   - component: {fileID: 3372356729559923684}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forest Props_285
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,9 +132,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.043524534}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.45647547
 --- !u!114 &3372356729559923684
 MonoBehaviour:
   m_ObjectHideFlags: 0
