@@ -2121,7 +2121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeToBlack: {fileID: 2125233434924947328}
   fadeSpeed: 1
-  fadeObject: {fileID: 0}
+  fadeObject: {fileID: 2497619922271510787}
 --- !u!1 &7347186051746791058
 GameObject:
   m_ObjectHideFlags: 0
