@@ -85,17 +85,18 @@ public class ASEnemyAI : MonoBehaviour
     }
 
     private void Roaming() {
-        timeRoaming += Time.deltaTime;
         
-        
-        enemyPathfinding.MoveTo(roamPosition);
 
         if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange) {
             state = State.Attacking;
         } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < followRange) {
             state = State.Following;
+            return;
         }
-
+        
+        timeRoaming += Time.deltaTime;
+        
+        enemyPathfinding.MoveTo(roamPosition);
 
         if (timeRoaming > roamChangeDirTime) {
             roamPosition = GetRoamingPosition();

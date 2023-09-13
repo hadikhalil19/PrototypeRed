@@ -44,7 +44,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     }
 
     private void OnCollisionStay2D(Collision2D other) {
-        EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
+        EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>(); // only works for older enemyAI with no A*
         if (enemy) {
             TakeDamage(1, other.transform);
         }

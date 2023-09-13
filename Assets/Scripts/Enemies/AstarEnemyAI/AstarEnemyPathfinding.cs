@@ -11,7 +11,7 @@ public class AstarEnemyPathfinding : MonoBehaviour
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;
     private KnockBack knockBack;
-    private SpriteRenderer spriteRenderer;
+    //private SpriteRenderer spriteRenderer;
     private EnemyAnimController enemyAnimController;
     
    private void Awake() {
@@ -19,7 +19,7 @@ public class AstarEnemyPathfinding : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
         knockBack = GetComponent<KnockBack>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         enemyAnimController =  GetComponent<EnemyAnimController>();
     }
 
@@ -36,20 +36,7 @@ public class AstarEnemyPathfinding : MonoBehaviour
 
     private void Move() {
         myRigidBody.MovePosition(myRigidBody.position + (movement.normalized * moveSpeed * Time.fixedDeltaTime));
- 
-        if (movement.magnitude > 0.15f) // if moving
-        {
-            if (movement.x < 0) {
-                spriteRenderer.flipX = true;
-            } else if (movement.x > 0){
-                spriteRenderer.flipX = false;
-            }
-            lastFacingDirection = movement; // set the last facing direction to the last movement
-        }
-
-        myAnimator.SetFloat("moveX", movement.x);
-        myAnimator.SetFloat("moveY", movement.y);
-        myAnimator.SetFloat("speed", movement.sqrMagnitude);
+        enemyAnimController.SetAnimMoveDirection(movement);
     }
 
     public void MoveTo(Vector2 targetPosition) {

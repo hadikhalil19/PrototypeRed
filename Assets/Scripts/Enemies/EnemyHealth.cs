@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
     currentHealth -= damage;
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
     //enemyAnimController?.PlayHitAnim();
-    if (enemyAnimController) {
+    if (enemyAnimController) { // if it has enemyAnimController it should have a built in flash and stagger or else add a flash routine.
         enemyAnimController?.PlayHitAnim();
     } else {
         StartCoroutine(flash.FlashRoutine());

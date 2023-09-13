@@ -6,8 +6,11 @@ public class EnemyAnimController : MonoBehaviour
 {
 
     private bool hitStagger = false;
+    private bool takeMoveSample = true;
+    private float moveSampleTime = 0.1f;
     public bool isAttacking = false;
     private Animator myAnimator;
+    private SpriteRenderer spriteRenderer;
 
     readonly int RESET_HASH = Animator.StringToHash("Reset");
     readonly int TAKEDAMAGE_HASH = Animator.StringToHash("TakeDamage");
@@ -17,6 +20,7 @@ public class EnemyAnimController : MonoBehaviour
     readonly int STAGGER_HASH = Animator.StringToHash("Stagger");
     private void Awake() {
         myAnimator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
@@ -60,5 +64,31 @@ public class EnemyAnimController : MonoBehaviour
             myAnimator.SetBool(ISATTACKING_HASH, false);
             isAttacking = false;
         }
+    }
+
+    public void SetAnimMoveDirection(Vector2 movement) {
+        if (takeMoveSample) {
+            takeMoveSample = false;
+            StartCoroutine(SampleMoveDirRoutine(movement)); // we do this minimize mili-sec anim direction changes to make it look smoother
+        }
+        
+    }
+
+    private IEnumerator SampleMoveDirRoutine(Vector2 movement) {
+        yield return new WaitForSeconds(moveSampleTime);
+
+        if (movement.magnitude > 0.1f) // if moving
+        {
+            if (movement.x < 0) {
+                spriteRenderer.flipX = true;
+            } else if (movement.x > 0){
+                spriteRenderer.flipX = false;
+            }
+        }
+
+        myAnimator.SetFloat("moveX", movement.x);
+        myAnimator.SetFloat("moveY", movement.y);
+        myAnimator.SetFloat("speed", movement.sqrMagnitude);
+        takeMoveSample = true;
     }
 }
