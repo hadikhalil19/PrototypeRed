@@ -10,7 +10,8 @@ public class ASEnemyAI : MonoBehaviour
 
     [SerializeField] private float followRange = 10f;
 
-     [SerializeField] float roamChangeDirTime = 2f; 
+    [SerializeField] float roamChangeDirTime = 2f;
+    [SerializeField] bool hasCollisonDamage = false; 
     public float nextWaypointDistance = 1f;
     
     private Path path;
@@ -36,7 +37,7 @@ public class ASEnemyAI : MonoBehaviour
     private float timeRoaming = 0f;
     private Vector2 roamPosition;
 
-    [SerializeField] private MonoBehaviour enemyType;
+    [SerializeField] MonoBehaviour enemyType;
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private float looseInterestTime = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
