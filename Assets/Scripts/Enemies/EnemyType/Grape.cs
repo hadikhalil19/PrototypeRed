@@ -19,7 +19,8 @@ public class Grape : MonoBehaviour, IEnemy
         enemyAnimController =  GetComponent<EnemyAnimController>();
     }
 
-    public void Attack() {
+    public void Attack() { 
+        //needs to have stop while attacking
         //myAnimator.SetTrigger(ATTACK_HASH);
         enemyAnimController?.PlayAttackAnim();
         if (transform.position.x - PlayerController.Instance.transform.position.x < 0) {

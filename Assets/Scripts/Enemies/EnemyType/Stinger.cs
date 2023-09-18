@@ -54,6 +54,7 @@ public class Stinger : MonoBehaviour, IEnemy
         //rb.AddForce(force);
 
         rb.MovePosition(rb.position + (attackDirection.normalized * speed * Time.fixedDeltaTime));
+        enemyAnimController.SetAnimMoveDirection(attackDirection);
         
     }
 
