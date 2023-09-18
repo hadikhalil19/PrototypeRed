@@ -77,6 +77,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     }
     
     private void FixedUpdate() {
+        if (PlayerHealth.Instance.IsDead) {return;}
         if (playerConversant.isTalking) { // if in dialogue disable active weapon attacks and secondary attacks 
             ActiveWeapon.Instance.disableAttack = true;
             ForcePlayerLookAt();

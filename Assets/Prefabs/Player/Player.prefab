@@ -179,7 +179,7 @@ Transform:
   - {fileID: 4312850326926371867}
   - {fileID: 3258703751215189758}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2546070043240375892
 SpriteRenderer:
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldActive: 0
   shieldManaCost: 0
-  maxHealth: 3
+  maxHealth: 5
   knockBackThrustAmount: 5
   ShieldKnockBackThrust: 2
   damageRecoveryTime: 0.5

@@ -93,6 +93,12 @@ public class PlayerRoll : MonoBehaviour
             unlockMovement();
             myTrailRenderer.emitting = false;
                     
+        } else if (PlayerHealth.Instance.IsDead) {
+            isRolling = false;
+            myAnimator.SetBool("isRolling", false);
+            unlockAttack();
+            unlockMovement();
+            myTrailRenderer.emitting = false; 
         }
     }
 

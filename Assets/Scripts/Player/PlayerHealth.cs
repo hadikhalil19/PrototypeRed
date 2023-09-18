@@ -81,9 +81,10 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     private void CheckIfPlayerDeath() {
         if (currentHealth <= 0 && !IsDead) {
             IsDead = true;
+            canTakeDamage = false;
             //Destroy(ActiveWeapon.Instance.gameObject);
             ActiveWeapon.Instance.disableAttack = true;
-            currentHealth = 0;
+            //currentHealth = 0;
             GetComponent<Animator>().SetTrigger(DEATH_HASH);
             StartCoroutine(DeathLoadSceneRoutine());
         }
@@ -103,6 +104,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         currentHealth = maxHealth;
         UpdateHealthSlider();
         IsDead = false;
+        canTakeDamage = true;
         //CameraController.Instance.SetPlayerCameraFollow();
         ActiveWeapon.Instance.disableAttack = false; 
         GetComponent<Animator>().SetTrigger(RELOAD_HASH);

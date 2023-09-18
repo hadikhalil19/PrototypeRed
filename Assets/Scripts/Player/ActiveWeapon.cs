@@ -57,7 +57,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     }
 
     private void SecondaryAttackStop() {
-        if (disableAttack) {return;}
+        //if (disableAttack) {return;}
         if (CurrentActiveWeapon) {
             (CurrentActiveWeapon as IWeapon).SecondaryAttackStop();
         }
