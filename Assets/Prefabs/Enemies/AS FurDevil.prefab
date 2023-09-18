@@ -30,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &122774845649742496
 Transform:
   m_ObjectHideFlags: 0
@@ -303,14 +303,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  attackRange: 3
+  attackRange: 5
   followRange: 10
   roamChangeDirTime: 2
-  speed: 200
+  hasCollisonDamage: 0
   nextWaypointDistance: 1
   pathUpdateSeconds: 0.5
   enemyType: {fileID: 4043387622541704170}
   attackCooldown: 2
+  looseInterestTime: 2
   stopMovingWhileAttacking: 0
 --- !u!114 &6084282558479973346
 MonoBehaviour:

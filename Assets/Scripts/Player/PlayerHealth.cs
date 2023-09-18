@@ -12,7 +12,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     public bool shieldActive = false;
 
     public int shieldManaCost = 0;
-    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private int maxHealth = 5;
     [SerializeField] private float knockBackThrustAmount = 5f;
 
     [SerializeField] private float ShieldKnockBackThrust = 2f;

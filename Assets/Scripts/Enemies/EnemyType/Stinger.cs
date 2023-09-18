@@ -64,4 +64,15 @@ public class Stinger : MonoBehaviour, IEnemy
         }
     }
 
+    private void OnCollisionStay2D(Collision2D other) {
+        if (!attackMove) {return;}
+        PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>(); // only works for older enemyAI with no A*
+        if(playerHealth) {
+            
+            playerHealth.TakeDamage(1, other.transform);
+            
+        }
+
+    }
+
 }

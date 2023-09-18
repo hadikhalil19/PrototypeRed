@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int startingHealth = 3;
+    [SerializeField] private int startingHealth = 5;
     [SerializeField] float knockBackForce = 10F;
     [SerializeField] float deathDelay = 0.2f;
     [SerializeField] private GameObject deathVFXPrefab;
@@ -28,6 +28,8 @@ public class EnemyHealth : MonoBehaviour
    }
 
    public void TakeDamage(int damage) {
+    if(dying) {return;}
+    if(knockBack.GettingKnockedBack) {return;}
     currentHealth -= damage;
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
     //enemyAnimController?.PlayHitAnim();

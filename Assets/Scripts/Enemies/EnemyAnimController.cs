@@ -48,7 +48,8 @@ public class EnemyAnimController : MonoBehaviour
     }
 
     public void PlayDeathAnim() {
-        myAnimator.SetBool(DEATH_HASH, true);
+        //if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Death")) 
+        myAnimator.SetTrigger(DEATH_HASH);
     }
 
     public void PlayAttackAnim() {
