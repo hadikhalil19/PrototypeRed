@@ -64,9 +64,11 @@ public class Bow : MonoBehaviour, IWeapon
 
     public void SecondaryAttackStop() {
         //myAnimator.SetBool(NOCKINGARROW_HASH, false);
+        myAnimator.SetBool(BOWATTACK_HASH, false);
         myAnimator.SetBool(BOWAIM_HASH, false);
         myAnimator.SetBool(RELOADARROW_HASH, false);
         nockArrowAim = false;
+        bowAttacking = false;
     }
     public WeaponInfo GetWeaponInfo() {
         return weaponInfo;

@@ -18,8 +18,8 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     public bool AttackMoving {get; set;}
     public bool AttackDirectionLock {get; set;}
     public bool SpriteFlipLock {get; set;}
-    public bool MoveLock {get; set;}
-    public bool AttackLock {get; set;}
+    public bool MoveLock;
+    public bool AttackLock;
     public Vector2 movement {get; set;}
     public Vector3 playerLookAt {get; set;}
 
