@@ -38,7 +38,7 @@ public class ASEnemyAI : MonoBehaviour
     private Vector2 roamPosition;
 
     [SerializeField] MonoBehaviour enemyType;
-    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float attackCooldownMin = 2f;
     [SerializeField] private float looseInterestTime = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
@@ -131,7 +131,8 @@ public class ASEnemyAI : MonoBehaviour
     }
 
     private IEnumerator AttackCooldownRoutine() {
-        yield return new WaitForSeconds(attackCooldown);
+        float cooldown =  attackCooldownMin + Random.Range(0,3);
+        yield return new WaitForSeconds(cooldown);
         canAttack = true;
     }
 

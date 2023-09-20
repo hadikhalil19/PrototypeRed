@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 5
   knockBackForce: 10
-  deathDelay: 0.2
+  deathDelay: 0.9
   deathVFXPrefab: {fileID: 0}
 --- !u!114 &8782692104922489063
 MonoBehaviour:
@@ -196,7 +196,7 @@ MonoBehaviour:
   nextWaypointDistance: 1
   pathUpdateSeconds: 0.5
   enemyType: {fileID: 3019106910685582922}
-  attackCooldown: 3
+  attackCooldownMin: 3
   looseInterestTime: 2
   stopMovingWhileAttacking: 0
 --- !u!114 &5353110927748314999

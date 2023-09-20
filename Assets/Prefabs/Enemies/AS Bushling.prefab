@@ -334,10 +334,11 @@ MonoBehaviour:
   attackRange: 5
   followRange: 10
   roamChangeDirTime: 2
+  hasCollisonDamage: 0
   nextWaypointDistance: 1.5
   pathUpdateSeconds: 0.8
   enemyType: {fileID: 3547666014498630624}
-  attackCooldown: 2
+  attackCooldownMin: 1
   looseInterestTime: 2
   stopMovingWhileAttacking: 1
 --- !u!114 &1295560084387138386

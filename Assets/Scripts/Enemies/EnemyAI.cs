@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float roamChangeDirTime = 2f; 
     [SerializeField] private float attackRange = 0f;
     [SerializeField] private MonoBehaviour enemyType;
-    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float attackCooldownMin = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
     private bool canAttack = true;
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     private IEnumerator AttackCooldownRoutine() {
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(attackCooldownMin);
         canAttack = true;
     }
 
