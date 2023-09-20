@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 8157790675249184043}
   - component: {fileID: 2388010455865639074}
   - component: {fileID: 3019106910685582922}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StingFly
   m_TagString: Untagged
   m_Icon: {fileID: 0}

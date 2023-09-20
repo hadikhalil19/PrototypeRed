@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 1059994672225419386}
   - component: {fileID: 2256390977398102520}
   - component: {fileID: 317347154213754399}
+  - component: {fileID: 1497135423394789142}
+  - component: {fileID: 2443201923525256517}
   m_Layer: 0
   m_Name: Potion Trader
   m_TagString: Untagged
@@ -120,7 +122,7 @@ Transform:
   m_Children:
   - {fileID: 495499954094024360}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8023424600373934668
 SpriteRenderer:
@@ -242,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e976f8b093df9d04f994e2b9e82c8af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 65776287ae701d844a7a166ea16d5fce, type: 2}
+  dialogue: {fileID: 11400000, guid: 9f56bf7d87c2da0489c33f4af4fb277c, type: 2}
   conversantName: Potion Trader
   interactIcon: {fileID: 2797389962306703932}
 --- !u!114 &2256390977398102520
@@ -257,10 +259,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a24b075fa7f954489e29c5a5236b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 
+  action: Heal
   onTrigger:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1497135423394789142}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!70 &317347154213754399
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -296,3 +310,43 @@ CapsuleCollider2D:
   m_Offset: {x: -0.018836021, y: -0.33814025}
   m_Size: {x: 1.7508755, y: 2.1020384}
   m_Direction: 0
+--- !u!114 &1497135423394789142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332502563839239535}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acd9d93410a78b40a3c99036ab06050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2443201923525256517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332502563839239535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a24b075fa7f954489e29c5a5236b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: StopHeal
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1497135423394789142}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

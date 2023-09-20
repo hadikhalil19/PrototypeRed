@@ -179,7 +179,7 @@ Transform:
   - {fileID: 4312850326926371867}
   - {fileID: 3258703751215189758}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2546070043240375892
 SpriteRenderer:
@@ -246,7 +246,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -275,6 +275,8 @@ MonoBehaviour:
   moveSpeed: 4
   attackMoveThurst: 1
   attackMoveTime: 0.1
+  MoveLock: 0
+  AttackLock: 0
 --- !u!95 &220480121145989712
 Animator:
   serializedVersion: 5

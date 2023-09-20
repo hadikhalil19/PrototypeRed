@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8387447009244452711
+--- !u!114 &-7792441125100938760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,40 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
-  m_Name: c0b6dcae-9082-49d0-8698-2513eab139fd
+  m_Name: 37b9e947-37e3-4f2d-bb93-e9efddff07c8
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: 
+  text: What can I do for you?
   children:
-  - 431e5c56-cc9f-417c-951f-372dfd429684
+  - d5a70094-a678-4f01-8e9f-868134e38b1a
+  - d09ec9fb-4c7f-4aa2-b5de-dbf7c5dbcba2
   rect:
     serializedVersion: 2
-    x: 625
-    y: 131
+    x: 38
+    y: 20
     width: 200
     height: 100
---- !u!114 &-6402781636561512642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
-  m_Name: 6ce7d070-f8da-49c7-a40b-a8204f81f32a
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: 
-  children:
-  - 996bcc13-588f-4081-a8d2-7dbc4045ad4b
-  rect:
-    serializedVersion: 2
-    x: 396
-    y: 322
-    width: 200
-    height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,15 +35,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70f12997c01d6b647b4d4e6197b56f08, type: 3}
-  m_Name: New Dialogue
+  m_Name: Potion Trader
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 7584674926341902138}
-  - {fileID: -8387447009244452711}
-  - {fileID: 1922253306904255791}
-  - {fileID: -6402781636561512642}
-  - {fileID: 1976927241771398664}
---- !u!114 &1922253306904255791
+  - {fileID: -7792441125100938760}
+  - {fileID: 5782681780112776560}
+  - {fileID: 6432644366445623419}
+  - {fileID: 3589441291879626489}
+--- !u!114 &3589441291879626489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,18 +52,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
-  m_Name: 431e5c56-cc9f-417c-951f-372dfd429684
+  m_Name: d09ec9fb-4c7f-4aa2-b5de-dbf7c5dbcba2
   m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: 
+  isPlayerSpeaking: 1
+  text: Leave
   children: []
   rect:
     serializedVersion: 2
-    x: 1134
-    y: 186
+    x: 286
+    y: 125
     width: 200
     height: 100
---- !u!114 &1976927241771398664
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &5782681780112776560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,19 +75,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
-  m_Name: 996bcc13-588f-4081-a8d2-7dbc4045ad4b
+  m_Name: d5a70094-a678-4f01-8e9f-868134e38b1a
   m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: 
+  isPlayerSpeaking: 1
+  text: Ask to buy a healing potion
   children:
-  - 431e5c56-cc9f-417c-951f-372dfd429684
+  - 8138d568-bf9d-41d1-b0a3-82d61cc7d011
   rect:
     serializedVersion: 2
-    x: 761
-    y: 362
+    x: 289
+    y: 21
     width: 200
     height: 100
---- !u!114 &7584674926341902138
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &6432644366445623419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,16 +99,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
-  m_Name: 9fa43080-6f5d-40fd-aab6-2627b3c100fe
+  m_Name: 8138d568-bf9d-41d1-b0a3-82d61cc7d011
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: 
-  children:
-  - c0b6dcae-9082-49d0-8698-2513eab139fd
-  - 6ce7d070-f8da-49c7-a40b-a8204f81f32a
+  text: Sure thing honey, this should fix you up.
+  children: []
   rect:
     serializedVersion: 2
-    x: 121
-    y: 110
+    x: 537
+    y: 19
     width: 200
     height: 100
+  onEnterAction: Heal
+  onExitAction: StopHeal
