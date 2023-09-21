@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     private KnockBack knockBack;
     private Flash flash;
 
-    private bool dying = false;
+    public bool dying = false;
 
     private EnemyAnimController enemyAnimController;
 

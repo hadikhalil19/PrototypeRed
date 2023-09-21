@@ -46,9 +46,12 @@ public class ASEnemyAI : MonoBehaviour
    
     private bool loosingInterest = false;
 
+    private EnemyHealth enemyHealth;
+
     private void Awake() {
         state = State.Roaming;
-        enemyPathfinding = GetComponent<AstarEnemyPathfinding>();    
+        enemyPathfinding = GetComponent<AstarEnemyPathfinding>();
+        enemyHealth = GetComponent<EnemyHealth>();    
     }
 
     public void Start()
@@ -57,7 +60,6 @@ public class ASEnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
-
     }
 
     private void Update() {
@@ -86,7 +88,6 @@ public class ASEnemyAI : MonoBehaviour
     }
 
     private void Roaming() {
-        
 
         if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange) {
             state = State.Attacking;
@@ -107,6 +108,7 @@ public class ASEnemyAI : MonoBehaviour
     }
 
     private void Attacking() {
+        if (enemyHealth.dying) {return;}
         if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > followRange) {
             if (!loosingInterest) {
                 loosingInterest = true;
