@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TriggerPlayerHeal : MonoBehaviour
 {
-    void TriggerHeal() {
+    public void TriggerHeal() {
         PlayerHealth.Instance.HealPlayer();
     }
     
-    private void Update() {
-        TriggerHeal();
-    }
+    // private void Update() {
+    //     TriggerHeal();
+    // }
 }
