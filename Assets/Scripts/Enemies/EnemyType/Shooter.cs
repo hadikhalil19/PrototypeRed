@@ -36,6 +36,10 @@ public class Shooter : MonoBehaviour, IEnemy
             StartCoroutine(ShootRoutine());
         }
     }
+
+    public void SecondaryAttack() {
+    
+    }
     
     private IEnumerator ShootRoutine()
     {

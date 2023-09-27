@@ -34,6 +34,10 @@ public class Grape : MonoBehaviour, IEnemy
         
     }
 
+    public void SecondaryAttack() {
+    
+    }
+
     public void SpawnProjectileAnimEvent() {
         //Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
         GameObject newBullet = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);

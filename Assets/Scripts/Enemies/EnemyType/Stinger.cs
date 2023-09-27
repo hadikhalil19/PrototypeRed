@@ -39,6 +39,10 @@ public class Stinger : MonoBehaviour, IEnemy
         
     }
 
+    public void SecondaryAttack() {
+    
+    }
+
     public void AttackAnimEvent() {
         attackDirection = ((Vector2)aSEnemyAI.target.position - rb.position).normalized;
         attackMove = true;

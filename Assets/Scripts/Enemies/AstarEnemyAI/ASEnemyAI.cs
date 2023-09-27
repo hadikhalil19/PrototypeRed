@@ -27,6 +27,7 @@ public class ASEnemyAI : MonoBehaviour
     private enum State{
         Roaming,
         Attacking,
+        MeleeAttack,
         Following
     }
 
@@ -80,6 +81,11 @@ public class ASEnemyAI : MonoBehaviour
                 
             break;
 
+            case State.MeleeAttack:
+                MeleeAttack();
+                
+            break;
+
             case State.Following:
                 Following();
                 
@@ -104,7 +110,6 @@ public class ASEnemyAI : MonoBehaviour
             roamPosition = GetRoamingPosition();
         }
  
-
     }
 
     private void Attacking() {
@@ -136,6 +141,19 @@ public class ASEnemyAI : MonoBehaviour
         float cooldown =  attackCooldownMin + Random.Range(0,3);
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
+    }
+
+    private void MeleeAttack() {
+        if (enemyHealth.dying) {return;}
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > followRange) {
+            if (!loosingInterest) {
+                loosingInterest = true;
+                StartCoroutine(RoamAgainRoutine());
+            }
+        } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange) {
+            state = State.Following;
+        }
+
     }
 
 
