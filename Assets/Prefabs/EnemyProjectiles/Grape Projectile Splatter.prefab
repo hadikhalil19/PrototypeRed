@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9175388926521628596
 SpriteRenderer:
@@ -119,8 +119,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007891384, y: -0.1341384}
-  m_Size: {x: 1.4161092, y: 0.78487414}
+  m_Offset: {x: 0.037285753, y: -0.18965979}
+  m_Size: {x: 1.9452083, y: 1.0396318}
   m_Direction: 1
 --- !u!114 &-6408220383466090149
 MonoBehaviour:

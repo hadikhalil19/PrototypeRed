@@ -95,7 +95,7 @@ public class ASEnemyAI : MonoBehaviour
 
     private void Roaming() {
 
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange) {
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange && canAttack) {
             state = State.Attacking;
         } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < followRange) {
             state = State.Following;
@@ -134,6 +134,8 @@ public class ASEnemyAI : MonoBehaviour
             }
 
             StartCoroutine(AttackCooldownRoutine());
+        } else {
+            state = State.Following;
         }
     }
 
@@ -164,7 +166,7 @@ public class ASEnemyAI : MonoBehaviour
                 StartCoroutine(RoamAgainRoutine());
             }
             
-        } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange) {
+        } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange && canAttack) {
             state = State.Attacking;
         }
         if (target == null) {

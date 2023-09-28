@@ -9,6 +9,7 @@ public class Grape : MonoBehaviour, IEnemy
     private Animator myAnimator;
     private SpriteRenderer spriteRenderer;
     private EnemyAnimController enemyAnimController;
+    private bool meleeAttack = false;
 
 
     //readonly int ATTACK_HASH = Animator.StringToHash("Attack");
@@ -21,7 +22,11 @@ public class Grape : MonoBehaviour, IEnemy
 
     public void Attack() { 
         //needs to have stop while attacking
-        //myAnimator.SetTrigger(ATTACK_HASH);
+        meleeAttack = false;
+        TriggerAttackAnim();
+    }
+
+    private void TriggerAttackAnim() {
         enemyAnimController?.PlayAttackAnim();
         if (transform.position.x - PlayerController.Instance.transform.position.x < 0) {
             spriteRenderer.flipX = false;
@@ -31,17 +36,20 @@ public class Grape : MonoBehaviour, IEnemy
 
         myAnimator.SetFloat("idleX", transform.position.x - PlayerController.Instance.transform.position.x );
         myAnimator.SetFloat("idleY", PlayerController.Instance.transform.position.y - transform.position.y);
-        
     }
 
     public void SecondaryAttack() {
-    
+        meleeAttack = true;
+        TriggerAttackAnim();
     }
 
     public void SpawnProjectileAnimEvent() {
-        //Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
-        GameObject newBullet = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
-        newBullet.transform.right = PlayerController.Instance.transform.position - newBullet.transform.position;
+        if (!meleeAttack) {
+            GameObject newBullet = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
+            newBullet.transform.right = PlayerController.Instance.transform.position - newBullet.transform.position;
+        } else {
+
+        }
     }
 
 }
