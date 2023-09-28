@@ -10,6 +10,8 @@ public class ASEnemyAI : MonoBehaviour
 
     [SerializeField] private float followRange = 10f;
 
+    [SerializeField] private float meleeRange = 1f;
+
     [SerializeField] float roamChangeDirTime = 2f;
     [SerializeField] bool hasCollisonDamage = false; 
     public float nextWaypointDistance = 1f;
@@ -28,7 +30,8 @@ public class ASEnemyAI : MonoBehaviour
         Roaming,
         Attacking,
         MeleeAttack,
-        Following
+        Following,
+        Flanking
     }
 
     private State state;
@@ -40,12 +43,16 @@ public class ASEnemyAI : MonoBehaviour
 
     [SerializeField] MonoBehaviour enemyType;
     [SerializeField] private float attackCooldownMin = 2f;
+    [SerializeField] private float meleeCooldownMin = 1f;
     [SerializeField] private float looseInterestTime = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
     private bool canAttack = true;
+    private bool canMeleeAttack = true;
    
     private bool loosingInterest = false;
+
+    private bool flanking = false;
 
     private EnemyHealth enemyHealth;
 
@@ -90,6 +97,11 @@ public class ASEnemyAI : MonoBehaviour
                 Following();
                 
             break;
+
+            case State.Flanking:
+                Flanking();
+                
+            break;
         }
     }
 
@@ -121,6 +133,8 @@ public class ASEnemyAI : MonoBehaviour
             }
         } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange) {
             state = State.Following;
+        } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < meleeRange) {
+            state = State.MeleeAttack;
         }
 
         if (canAttack && attackRange != 0) {
@@ -145,14 +159,32 @@ public class ASEnemyAI : MonoBehaviour
         canAttack = true;
     }
 
+    private IEnumerator MeleeCooldownRoutine() {
+        float cooldown =  attackCooldownMin + Random.Range(0,2);
+        yield return new WaitForSeconds(cooldown);
+        canMeleeAttack = true;
+    }
+
     private void MeleeAttack() {
         if (enemyHealth.dying) {return;}
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > followRange) {
-            if (!loosingInterest) {
-                loosingInterest = true;
-                StartCoroutine(RoamAgainRoutine());
-            }
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > meleeRange) {
+            state = State.Attacking;
         } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange) {
+            state = State.Following;
+        }
+
+        if (canMeleeAttack && attackRange != 0) {
+            canMeleeAttack = false;
+            (enemyType as IEnemy).SecondaryAttack();
+
+            if (stopMovingWhileAttacking) {
+                enemyPathfinding.StopMoving();
+            } else {
+                enemyPathfinding.MoveTo(GetRoamingPosition());
+            }
+
+            StartCoroutine(MeleeCooldownRoutine());
+        } else {
             state = State.Following;
         }
 
@@ -166,9 +198,12 @@ public class ASEnemyAI : MonoBehaviour
                 StartCoroutine(RoamAgainRoutine());
             }
             
+        } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < meleeRange && canMeleeAttack) {
+            state = State.MeleeAttack;
         } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange && canAttack) {
             state = State.Attacking;
         }
+        
         if (target == null) {
             target = PlayerController.Instance.transform;
         }
@@ -225,6 +260,24 @@ public class ASEnemyAI : MonoBehaviour
         return new Vector2(Random.Range(-1f, 1f),Random.Range(-1f, 1f)).normalized;
     
     }
+
+    void diagonalMove() {
+    
+        Vector3 perpendicularVector = Vector3.Cross((Vector2)path.vectorPath[currentWaypoint], rb.position);
+        enemyPathfinding.MoveTo(perpendicularVector);
+
+
+    }
+
+    private void Flanking() {
+        if (flanking) {
+            diagonalMove();
+        } else {
+            state = State.Following;
+        }
+        
+    }
+
 
     
 }

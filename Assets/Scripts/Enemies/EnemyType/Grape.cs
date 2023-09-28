@@ -48,7 +48,7 @@ public class Grape : MonoBehaviour, IEnemy
             GameObject newBullet = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
             newBullet.transform.right = PlayerController.Instance.transform.position - newBullet.transform.position;
         } else {
-
+            Debug.Log("melee attack");
         }
     }
 

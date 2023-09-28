@@ -5,6 +5,7 @@ using UnityEngine;
 public class GrapeLandSplash : MonoBehaviour
 {
     private SpriteFade spriteFade;
+    [SerializeField] private float splashDamageDuration = 1f;
     private void Awake() {
         spriteFade = GetComponent<SpriteFade>();
     }
@@ -12,7 +13,7 @@ public class GrapeLandSplash : MonoBehaviour
     void Start()
     {  
         StartCoroutine(spriteFade.SlowFadeRoutine());
-        Invoke("DisableCollider", 0.2f);
+        Invoke("DisableCollider", splashDamageDuration);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
