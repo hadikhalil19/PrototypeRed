@@ -233,8 +233,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26437786, y: -0.023403633}
-  m_Size: {x: 1.5671587, y: 0.30920386}
+  m_Offset: {x: 0.248621, y: -0.023403632}
+  m_Size: {x: 1.310547, y: 0.30920547}
   m_Direction: 1
 --- !u!50 &2754210696575805249
 Rigidbody2D:
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e768b32b8d42245bdc903fee901f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 15
   particleOnHitPrefabVFX: {fileID: 4764969303406464663, guid: 3d1d2311220071c47a282b8b9b50e105, type: 3}
   isEnemyProjectile: 0
   projectileRange: 15

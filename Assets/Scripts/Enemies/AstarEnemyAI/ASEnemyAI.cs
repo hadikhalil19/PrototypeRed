@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEditor.Tilemaps;
 
 public class ASEnemyAI : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class ASEnemyAI : MonoBehaviour
     [SerializeField] private float attackCooldownMin = 2f;
     [SerializeField] private float meleeCooldownMin = 1f;
     [SerializeField] private float looseInterestTime = 2f;
+    [SerializeField] private float flankingTimeMin = 1.5f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
     private bool canAttack = true;
@@ -52,7 +54,9 @@ public class ASEnemyAI : MonoBehaviour
    
     private bool loosingInterest = false;
 
-    private bool flanking = false;
+    private bool clockwise = false;
+
+    public bool StartFlanking = false;
 
     private EnemyHealth enemyHealth;
 
@@ -154,13 +158,13 @@ public class ASEnemyAI : MonoBehaviour
     }
 
     private IEnumerator AttackCooldownRoutine() {
-        float cooldown =  attackCooldownMin + Random.Range(0,3);
+        float cooldown =  attackCooldownMin + Random.Range(0,3f);
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
     }
 
     private IEnumerator MeleeCooldownRoutine() {
-        float cooldown =  attackCooldownMin + Random.Range(0,2);
+        float cooldown =  meleeCooldownMin + Random.Range(0,2f);
         yield return new WaitForSeconds(cooldown);
         canMeleeAttack = true;
     }
@@ -207,7 +211,12 @@ public class ASEnemyAI : MonoBehaviour
         if (target == null) {
             target = PlayerController.Instance.transform;
         }
-        FollowTarget();
+        if (StartFlanking) {
+            state = State.Flanking;
+        } else {
+            FollowTarget();
+        }
+        
     }
 
     private IEnumerator RoamAgainRoutine() {
@@ -262,22 +271,42 @@ public class ASEnemyAI : MonoBehaviour
     }
 
     void diagonalMove() {
-    
-        Vector3 perpendicularVector = Vector3.Cross((Vector2)path.vectorPath[currentWaypoint], rb.position);
+        Vector2 direction = (Vector2)target.position - rb.position;
+        Vector2 perpendicularVector = new Vector2(-direction.y, direction.x);
+        if (!clockwise) {
+            perpendicularVector = -perpendicularVector;
+        }
         enemyPathfinding.MoveTo(perpendicularVector);
-
-
     }
 
     private void Flanking() {
-        if (flanking) {
-            diagonalMove();
-        } else {
-            state = State.Following;
+        diagonalMove();
+        if (StartFlanking) {
+            StartFlanking = false;
+            StartCoroutine(FlankStopRoutine());
         }
-        
     }
 
+    private IEnumerator FlankStopRoutine() {
+        yield return new WaitForSeconds(flankingTimeMin + Random.Range(0,2f));
+        state = State.Following;
+    }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.GetComponentInParent<ASEnemyAI>())
+        {
+            int randomNumber = Random.Range(1,4);
+            if (randomNumber == 1) {
+                StartFlanking = true;
+                clockwise = true;
+            } else if (randomNumber == 2) {
+                StartFlanking = true;
+                clockwise = false;
+            } else if (randomNumber == 3) {
+                StartFlanking = false;
+            }
+            
+        }
+    }
     
 }
