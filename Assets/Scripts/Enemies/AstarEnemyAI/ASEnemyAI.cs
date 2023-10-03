@@ -204,7 +204,7 @@ public class ASEnemyAI : MonoBehaviour
             
         } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < meleeRange && canMeleeAttack) {
             state = State.MeleeAttack;
-        } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange && canAttack) {
+        } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange && canAttack && canMeleeAttack) {
             state = State.Attacking;
         }
         
