@@ -85,6 +85,9 @@ public class EnemyAnimController : MonoBehaviour
             } else if (movement.x > 0){
                 spriteRenderer.flipX = false;
             }
+            myAnimator.SetFloat("idleX", movement.x);
+            myAnimator.SetFloat("idleY", movement.y);
+        
         }
 
         myAnimator.SetFloat("moveX", movement.x);
