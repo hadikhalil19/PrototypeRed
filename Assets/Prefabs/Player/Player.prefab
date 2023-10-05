@@ -179,7 +179,7 @@ Transform:
   - {fileID: 4312850326926371867}
   - {fileID: 3258703751215189758}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2546070043240375892
 SpriteRenderer:
@@ -246,7 +246,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTrailRenderer: {fileID: 5596889670496591285}
-  rollSpeed: 6
+  rollSpeed: 8
 --- !u!114 &8808775793840697957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +634,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 70ccf6b9613bd3945801f06512265add, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -664,8 +664,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.014949799
-        value: 0.65789795
+        time: 0.011352539
+        value: 0.5402527
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -59,6 +59,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
         if (PlayerMana.Instance.CurrentMana < weaponInfo.weaponManaCost) {return;}
        
         myAnimator.SetBool(SHIELDUP_HASH, false);
+        shieldAction = false;
         if (!isAttacking) {
         attackCounter = 1;
         myAnimator.SetTrigger(ATTACK_HASH);
