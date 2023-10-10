@@ -29,7 +29,12 @@ public class Grape : MonoBehaviour, IEnemy
     }
 
     private void TriggerAttackAnim() {
-        enemyAnimController?.PlayAttackAnim();
+        if (!meleeAttack) {
+            enemyAnimController?.PlayAttackAnim();
+        } else {
+            enemyAnimController?.PlaySecondaryAnim();
+        }
+        
         if (transform.position.x - PlayerController.Instance.transform.position.x < 0) {
             spriteRenderer.flipX = false;
         } else {
@@ -46,37 +51,36 @@ public class Grape : MonoBehaviour, IEnemy
     }
 
     public void SpawnProjectileAnimEvent() {
-        if (!meleeAttack) {
-            GameObject newBullet = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
-            newBullet.transform.right = PlayerController.Instance.transform.position - newBullet.transform.position;
-        } else {
-            Debug.Log("melee attack");
+        GameObject newBullet = Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
+        newBullet.transform.right = PlayerController.Instance.transform.position - newBullet.transform.position;
+    }
 
-            Vector3 myPos = this.transform.position;
-            Vector3 playerPos = PlayerController.Instance.transform.position;
-            float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x -  myPos.x) * Mathf.Rad2Deg;
-            if (angle > 67.5 && angle <= 112.5) { // north
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 90);
-            } else if (angle > 22.5 && angle <= 67.5) { // northeast
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 45);
-            } else if (angle > -22.5 && angle <= 22.5) { // east
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
-            } else if (angle > -67.5 && angle <= -22.5) { // southeast
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, -45);
-            } else if (angle > -112.5 && angle <= -67.5) { // south
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, -90);
-            } else if (angle > -157.5 && angle <= -112.5) { // southwest
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, -135);
-            } else if (angle > 112.5 && angle <= 157.5) { // northwest
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 135);
-            } else if (angle > 157.5 || angle < -157.5 ) { // west
-                MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
+    public void SecondaryAttackAnimEvent() {
+        Debug.Log("melee attack");
 
-            MeleeAttackCollider.gameObject.SetActive(true);
-            StartCoroutine(MeleeColliderDisableRoutine());
-
+        Vector3 myPos = this.transform.position;
+        Vector3 playerPos = PlayerController.Instance.transform.position;
+        float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x -  myPos.x) * Mathf.Rad2Deg;
+        if (angle > 67.5 && angle <= 112.5) { // north
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 90);
+        } else if (angle > 22.5 && angle <= 67.5) { // northeast
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 45);
+        } else if (angle > -22.5 && angle <= 22.5) { // east
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
+        } else if (angle > -67.5 && angle <= -22.5) { // southeast
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, -45);
+        } else if (angle > -112.5 && angle <= -67.5) { // south
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, -90);
+        } else if (angle > -157.5 && angle <= -112.5) { // southwest
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, -135);
+        } else if (angle > 112.5 && angle <= 157.5) { // northwest
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 0, 135);
+        } else if (angle > 157.5 || angle < -157.5 ) { // west
+            MeleeAttackCollider.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+
+        MeleeAttackCollider.gameObject.SetActive(true);
+        StartCoroutine(MeleeColliderDisableRoutine());
     }
 
     private IEnumerator MeleeColliderDisableRoutine() {

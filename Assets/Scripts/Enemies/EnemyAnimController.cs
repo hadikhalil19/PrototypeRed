@@ -16,6 +16,7 @@ public class EnemyAnimController : MonoBehaviour
     readonly int TAKEDAMAGE_HASH = Animator.StringToHash("TakeDamage");
     readonly int DEATH_HASH = Animator.StringToHash("Death");
     readonly int ATTACK_HASH = Animator.StringToHash("Attack");
+    readonly int SECONDARY_HASH = Animator.StringToHash("Secondary");
     readonly int ISATTACKING_HASH = Animator.StringToHash("isAttacking");
     readonly int STAGGER_HASH = Animator.StringToHash("Stagger");
     private void Awake() {
@@ -58,9 +59,19 @@ public class EnemyAnimController : MonoBehaviour
         isAttacking = true;
     }
 
+    public void PlaySecondaryAnim() {
+        myAnimator.SetTrigger(SECONDARY_HASH);
+        myAnimator.SetBool(ISATTACKING_HASH, true);
+        isAttacking = true;
+    }
+
     private void AttackAnimEnd() {
         if (!isAttacking) {return;}
         if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) 
+        {
+            myAnimator.SetBool(ISATTACKING_HASH, false);
+            isAttacking = false;
+        } else if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Secondary")) 
         {
             myAnimator.SetBool(ISATTACKING_HASH, false);
             isAttacking = false;
