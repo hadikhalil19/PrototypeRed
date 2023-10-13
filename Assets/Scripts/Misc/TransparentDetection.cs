@@ -13,29 +13,65 @@ public class TransparentDetection : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Tilemap tilemap;
 
+    private bool faded = false;
+    private bool fade = false;
+
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         tilemap = GetComponent<Tilemap>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<PlayerController>()) {
-            if (spriteRenderer) {
-            StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, transparencyAmount));
-            } else if (tilemap) {
-            StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, transparencyAmount));    
-            }
-        }    
-    }
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.GetComponent<PlayerController>()) {
-            if (spriteRenderer) {
-                StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, 1f));
-            } else if (tilemap) {
-                StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, 1f));    
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     if (other.gameObject.GetComponent<PlayerController>() && !faded)
+    //     {
+    //         FadeStart();
             
-            }
-        }  
+    //     }
+    // }
+
+    // private void OnTriggerExit2D(Collider2D other) {
+    //     if (other.gameObject.GetComponent<PlayerController>() && faded)
+    //     {
+    //         FadeEnd();
+            
+    //     }
+    // }
+
+    private void FixedUpdate() {
+        if (PlayerController.Instance.transform.position.y > this.transform.position.y) {
+            FadeStart();
+        } else {
+            FadeEnd();
+        }
+    }
+
+    public void FadeStart()
+    {
+        if (faded) {return;}
+        if (spriteRenderer)
+        {
+            StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, transparencyAmount));
+        }
+        else if (tilemap)
+        {
+            StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, transparencyAmount));
+        }
+        faded = true;
+    }
+
+    public void FadeEnd()
+    {
+        if (!faded) {return;}
+        if (spriteRenderer)
+        {
+            StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, 1f));
+        }
+        else if (tilemap)
+        {
+            StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, 1f));
+
+        }
+        faded = false;
     }
 
     private IEnumerator FadeRoutine(SpriteRenderer spriteRenderer, float fadeTime, float startValue, float targetTransparency) {

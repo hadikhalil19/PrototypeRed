@@ -47,7 +47,7 @@ Transform:
   - {fileID: 2865388838913679291}
   - {fileID: 6215403880345245506}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7454464900520479886
 SpriteRenderer:
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1e40ece2d29b4419c93b6d0642635e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 2.5
 --- !u!1 &1815087138800768315
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6215403880345245506
 Transform:
   m_ObjectHideFlags: 0
@@ -578,9 +578,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7, y: 0}
+  m_Offset: {x: 0.8, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7
 --- !u!114 &6444250193750396053
 MonoBehaviour:
   m_ObjectHideFlags: 0
