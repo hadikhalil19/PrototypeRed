@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4326398970270282910}
   - component: {fileID: 5969828884265423063}
   - component: {fileID: 9078625169928872234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shop Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,6 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6260587690166463627}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10, y: 21.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,7 +35,6 @@ Transform:
   m_Children:
   - {fileID: 1070941680836856732}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2817552915207184266
 SpriteRenderer:
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 6091023374316789423}
   - component: {fileID: 5487646227004242077}
   - component: {fileID: 1386420540397944582}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sample2_3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,13 +216,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7959049719563829174}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8860454470806063626}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6091023374316789423
 SpriteRenderer:

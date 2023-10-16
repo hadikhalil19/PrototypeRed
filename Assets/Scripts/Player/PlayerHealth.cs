@@ -60,6 +60,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 
     public void TakeDamage(int damageAmount,  Transform hitTransform) {
         if (!canTakeDamage) { return; }
+        if (IsDead) { return; }
         ScreenShakeManager.Instance.ShakeScreen();
         if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
             knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
@@ -104,11 +105,11 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         currentHealth = maxHealth;
         UpdateHealthSlider();
         IsDead = false;
-        canTakeDamage = true;
         //CameraController.Instance.SetPlayerCameraFollow();
         ActiveWeapon.Instance.disableAttack = false; 
         GetComponent<Animator>().SetTrigger(RELOAD_HASH);
         //UIFade.Instance.FadeOut();
+        canTakeDamage = true;
         SceneManager.LoadScene(CAMP_TEXT);
 
     }
