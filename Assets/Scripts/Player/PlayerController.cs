@@ -62,6 +62,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
 
     private void Start() {
         ActiveInventory.Instance.EquipStartingWeapon();
+        playerControls.Movement.Sprint.performed += _ => Sprint();
     }
 
     private void OnEnable() {
@@ -125,6 +126,10 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         if (knockBack.GettingKnockedBack || PlayerHealth.Instance.IsDead) { return; }
         if (MoveLock) {return;}
         myRigidBody.MovePosition(myRigidBody.position + (movement.normalized * moveSpeed * Time.fixedDeltaTime));
+        
+    }
+
+    private void Sprint() {
         
     }
 
