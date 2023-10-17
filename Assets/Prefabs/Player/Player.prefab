@@ -273,9 +273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
-  sprintSpeed: 6
+  sprintSpeed: 5.5
   attackMoveThurst: 1
   attackMoveTime: 0.1
+  sprintStopDelay: 0.2
   MoveLock: 0
   AttackLock: 0
 --- !u!95 &220480121145989712
