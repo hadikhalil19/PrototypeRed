@@ -14,7 +14,7 @@ public class TransparentDetection : MonoBehaviour
     private Tilemap tilemap;
 
     private bool faded = false;
-    private bool fade = false;
+    //private bool fade = false;
 
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();

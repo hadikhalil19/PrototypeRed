@@ -11,9 +11,11 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     
     PlayerControls playerControls;
     
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float sprintSpeed = 6f;
     [SerializeField] float attackMoveThurst = 10f; 
     [SerializeField] float attackMoveTime = 0.2f;
+    [SerializeField] float sprintStopDelay = 0.2f;
     public Vector2 LastFacingDirection { get {return lastFacingDirection;}}
     public bool AttackMoving {get; set;}
     public bool AttackDirectionLock {get; set;}
@@ -32,8 +34,11 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     private SpriteRenderer mySpriteRender;
     private ActiveWeapon activeWeapon;
     private Vector2 lastFacingDirection; // added Vector2 variable to store the last facing direction
+    private Vector2 lastMovement; // added Vector2 variable to store the last movement value when sprinting.
     //private SwordAttack swordAttack;
     private PlayerConversant playerConversant;
+    private bool sprint = false;
+    private bool sprintStop = false;
 
     readonly int CHANGEWEAPON_HASH = Animator.StringToHash("ChangeWeapon");
     readonly int ISATTACKING_HASH = Animator.StringToHash("isAttacking");
@@ -43,6 +48,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     readonly int SHOOTARROW_HASH = Animator.StringToHash("ShootArrow");
     readonly int NOCKINGARROW_HASH = Animator.StringToHash("NockingArrow");
     readonly int RELOADARROW_HASH = Animator.StringToHash("ReloadArrow");
+    readonly int SPRINT_HASH = Animator.StringToHash("Sprint");
 
 
 
@@ -125,15 +131,27 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     private void Move() {
         if (knockBack.GettingKnockedBack || PlayerHealth.Instance.IsDead) { return; }
         if (MoveLock) {return;}
-        myRigidBody.MovePosition(myRigidBody.position + (movement.normalized * moveSpeed * Time.fixedDeltaTime));
+        if (sprint) {
+            myRigidBody.MovePosition(myRigidBody.position + (movement.normalized * sprintSpeed * Time.fixedDeltaTime));
+        } else if (sprintStop) {
+            myRigidBody.MovePosition(myRigidBody.position + (lastMovement.normalized * moveSpeed * Time.fixedDeltaTime));
+        
+        } else {
+            myRigidBody.MovePosition(myRigidBody.position + (movement.normalized * moveSpeed * Time.fixedDeltaTime));
+        
+        }
         
     }
 
     private void Sprint() {
-        
+        if (movement.magnitude < 0.1f) { return;}
+        if (MoveLock) {return;}
+        if (sprint) {return;}
+        sprint = true;
+        myAnimator.SetTrigger(SPRINT_HASH);
     }
 
-    private void AdjustPlayerFacingDirection() {
+    private void AdjustPlayerFacingDirection() { // Update Player Anim method
         if (AttackDirectionLock == true) {return;} // Slash hitbox is active
         if (myAnimator.GetBool("isRolling")) {return;}
         
@@ -150,13 +168,29 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
             myAnimator.SetFloat("idleX", lastFacingDirection.x);
             myAnimator.SetFloat("idleY", lastFacingDirection.y);
             AdjustIdleAnimDirection();
+            if (sprint) {
+                SprintStop();  
+            }
+        } else {
+            lastMovement = movement;
+            if (movement.x < 0) {
+                mySpriteRender.flipX = true;
             } else {
-                if (movement.x < 0) {
-                    mySpriteRender.flipX = true;
-                } else {
-                    mySpriteRender.flipX = false;
-                }
-            } 
+                mySpriteRender.flipX = false;
+            }
+        } 
+    }
+
+
+    private void SprintStop() {
+        sprint = false;
+        sprintStop = true;
+        StartCoroutine(StopSprintRoutine());
+    }
+
+    private IEnumerator StopSprintRoutine() {
+        yield return new WaitForSeconds(sprintStopDelay);
+        sprintStop = false;
     }
 
     private void AdjustIdleAnimDirection() {
@@ -173,12 +207,12 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
 
     }
 
-     private IEnumerator mouseDirectionWithDelay() {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-        yield return new WaitForSeconds(mouseFollowDelay);
-        direction = (mousePos - playerScreenPoint).normalized;
-     }
+    //  private IEnumerator MouseDirectionWithDelay() {
+    //     Vector3 mousePos = Input.mousePosition;
+    //     Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+    //     yield return new WaitForSeconds(mouseFollowDelay);
+    //     direction = (mousePos - playerScreenPoint).normalized;
+    //  }
 
      private void WeaponSwap() {
         if (activeWeapon.WeaponChanged) {
