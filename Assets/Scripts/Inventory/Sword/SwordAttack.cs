@@ -57,7 +57,10 @@ public class SwordAttack : MonoBehaviour, IWeapon
     public void Attack() {
         if (PlayerController.Instance.AttackLock) {return;}
         if (PlayerMana.Instance.CurrentMana < weaponInfo.weaponManaCost) {return;}
-       
+        if (PlayerController.Instance.sprint) {
+            RunStabAttack();
+            return;
+        }
         myAnimator.SetBool(SHIELDUP_HASH, false);
         shieldAction = false;
         if (!isAttacking) {
@@ -78,13 +81,13 @@ public class SwordAttack : MonoBehaviour, IWeapon
         
     }
 
+    private void RunStabAttack() {
+        myAnimator.SetTrigger(ATTACK_HASH);
+        myAnimator.SetBool(ISATTACKING_HASH, true);
+    }
     public void SecondaryAttackStart() {
         if (PlayerController.Instance.AttackLock) {return;}
-        //if (isAttacking) { return;}
         secondaryAttack = true;
-        //myAnimator.SetTrigger(SECONDARY_HASH);
-        //myAnimator.SetBool(SHIELDUP_HASH, true);
-        //lockMovement();
     }
 
     public void SecondaryAttackStop() {

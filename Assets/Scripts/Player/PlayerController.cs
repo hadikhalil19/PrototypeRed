@@ -24,6 +24,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     public bool AttackLock;
     public Vector2 movement {get; set;}
     public Vector3 playerLookAt {get; set;}
+    public bool sprint = false;
 
     Vector2 direction = new Vector2 (0,0);
     private float mouseFollowDelay = 0.2f;
@@ -37,7 +38,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     private Vector2 lastMovement; // added Vector2 variable to store the last movement value when sprinting.
     //private SwordAttack swordAttack;
     private PlayerConversant playerConversant;
-    private bool sprint = false;
+    
     private bool sprintStop = false;
 
     readonly int CHANGEWEAPON_HASH = Animator.StringToHash("ChangeWeapon");
@@ -49,7 +50,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     readonly int NOCKINGARROW_HASH = Animator.StringToHash("NockingArrow");
     readonly int RELOADARROW_HASH = Animator.StringToHash("ReloadArrow");
     readonly int SPRINT_HASH = Animator.StringToHash("Sprint");
-
+    readonly int SPRINTING_HASH = Animator.StringToHash("Sprinting");
 
 
     protected override void Awake() {
@@ -148,6 +149,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         if (MoveLock) {return;}
         if (sprint) {return;}
         sprint = true;
+        myAnimator.SetBool(SPRINTING_HASH, true);
         myAnimator.SetTrigger(SPRINT_HASH);
     }
 
@@ -184,6 +186,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
 
     private void SprintStop() {
         sprint = false;
+        myAnimator.SetBool(SPRINTING_HASH, false);
         sprintStop = true;
         StartCoroutine(StopSprintRoutine());
     }
