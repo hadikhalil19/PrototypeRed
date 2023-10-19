@@ -28,6 +28,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
 
     private GameObject slashEffectAnim;
     [SerializeField] private WeaponInfo weaponInfo;
+    private Vector2 stabMoveDirection;
 
     readonly int ATTACK_HASH = Animator.StringToHash("Attack");
     readonly int SECONDARY_HASH = Animator.StringToHash("Secondary");
@@ -37,6 +38,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     //readonly int SWORDA1_HASH = Animator.StringToHash("SwordA1");
     readonly int SWORDA2_HASH = Animator.StringToHash("SwordA2");
     readonly int SWORDA3_HASH = Animator.StringToHash("SwordA3");
+    readonly int SPRINTING_HASH = Animator.StringToHash("Sprinting");
 
     private void Awake() {
         myAnimator = PlayerController.Instance.GetComponent<Animator>();
@@ -83,8 +85,28 @@ public class SwordAttack : MonoBehaviour, IWeapon
 
     private void RunStabAttack() {
         myAnimator.SetTrigger(ATTACK_HASH);
-        myAnimator.SetBool(ISATTACKING_HASH, true);
+        //myAnimator.SetBool(ISATTACKING_HASH, true);
+        PlayerController.Instance.AttackMoving = true;
+        PlayerController.Instance.sprintAttack = true;
+        PlayerController.Instance.sprint = false;
+        PlayerController.Instance.AttackLock = true;
+        stabMoveDirection = PlayerController.Instance.movement;
+        myAnimator.SetFloat("rollX", stabMoveDirection.x);
+        myAnimator.SetFloat("rollY", stabMoveDirection.y);
+        //lockMovement();
+        //PlayerController.Instance.AttackDirectionLock = true;
+        StartCoroutine(StabEndRoutine());
     }
+
+    private IEnumerator StabEndRoutine() {
+        yield return new WaitForSeconds(0.8f);
+        //unlockMovement();
+        PlayerController.Instance.AttackMoving = false;
+        PlayerController.Instance.sprintAttack = false;
+        PlayerController.Instance.AttackLock = false;
+        myAnimator.SetBool(SPRINTING_HASH, false);
+    }
+
     public void SecondaryAttackStart() {
         if (PlayerController.Instance.AttackLock) {return;}
         secondaryAttack = true;

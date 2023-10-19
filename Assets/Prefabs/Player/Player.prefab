@@ -276,9 +276,13 @@ MonoBehaviour:
   sprintSpeed: 5.5
   attackMoveThurst: 1
   attackMoveTime: 0.1
+  sprintAttackThurst: 1
+  sprintAttackTime: 0.3
   sprintStopDelay: 0.2
   MoveLock: 0
   AttackLock: 0
+  sprint: 0
+  sprintAttack: 0
 --- !u!95 &220480121145989712
 Animator:
   serializedVersion: 5

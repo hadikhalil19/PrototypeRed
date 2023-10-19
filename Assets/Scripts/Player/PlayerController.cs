@@ -15,6 +15,8 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     [SerializeField] private float sprintSpeed = 6f;
     [SerializeField] float attackMoveThurst = 10f; 
     [SerializeField] float attackMoveTime = 0.2f;
+    [SerializeField] float sprintAttackThurst = 10f; 
+    [SerializeField] float sprintAttackTime = 0.5f;
     [SerializeField] float sprintStopDelay = 0.2f;
     public Vector2 LastFacingDirection { get {return lastFacingDirection;}}
     public bool AttackMoving {get; set;}
@@ -25,6 +27,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     public Vector2 movement {get; set;}
     public Vector3 playerLookAt {get; set;}
     public bool sprint = false;
+    public bool sprintAttack = false;
 
     Vector2 direction = new Vector2 (0,0);
     private float mouseFollowDelay = 0.2f;
@@ -96,8 +99,10 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         if (!AttackMoving) {  
             Move();          
             AdjustPlayerFacingDirection();
+        } else if (sprintAttack) {
+            attackMove(sprintAttackThurst, sprintAttackTime);
         } else {
-            attackMove();
+            attackMove(attackMoveThurst, attackMoveTime);
         }
         //WeaponSwap();
     }
@@ -116,15 +121,15 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         
     }
 
-    private void attackMove() {
-        if (MoveLock == false) {return;} // movelock becomes true as soon as attacking so this checks if attacking and returns if not 
+    private void attackMove(float MoveThurst, float MoveTime) {
+        //if (MoveLock == false) {return;} // movelock becomes true as soon as attacking so this checks if attacking and returns if not 
         Vector2 direction = playerControls.Movement.Move.ReadValue<Vector2>();
-        Vector2 difference = direction.normalized * attackMoveThurst * myRigidBody.mass;
+        Vector2 difference = direction.normalized * MoveThurst * myRigidBody.mass;
         myRigidBody.AddForce(difference, ForceMode2D.Impulse);
-        StartCoroutine(AttackMoveRoutine());
+        StartCoroutine(AttackMoveRoutine(MoveTime));
     }
-    private IEnumerator AttackMoveRoutine () {
-        yield return new WaitForSeconds(attackMoveTime);
+    private IEnumerator AttackMoveRoutine (float MoveTime) {
+        yield return new WaitForSeconds(MoveTime);
         myRigidBody.velocity = Vector2.zero;
         AttackMoving = false;
     }
