@@ -9,6 +9,7 @@ public class SwordAnimHandler : MonoBehaviour
     private PlayerController playerController;
 
     private bool slashHitbox = false;
+    private bool stabHitbox = false;
 
     private void Awake() {
         myAnimator = GetComponentInParent<Animator>();
@@ -26,6 +27,16 @@ public class SwordAnimHandler : MonoBehaviour
         
     }
 
+    private void StabHitboxStartEvent(){
+        stabHitbox = true;
+        
+    }
+
+    private void StabHitboxEndEvent(){
+        stabHitbox = false;
+    }
+
     public bool GetSlashHitbox  { get { return slashHitbox;}}
+    public bool GetStabHitbox {get {return stabHitbox;}}
 
 }

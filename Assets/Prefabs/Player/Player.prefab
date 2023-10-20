@@ -276,7 +276,7 @@ MonoBehaviour:
   sprintSpeed: 5.5
   attackMoveThurst: 1
   attackMoveTime: 0.1
-  sprintAttackThurst: 1
+  sprintAttackThurst: 1.2
   sprintAttackTime: 0.3
   sprintStopDelay: 0.2
   MoveLock: 0

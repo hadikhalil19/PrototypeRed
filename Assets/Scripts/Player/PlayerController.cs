@@ -161,6 +161,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     private void AdjustPlayerFacingDirection() { // Update Player Anim method
         if (AttackDirectionLock == true) {return;} // Slash hitbox is active
         if (myAnimator.GetBool("isRolling")) {return;}
+        if (sprintAttack) {return;}
         
         //StartCoroutine(mouseDirectionWithDelay());
         Vector3 mousePos = Input.mousePosition;

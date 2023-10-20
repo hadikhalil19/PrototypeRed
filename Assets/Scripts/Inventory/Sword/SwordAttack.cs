@@ -19,6 +19,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     private bool shieldAction = false;
 
     [SerializeField] private Transform SlashCollider;
+    [SerializeField] private Transform StabCollider; 
 
     private SwordAnimHandler swordAnimHandler;
     
@@ -46,14 +47,13 @@ public class SwordAttack : MonoBehaviour, IWeapon
     }
 
     
-    private void Update() {
-        MouseFollowWithOffset();
-    }
 
     private void FixedUpdate() {
         AttackAnimEnd();
         toggleSlashHitbox();
+        toggleStabHitbox();
         PlayerShieldAnim();
+        MouseFollowWithOffset();
     }
 
     public void Attack() {
@@ -91,16 +91,17 @@ public class SwordAttack : MonoBehaviour, IWeapon
         PlayerController.Instance.sprint = false;
         PlayerController.Instance.AttackLock = true;
         stabMoveDirection = PlayerController.Instance.movement;
+        StabColliderFollow();
         myAnimator.SetFloat("rollX", stabMoveDirection.x);
         myAnimator.SetFloat("rollY", stabMoveDirection.y);
-        //lockMovement();
+        lockMovement();
         //PlayerController.Instance.AttackDirectionLock = true;
         StartCoroutine(StabEndRoutine());
     }
 
     private IEnumerator StabEndRoutine() {
         yield return new WaitForSeconds(0.8f);
-        //unlockMovement();
+        unlockMovement();
         PlayerController.Instance.AttackMoving = false;
         PlayerController.Instance.sprintAttack = false;
         PlayerController.Instance.AttackLock = false;
@@ -164,6 +165,14 @@ public class SwordAttack : MonoBehaviour, IWeapon
         } else {
             SlashCollider.gameObject.SetActive(false);
             hasSlashEffect = false;
+        }
+    }
+    private void toggleStabHitbox(){
+        if (!PlayerController.Instance.sprintAttack) {return;}
+        if (swordAnimHandler.GetStabHitbox) {
+            StabCollider.gameObject.SetActive(true);
+        } else {
+            StabCollider.gameObject.SetActive(false);
         }
     }
 
@@ -267,6 +276,30 @@ public class SwordAttack : MonoBehaviour, IWeapon
             Clockwise = !Clockwise;
         }
     }
+
+    private void StabColliderFollow() { // Sprint attack stabcollider follow
+       Vector2 vectorOne = stabMoveDirection;
+       Vector2 vectorTwo = Vector2.zero; 
+       float angle = Mathf.Atan2(vectorOne.y - vectorTwo.y, vectorOne.x - vectorTwo.x) * Mathf.Rad2Deg;
+        if (angle > 67.5 && angle <= 112.5) { // north
+            StabCollider.transform.rotation = Quaternion.Euler(0, 0, 90);
+        } else if (angle > 22.5 && angle <= 67.5) { // northeast
+            StabCollider.transform.rotation = Quaternion.Euler(0, 0, 45);
+        } else if (angle > -22.5 && angle <= 22.5) { // east
+            StabCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
+        } else if (angle > -67.5 && angle <= -22.5) { // southeast
+            StabCollider.transform.rotation = Quaternion.Euler(0, 0, -45);
+        } else if (angle > -112.5 && angle <= -67.5) { // south
+            StabCollider.transform.rotation = Quaternion.Euler(0, 0, -90);
+        } else if (angle > -157.5 && angle <= -112.5) { // southwest
+            StabCollider.transform.rotation = Quaternion.Euler(0, 0, -135);
+        } else if (angle > 112.5 && angle <= 157.5) { // northwest
+            StabCollider.transform.rotation = Quaternion.Euler(0, 0, 135);
+        } else if (angle > 157.5 || angle < -157.5 ) { // west
+            StabCollider.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
+
 
 
 }
