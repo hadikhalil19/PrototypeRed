@@ -183,8 +183,8 @@ public class ASEnemyAI : MonoBehaviour
 
             if (stopMovingWhileAttacking) {
                 enemyPathfinding.StopMoving();
-            } else {
-                enemyPathfinding.MoveTo(GetRoamingPosition());
+            // } else {
+            //     enemyPathfinding.MoveTo(GetRoamingPosition());
             }
 
             StartCoroutine(MeleeCooldownRoutine());

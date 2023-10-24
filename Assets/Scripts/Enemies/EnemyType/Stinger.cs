@@ -49,8 +49,9 @@ public class Stinger : MonoBehaviour, IEnemy
     }
 
     private void AttackMove() {
-        if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) 
-        {
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.9 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) {
+            attackMove = true;
+        } else {
             attackMove = false;
         }
         //Vector2 direction = ((Vector2)aSEnemyAI.target.position - rb.position).normalized;

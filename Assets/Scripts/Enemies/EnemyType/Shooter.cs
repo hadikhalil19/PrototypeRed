@@ -150,18 +150,13 @@ public class Shooter : MonoBehaviour, IEnemy
         attackMove = true;
     }
 
-    private void AttackMove() {
-        if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) 
-        {
-            attackMove = false;
-        }
-        //Vector2 direction = ((Vector2)aSEnemyAI.target.position - rb.position).normalized;
-        //Vector2 force = direction * speed * Time.deltaTime;
-        //rb.AddForce(force);
+    public void AttackAnimEndEvent() {
+        attackMove = false;
+    }
 
+    private void AttackMove() {
         rb.MovePosition(rb.position + (attackDirection.normalized * speed * Time.fixedDeltaTime));
         enemyAnimController.SetAnimMoveDirection(attackDirection);
-        
     }
 
     private void FixedUpdate() {
