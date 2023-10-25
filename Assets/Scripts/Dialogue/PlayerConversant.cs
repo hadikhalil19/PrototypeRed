@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Proto.SceneManagement;
 using UnityEngine;
 
 namespace Proto.Dialogue {
@@ -10,6 +11,7 @@ namespace Proto.Dialogue {
         
         //[SerializeField] Dialogue testDialogue;
         [SerializeField] string playerName;
+        StartMenu startMenu;
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
         AIConversant currentConversant = null;
@@ -25,8 +27,14 @@ namespace Proto.Dialogue {
         //     StartDialogue(testDialogue);
         // }
 
+        private void Start() {
+            startMenu = UIFade.Instance.GetComponentInParent<StartMenu>();
+            startMenu.EnableDialogueUI();
+        }
+
         public void StartDialogue(AIConversant newConversant, Dialogue newDialogue)
         {
+            
             currentConversant = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();

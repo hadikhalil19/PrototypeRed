@@ -19,9 +19,9 @@ namespace Proto.SceneManagement.UI {
 
 
 
+
         // Start is called before the first frame update
-        void Start()
-        {
+        public void LinkPlayerConversant() {
             playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
             playerConversant.onConversationUpdated += UpdateUI;
             nextButton.onClick.AddListener(() => playerConversant.Next());

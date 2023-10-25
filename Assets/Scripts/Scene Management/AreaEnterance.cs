@@ -10,11 +10,14 @@ public class AreaEnterance : MonoBehaviour
 
     private void Start() {
         if (transitionName == SceneManagement.Instance.SceneTransitionName) {
-            
+            SceneManagement.Instance.EnableSaving();
+            SceneManagement.Instance.EnableCameraController();
+
             SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
             wrapper.Load();
 
             PlayerController.Instance.transform.position = this.transform.position;
+
             CameraController.Instance.SetPlayerCameraFollow();
 
             UIFade.Instance.FadeOut();
