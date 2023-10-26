@@ -13,15 +13,23 @@ public class AIConversant : MonoBehaviour
 
     private bool inTalkingDistance = false;
     PlayerConversant playerConversant;
+    private PlayerControls playerControls;
 
+    private void Awake() {
+        playerControls = new PlayerControls();
+    }
+
+    private void OnEnable() {
+        playerControls.Enable();
+    }
+    private void OnDisable() {
+        playerControls.Disable();
+    }
     void Start() {
         playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+        playerControls.Interact.Interact.performed += _ => StartConversation();
     }
-    private void FixedUpdate() {
-        if (inTalkingDistance) {
-            StartConversation();
-        }
-    }
+   
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player")
         {
@@ -38,13 +46,12 @@ public class AIConversant : MonoBehaviour
         }
     }
 
+
     private void StartConversation() {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
+        if (inTalkingDistance) {
             if (dialogue == null) {return;}
             SetPlayerLookAt();
             playerConversant.StartDialogue(this, dialogue);
-
         }
     }
 

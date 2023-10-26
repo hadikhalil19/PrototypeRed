@@ -11,7 +11,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private string sceneToLoad;
     [SerializeField] private string sceneTransitionName;
 
-    private float waitToLoadTime = 1f;
+    private float waitToLoadTime = 2f;
     [SerializeField] GameObject HUD;
     [SerializeField] GameObject QuestUI;
     [SerializeField] GameObject StartMenuWindow;
@@ -49,6 +49,9 @@ public class StartMenu : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine() {
         yield return  new WaitForSeconds(waitToLoadTime);
+        HUD.SetActive(true);
+        QuestUI.SetActive(true);
+        StartMenuWindow.SetActive(false);
         SceneManager.LoadScene(sceneToLoad);
         
     }
@@ -59,9 +62,6 @@ public class StartMenu : MonoBehaviour
         SceneManagement.Instance.SetTransitionName(sceneTransitionName);
         UIFade.Instance.FadeIn();
         StartCoroutine(LoadSceneRoutine());
-        HUD.SetActive(true);
-        QuestUI.SetActive(true);
-        StartMenuWindow.SetActive(false);
         //CameraController.SetActive(true);
     }
 
