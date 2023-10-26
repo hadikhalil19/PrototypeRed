@@ -8,7 +8,7 @@ using Proto.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 {
-    public bool IsDead {get; private set;}
+    public bool IsDead;
     public bool shieldActive = false;
 
     public int shieldManaCost = 0;
@@ -83,9 +83,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         if (currentHealth <= 0 && !IsDead) {
             IsDead = true;
             canTakeDamage = false;
-            //Destroy(ActiveWeapon.Instance.gameObject);
             ActiveWeapon.Instance.disableAttack = true;
-            //currentHealth = 0;
             GetComponent<Animator>().SetTrigger(DEATH_HASH);
             StartCoroutine(DeathLoadSceneRoutine());
         }
