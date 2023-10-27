@@ -22,6 +22,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
     private SpriteRenderer spriteRenderer;
     private EnemyAnimController enemyAnimController;
     private CacoAI EnemyAI;
+    private EnemyHealth enemyHealth;
     Rigidbody2D rb;
 
     [SerializeField] float speed = 200f;
@@ -36,6 +37,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
         enemyAnimController =  GetComponent<EnemyAnimController>();
         rb = GetComponent<Rigidbody2D>();
         EnemyAI = GetComponent<CacoAI>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     private void OnValidate() {
@@ -70,6 +72,11 @@ public class Cacodaemon : MonoBehaviour, IEnemy
 
         for (int i = 0; i < burstCount; i++)
         {
+            if(enemyHealth.dying) {
+            isShooting = false;
+            yield break;
+            }
+            
             if (!oscillate) {
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
                     
@@ -109,6 +116,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
             }
             
         }
+        
 
         yield return new WaitForSeconds(restTime);
         isShooting = false;

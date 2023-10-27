@@ -6,9 +6,10 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int startingHealth = 5;
     [SerializeField] float knockBackForce = 10F;
-    [SerializeField] float deathDelay = 0.2f;
+    [SerializeField] float deathDelay = 1f;
     [SerializeField] private GameObject deathVFXPrefab;
     [SerializeField] bool hasFlashAnim = true;
+    [SerializeField] int staggerThreshold = 10;
     
     private int currentHealth;
     private KnockBack knockBack;
@@ -35,7 +36,13 @@ public class EnemyHealth : MonoBehaviour
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
     //enemyAnimController?.PlayHitAnim();
     if (enemyAnimController) { // if it has enemyAnimController and a built in flash
-        enemyAnimController?.PlayHitAnim();
+        int staggerValue = (damage%startingHealth)*100;
+        Debug.Log(staggerValue);
+        if (staggerValue >= staggerThreshold) {
+            enemyAnimController?.PlayHitAnim();
+            Debug.Log("stagger");
+        }
+        
     } 
     if (!hasFlashAnim) {
         StartCoroutine(flash.FlashRoutine());
