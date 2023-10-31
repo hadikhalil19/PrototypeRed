@@ -31,6 +31,8 @@ public class SwordAttack : MonoBehaviour, IWeapon
     [SerializeField] private WeaponInfo weaponInfo;
     private Vector2 stabMoveDirection;
 
+    private bool delayedSecondaryStop;
+
     readonly int ATTACK_HASH = Animator.StringToHash("Attack");
     readonly int SECONDARY_HASH = Animator.StringToHash("Secondary");
     readonly int SHIELDUP_HASH = Animator.StringToHash("ShieldUp");
@@ -114,8 +116,19 @@ public class SwordAttack : MonoBehaviour, IWeapon
     }
 
     public void SecondaryAttackStop() {
-        if (isAttacking) { return;}
+        if (isAttacking) {
+            secondaryAttack = false; 
+            delayedSecondaryStop = true;
+            return;
+        }
         secondaryAttack = false;
+        shieldAction = false;
+        myAnimator.SetBool(SHIELDUP_HASH, false);
+        PlayerHealth.Instance.shieldActive = false;
+        unlockMovement();
+    }
+
+    private void DelaySecondaryStop() {
         shieldAction = false;
         myAnimator.SetBool(SHIELDUP_HASH, false);
         PlayerHealth.Instance.shieldActive = false;
@@ -194,13 +207,15 @@ public class SwordAttack : MonoBehaviour, IWeapon
             isAttacking = false;
             unlockMovement();
             myAnimator.SetBool(ISATTACKING_HASH, false);
-            resetCurrentAttackCounter();         
+            resetCurrentAttackCounter();
+            if (delayedSecondaryStop && !secondaryAttack) {DelaySecondaryStop();}         
         } else if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("SwordA3")) 
         {
             isAttacking = false;
             unlockMovement();
             myAnimator.SetBool(ISATTACKING_HASH, false);
             resetCurrentAttackCounter();
+            if (delayedSecondaryStop && !secondaryAttack) {DelaySecondaryStop();} 
         }
 
     }
