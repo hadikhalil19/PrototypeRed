@@ -44,7 +44,9 @@ public class CacoAI : MonoBehaviour
 
     [SerializeField] MonoBehaviour enemyType;
     [SerializeField] private float attackCooldownMin = 2f;
+    [SerializeField] private float attckRandMaxCD = 3f;
     [SerializeField] private float meleeCooldownMin = 1f;
+    [SerializeField] private float meleeRandMaxCD = 3f;
     [SerializeField] private float looseInterestTime = 2f;
     [SerializeField] private float flankingTimeMin = 1.5f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
@@ -59,6 +61,7 @@ public class CacoAI : MonoBehaviour
     public bool StartFlanking = false;
 
     private EnemyHealth enemyHealth;
+    //private int meleeAttackStage = 0;
 
     private void Awake() {
         state = State.Roaming;
@@ -164,14 +167,14 @@ public class CacoAI : MonoBehaviour
     }
 
     private IEnumerator MeleeCooldownRoutine() {
-        float cooldown =  meleeCooldownMin + Random.Range(0,2f);
+        float cooldown =  meleeCooldownMin + Random.Range(0,meleeRandMaxCD);
         yield return new WaitForSeconds(cooldown);
         canMeleeAttack = true;
     }
 
     private void MeleeAttack() {
         if (enemyHealth.dying) {return;}
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > meleeRange) {
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > meleeRange && canAttack) {
             state = State.Attacking;
         } else if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange) {
             state = State.Following;
@@ -293,7 +296,7 @@ public class CacoAI : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.GetComponentInParent<ASEnemyAI>())
+        if(other.gameObject.GetComponent<PlayerController>())
         {
             int randomNumber = Random.Range(1,4);
             if (randomNumber == 1) {

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4379463849657980252
 Transform:
   m_ObjectHideFlags: 0
@@ -64,9 +64,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.043584347, y: 0}
+  m_Offset: {x: 0.13882983, y: -0.06349683}
   serializedVersion: 2
-  m_Radius: 1.0201058
+  m_Radius: 1.7185704
 --- !u!1 &4968245686617958050
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,11 +240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4f6c1a848e48459210d72c3ba3f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 2
+  startingHealth: 40
   knockBackForce: 3
-  deathDelay: 0.9
+  deathDelay: 2
   deathVFXPrefab: {fileID: 0}
   hasFlashAnim: 0
+  staggerThreshold: 7
   dying: 0
 --- !u!114 &7273883049103190045
 MonoBehaviour:
@@ -268,10 +269,12 @@ MonoBehaviour:
   pathUpdateSeconds: 0.5
   enemyType: {fileID: 3542787646770924703}
   attackCooldownMin: 3
-  meleeCooldownMin: 2
+  attckRandMaxCD: 3
+  meleeCooldownMin: 0.8
+  meleeRandMaxCD: 3
   looseInterestTime: 2
   flankingTimeMin: 1
-  stopMovingWhileAttacking: 0
+  stopMovingWhileAttacking: 1
   StartFlanking: 0
 --- !u!114 &5353110927748314999
 MonoBehaviour:
@@ -285,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1e40ece2d29b4419c93b6d0642635e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 3.5
 --- !u!114 &2509970158764798787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,4 +439,4 @@ MonoBehaviour:
   restTime: 1
   stagger: 1
   oscillate: 1
-  speed: 7
+  speed: 9

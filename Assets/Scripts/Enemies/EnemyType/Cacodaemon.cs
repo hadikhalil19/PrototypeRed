@@ -162,6 +162,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
 
     public void AttackAnimEndEvent() {
         attackMove = false;
+        enemyAnimController.isAttacking = false;
     }
 
     private void AttackMove() {

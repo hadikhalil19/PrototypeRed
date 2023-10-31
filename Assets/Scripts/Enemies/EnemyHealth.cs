@@ -36,11 +36,11 @@ public class EnemyHealth : MonoBehaviour
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
     //enemyAnimController?.PlayHitAnim();
     if (enemyAnimController) { // if it has enemyAnimController and a built in flash
-        int staggerValue = (damage%startingHealth)*100;
-        Debug.Log(staggerValue);
+        int staggerValue = (int)(damage * 100.0/startingHealth);
+        //Debug.Log(staggerValue);
         if (staggerValue >= staggerThreshold) {
             enemyAnimController?.PlayHitAnim();
-            Debug.Log("stagger");
+            //Debug.Log("stagger");
         }
         
     } 
