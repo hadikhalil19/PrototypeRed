@@ -21,6 +21,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 
     private int currentHealth;
     public bool canTakeDamage =  true;
+    public bool rollInvulnerable = false;
     private KnockBack knockback;
     private Flash flash;
     private Slider healthSlider;
@@ -61,6 +62,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     public void TakeDamage(int damageAmount,  Transform hitTransform) {
         if (!canTakeDamage) { return; }
         if (IsDead) { return; }
+        if (rollInvulnerable) { return; }
         ScreenShakeManager.Instance.ShakeScreen();
         if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
             knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
