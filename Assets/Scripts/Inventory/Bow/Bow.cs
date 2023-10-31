@@ -67,6 +67,7 @@ public class Bow : MonoBehaviour, IWeapon
         myAnimator.SetBool(BOWATTACK_HASH, false);
         myAnimator.SetBool(BOWAIM_HASH, false);
         myAnimator.SetBool(RELOADARROW_HASH, false);
+        myAnimator.ResetTrigger(ATTACK_HASH);
         nockArrowAim = false;
         bowAttacking = false;
     }
@@ -125,6 +126,13 @@ public class Bow : MonoBehaviour, IWeapon
 
     }
 
+    private void OnDestroy() {
+        myAnimator.SetBool(SHOOTARROW_HASH, false);
+        myAnimator.SetBool(BOWATTACK_HASH, false);
+        myAnimator.SetBool(RELOADARROW_HASH, false);
+        myAnimator.SetBool(NOCKINGARROW_HASH, false);
+        myAnimator.ResetTrigger(ATTACK_HASH);
+    }
 
 
 }
