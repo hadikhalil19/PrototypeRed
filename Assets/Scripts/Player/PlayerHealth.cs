@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Proto.Saving;
 using Proto.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 {
@@ -18,6 +19,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     [SerializeField] private float ShieldKnockBackThrust = 2f;
     [SerializeField] private float damageRecoveryTime = 0.5f;
     [SerializeField] private string deathSceneTransitionName;
+    [SerializeField] UnityEvent takeDamageEvent;
 
     private int currentHealth;
     public bool canTakeDamage =  true;
@@ -64,6 +66,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         if (IsDead) { return; }
         if (rollInvulnerable) { return; }
         ScreenShakeManager.Instance.ShakeScreen();
+        takeDamageEvent.Invoke();
         if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
             knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
             PlayerMana.Instance.UseMana(shieldManaCost);
