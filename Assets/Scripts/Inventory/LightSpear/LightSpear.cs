@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LightSpear : MonoBehaviour, IWeapon
 {
     [SerializeField] private WeaponInfo weaponInfo;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform spearSpawnPoint;
+    [SerializeField] UnityEvent spearThrowStartEvent;
     private Vector3 lockedSpearSpawnPosition;
     private Quaternion lockedSpearSpawnRotation;
     private Animator myAnimator;
@@ -42,6 +44,7 @@ public class LightSpear : MonoBehaviour, IWeapon
         PlayerController.Instance.AttackMoving = true;
         lightSpearAttacking = true;
         lockMovement();
+        spearThrowStartEvent.Invoke();
     }
 
     public void SecondaryAttackStart() {
