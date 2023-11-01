@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int projectileDamage = 1;
 
 
-
     //private WeaponInfo weaponInfo;
     private Vector3 startPosition;
 

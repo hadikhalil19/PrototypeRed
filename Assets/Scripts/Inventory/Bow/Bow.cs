@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bow : MonoBehaviour, IWeapon
 {
@@ -11,6 +12,8 @@ public class Bow : MonoBehaviour, IWeapon
     [SerializeField] private Transform arrowSpawnPoint;
 
     [SerializeField] private WeaponInfo weaponInfo;
+
+    [SerializeField] UnityEvent arrowReleaseEvent;
 
     private ArrowAnimHandler arrowAnimHandler;
 
@@ -24,6 +27,8 @@ public class Bow : MonoBehaviour, IWeapon
     readonly int RELOADARROW_HASH = Animator.StringToHash("ReloadArrow");
     //readonly int SWORDA1_HASH = Animator.StringToHash("SwordA1");
     //readonly int SWORDA1_HASH = Animator.StringToHash("SwordA1");
+
+    
 
     private void Awake() {
         myAnimator = PlayerController.Instance.GetComponent<Animator>();
@@ -95,6 +100,7 @@ public class Bow : MonoBehaviour, IWeapon
     private void ToggleArrowRlease() {
         
         if(arrowAnimHandler.GetArrowRelease) {
+            arrowReleaseEvent.Invoke();
             arrowAnimHandler.GetArrowRelease = false;
             GameObject newArrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
             newArrow.GetComponent<Projectile>().UpdateProjectileRange(weaponInfo.weaponRange);
