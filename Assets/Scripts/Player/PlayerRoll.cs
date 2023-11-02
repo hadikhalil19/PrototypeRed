@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proto.Audio;
 
 public class PlayerRoll : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerRoll : MonoBehaviour
     [SerializeField] float rollSpeed = 2f;
     private PlayerController playerController;
     private Rigidbody2D myRigidBody;
+    private FootstepAudioPlayer footstepAudioPlayer;
 
 
     private void Awake() {
@@ -21,6 +23,7 @@ public class PlayerRoll : MonoBehaviour
         playerControls = new PlayerControls();
         playerController = GetComponent<PlayerController>();
         myRigidBody = GetComponent<Rigidbody2D>();
+        footstepAudioPlayer = GetComponentInChildren<FootstepAudioPlayer>();
     }
 
     private void OnEnable() {
@@ -71,6 +74,7 @@ public class PlayerRoll : MonoBehaviour
             rollMoveDirection = playerController.movement;
             myAnimator.SetFloat("rollX", rollMoveDirection.x);
             myAnimator.SetFloat("rollY", rollMoveDirection.y);
+            footstepAudioPlayer.PlayRollAudio();
             lockAttack();
             lockMovement();
             StartCoroutine(RollCooldownRoutine());

@@ -9,6 +9,7 @@ public class FootstepAudioPlayer : MonoBehaviour
 {
     [SerializeField] private FootstepAudioSamples defaultAudioSamples;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip RollingAudio;
     
     public void PlayFootstepAudioClip() {
         var samples =defaultAudioSamples;
@@ -20,6 +21,10 @@ public class FootstepAudioPlayer : MonoBehaviour
             audioSource.PlayOneShot(audio, 0.3f);
         }
         
+    }
+
+    public void PlayRollAudio() {
+        audioSource.PlayOneShot(RollingAudio);
     }
 
 }

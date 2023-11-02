@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultAudioSamples: {fileID: 11400000, guid: ec6d131d454b90a43aefb85584d8cc2c, type: 2}
   audioSource: {fileID: 2094534116751783293}
+  RollingAudio: {fileID: 8300000, guid: d0d42bc8c98476646a7b88be93b1948f, type: 3}
 --- !u!1 &6475173484666347351
 GameObject:
   m_ObjectHideFlags: 0
