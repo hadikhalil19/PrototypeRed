@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Proto.Audio {
 
-    [CreateAssetMenu(fileName = "FootstepAudioSamples", menuName = "Prototype/FootstepAudioSamples")]
-    public class FootstepAudioSamples : ScriptableObject
+    [CreateAssetMenu(fileName = "AudioSamplesArray", menuName = "Prototype/AudioSamplesArray")]
+    public class AudioSamplesArray : ScriptableObject
     {
  
         #region Fields

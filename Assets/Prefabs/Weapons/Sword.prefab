@@ -42,10 +42,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_audioClip: {fileID: 8300000, guid: 6ecb7f9d465184543b9a216e2a66fa8f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -180,6 +180,7 @@ MonoBehaviour:
   numberOfAttacks: 2
   SlashCollider: {fileID: 1587237139570627614}
   StabCollider: {fileID: 5804449360285221363}
+  stabAttackAudio: {fileID: 8927714538336053710}
   slashEffectPrefab: {fileID: 8072788719576878475, guid: bf2c743018d84cf41a1853d77822a599, type: 3}
   slashEffectSpawn: {fileID: 8485926685039673471}
   weaponInfo: {fileID: 11400000, guid: 7ff27184b8bad834c856f0a0cf594355, type: 2}

@@ -19,8 +19,9 @@ public class SwordAttack : MonoBehaviour, IWeapon
     private bool shieldAction = false;
 
     [SerializeField] private Transform SlashCollider;
-    [SerializeField] private Transform StabCollider; 
+    [SerializeField] private Transform StabCollider;
 
+    [SerializeField] private AudioSource stabAttackAudio; 
     private SwordAnimHandler swordAnimHandler;
     
     [SerializeField] private GameObject slashEffectPrefab;
@@ -98,7 +99,12 @@ public class SwordAttack : MonoBehaviour, IWeapon
         myAnimator.SetFloat("rollY", stabMoveDirection.y);
         lockMovement();
         //PlayerController.Instance.AttackDirectionLock = true;
+        StabAttackEffects();
         StartCoroutine(StabEndRoutine());
+    }
+
+    private void StabAttackEffects() {
+        stabAttackAudio.Play();
     }
 
     private IEnumerator StabEndRoutine() {

@@ -7,7 +7,7 @@ namespace Proto.Audio {
 
 public class FootstepAudioPlayer : MonoBehaviour
 {
-    [SerializeField] private FootstepAudioSamples defaultAudioSamples;
+    [SerializeField] private AudioSamplesArray defaultAudioSamples;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip RollingAudio;
     
