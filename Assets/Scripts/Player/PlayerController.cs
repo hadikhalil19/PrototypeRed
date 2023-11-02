@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Proto.Dialogue;
 using UnityEngine;
 using Proto.Saving;
+using Proto.Audio;
 
 public class PlayerController : Singleton<PlayerController>, ISaveable
 {
@@ -41,8 +42,11 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     private Vector2 lastMovement; // added Vector2 variable to store the last movement value when sprinting.
     //private SwordAttack swordAttack;
     private PlayerConversant playerConversant;
-    
+    private FootstepAudioPlayer footstepAudioPlayer;
     private bool sprintStop = false;
+    private bool footstepLeft = false;
+    private bool footstepRight = false;
+    private bool attackMoveAudio = true;
 
     readonly int CHANGEWEAPON_HASH = Animator.StringToHash("ChangeWeapon");
     readonly int ISATTACKING_HASH = Animator.StringToHash("isAttacking");
@@ -67,7 +71,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         knockBack = GetComponent<KnockBack>();
         activeWeapon = GetComponentInChildren<ActiveWeapon>();
         playerConversant = GetComponent<PlayerConversant>();
-
+        footstepAudioPlayer = GetComponentInChildren<FootstepAudioPlayer>();
     }
 
     private void Start() {
@@ -97,7 +101,8 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
             ActiveWeapon.Instance.disableAttack = false;
         }
         if (!AttackMoving) {  
-            Move();          
+            Move();
+            TriggerFootstepAudio();          
             AdjustPlayerFacingDirection();
         } else if (sprintAttack) {
             attackMove(sprintAttackThurst, sprintAttackTime);
@@ -126,12 +131,17 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         Vector2 direction = playerControls.Movement.Move.ReadValue<Vector2>();
         Vector2 difference = direction.normalized * MoveThurst * myRigidBody.mass;
         myRigidBody.AddForce(difference, ForceMode2D.Impulse);
+        if (attackMoveAudio) {
+            footstepAudioPlayer.PlayFootstepAudioClip();
+            attackMoveAudio = false;
+        }
         StartCoroutine(AttackMoveRoutine(MoveTime));
     }
     private IEnumerator AttackMoveRoutine (float MoveTime) {
         yield return new WaitForSeconds(MoveTime);
         myRigidBody.velocity = Vector2.zero;
         AttackMoving = false;
+        attackMoveAudio = true;
     }
 
     private void Move() {
@@ -261,5 +271,25 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
             
     }
 
+    public void FootstepLeftAnimEvent() {
+        footstepLeft = true;
+    }
+
+    public void FootstepRightAnimEvent() {
+        footstepRight = true;
+    }
+
+    private void TriggerFootstepAudio() {
+        if (footstepLeft) {
+            footstepAudioPlayer.PlayFootstepAudioClip();
+            footstepLeft = false;
+        } else if (footstepRight) {
+            footstepAudioPlayer.PlayFootstepAudioClip();
+            footstepRight = false;
+        }
+
+        
+    }
+    
 }
 
