@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4cbce2e4aecf447b31b919b7fba4b5, type: 3}
+  m_Name: InsectAudioSamples
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 6e01d080270d62c4e86bbca1de44c6f7, type: 3}
+  - {fileID: 8300000, guid: aa29ad19769fdc14a970ea1b9a804629, type: 3}
+  - {fileID: 8300000, guid: 70bdf32e5b52b8441b69d4f47209cbb7, type: 3}
+  - {fileID: 8300000, guid: a3647f31277db254a859931a60e55382, type: 3}
+  - {fileID: 8300000, guid: 40ea17e8f1144c44d833465006a66882, type: 3}
+  - {fileID: 8300000, guid: b289697accf11334ab06cb859bde4e21, type: 3}
+  - {fileID: 8300000, guid: cf7f638ecbf95934bb9b56b6e6f28fbe, type: 3}
+  - {fileID: 8300000, guid: 8ab5cefa8a40793429e7c4543860bb47, type: 3}
+  - {fileID: 8300000, guid: 1a2d8c4370c5d6b46a9a3d5fdf12c65b, type: 3}

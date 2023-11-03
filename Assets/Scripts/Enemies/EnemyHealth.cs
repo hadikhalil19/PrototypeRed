@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proto.Audio;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject deathVFXPrefab;
     [SerializeField] bool hasFlashAnim = true;
     [SerializeField] int staggerThreshold = 10;
+    [SerializeField] int attackstaggerThreshold = 50;
     
     private int currentHealth;
     private KnockBack knockBack;
@@ -18,11 +20,13 @@ public class EnemyHealth : MonoBehaviour
     public bool dying = false;
 
     private EnemyAnimController enemyAnimController;
+    private GenericAudioPlayer genericAudioPlayer;
 
     private void Awake() {
         knockBack = GetComponent<KnockBack>();
         flash = GetComponent<Flash>();
         enemyAnimController =  GetComponent<EnemyAnimController>();
+        genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
     }
 
    private void Start() {
@@ -34,15 +38,15 @@ public class EnemyHealth : MonoBehaviour
     if(knockBack.GettingKnockedBack) {return;}
     currentHealth -= damage;
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
-    //enemyAnimController?.PlayHitAnim();
+    if (genericAudioPlayer) {
+        genericAudioPlayer.PlayRandomAudioClip();
+    }
     if (enemyAnimController) { // if it has enemyAnimController and a built in flash
         int staggerValue = (int)(damage * 100.0/startingHealth);
-        //Debug.Log(staggerValue);
         if (staggerValue >= staggerThreshold) {
             enemyAnimController?.PlayHitAnim();
-            //Debug.Log("stagger");
+            
         }
-        
     } 
     if (!hasFlashAnim) {
         StartCoroutine(flash.FlashRoutine());

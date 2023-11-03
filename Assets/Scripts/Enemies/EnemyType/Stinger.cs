@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proto.Audio;
 
 public class Stinger : MonoBehaviour, IEnemy
 {
@@ -16,6 +17,7 @@ public class Stinger : MonoBehaviour, IEnemy
     private bool attackMove = false;
 
     private Vector2 attackDirection;
+    private GenericAudioPlayer genericAudioPlayer;
 
 
     private void Awake() {
@@ -24,6 +26,7 @@ public class Stinger : MonoBehaviour, IEnemy
         enemyAnimController =  GetComponent<EnemyAnimController>();
         rb = GetComponent<Rigidbody2D>();
         aSEnemyAI = GetComponent<ASEnemyAI>();
+        genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
     }
 
     public void Attack() {
@@ -46,6 +49,7 @@ public class Stinger : MonoBehaviour, IEnemy
     public void AttackAnimEvent() {
         attackDirection = ((Vector2)aSEnemyAI.target.position - rb.position).normalized;
         attackMove = true;
+        genericAudioPlayer.PlaySecondaryAudio();
     }
 
     private void AttackMove() {

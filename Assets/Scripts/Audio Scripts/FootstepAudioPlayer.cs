@@ -10,15 +10,18 @@ public class FootstepAudioPlayer : MonoBehaviour
     [SerializeField] private AudioSamplesArray defaultAudioSamples;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip RollingAudio;
+    [SerializeField] private float walkAudioVol = 0.2f;
+    [SerializeField] private float runAudioVol = 0.4f;
+    
     
     public void PlayFootstepAudioClip() {
         var samples =defaultAudioSamples;
         if (samples == null) return;
         var audio = samples.PickRandom();
         if (PlayerController.Instance.sprint) {
-            audioSource.PlayOneShot(audio, 0.7f);
+            audioSource.PlayOneShot(audio, runAudioVol);
         } else {
-            audioSource.PlayOneShot(audio, 0.3f);
+            audioSource.PlayOneShot(audio, walkAudioVol);
         }
         
     }
