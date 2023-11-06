@@ -15,6 +15,7 @@ public class Shooter : MonoBehaviour, IEnemy
     [SerializeField] private bool stagger;
     [Tooltip("Stagger has to be enabled for oscillate to work")]
     [SerializeField] private bool oscillate;
+    [SerializeField] AudioSource spitAudio;
 
     private bool isShooting = false;
 
@@ -54,6 +55,7 @@ public class Shooter : MonoBehaviour, IEnemy
     public void Attack() {
         if (!isShooting) {
             StartCoroutine(ShootRoutine());
+            spitAudio.Play();
         }
     }
     

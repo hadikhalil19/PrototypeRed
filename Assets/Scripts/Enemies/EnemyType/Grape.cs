@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proto.Audio;
 
 public class Grape : MonoBehaviour, IEnemy
 {
@@ -12,6 +13,7 @@ public class Grape : MonoBehaviour, IEnemy
     private SpriteRenderer spriteRenderer;
     private EnemyAnimController enemyAnimController;
     private bool meleeAttack = false;
+    private GenericAudioPlayer genericAudioPlayer;
 
 
     //readonly int ATTACK_HASH = Animator.StringToHash("Attack");
@@ -20,6 +22,7 @@ public class Grape : MonoBehaviour, IEnemy
         myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyAnimController =  GetComponent<EnemyAnimController>();
+        genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
     }
 
     public void Attack() { 
@@ -31,6 +34,7 @@ public class Grape : MonoBehaviour, IEnemy
     private void TriggerAttackAnim() {
         if (!meleeAttack) {
             enemyAnimController?.PlayAttackAnim();
+            genericAudioPlayer.PlaySecondaryAudio();
         } else {
             enemyAnimController?.PlaySecondaryAnim();
         }
