@@ -4,7 +4,7 @@ using UnityEngine;
  
 public class Volume2D : MonoBehaviour
 {
-    public Transform listenerTransform;
+    //public Transform listenerTransform;
     public AudioSource audioSource;
     public float minDist=1;
     public float maxDist=20; //keep in mind camera has z distance as well
@@ -13,7 +13,7 @@ public class Volume2D : MonoBehaviour
  
     void Update()
     {
-        float dist = Vector3.Distance(transform.position, listenerTransform.position);
+        float dist = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
         float volScale = 0f;
         if(dist < minDist)
         {

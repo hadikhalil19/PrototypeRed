@@ -13,39 +13,42 @@ public class GenericAudioPlayer : MonoBehaviour
     [SerializeField] private float AudioClipVol = 0.3f;
     [SerializeField] private float SecondaryAudioVol = 0.5f;
 
-    public Transform listenerTransform;
     public float minDist=1;
-    public float maxDist=20;
+    public float maxDist=15;
+    private float relativeVolume = 0f;
+    
+    private float relativeSecondaryVolume = 0f;
 
-    // void Update()
-    // {
-    //     float dist = Vector3.Distance(transform.position, listenerTransform.position);
-    //     float volScale = 0f;
-    //     if(dist < minDist)
-    //     {
-    //         volScale = 1;
-    //     }
-    //     else if(dist > maxDist)
-    //     {
-    //         volScale = 0;
-    //     }
-    //     else
-    //     {
-    //         volScale = 1 - ((dist - minDist) / (maxDist - minDist));
-    //     }
+    void Update()
+    {
+        float dist = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
+        float volScale = 0f;
+        if(dist < minDist)
+        {
+            volScale = 1;
+        }
+        else if(dist > maxDist)
+        {
+            volScale = 0;
+        }
+        else
+        {
+            volScale = 1 - ((dist - minDist) / (maxDist - minDist));
+        }
 
-    //     audioSource.volume = volScale*audioVolMax;
-    // }
+        relativeVolume = volScale*AudioClipVol;
+        relativeSecondaryVolume = volScale*SecondaryAudioVol;
+    }
     
     public void PlayRandomAudioClip() {
         var samples =defaultAudioSamples;
         if (samples == null) return;
         var audio = samples.PickRandom();
-        audioSource.PlayOneShot(audio, AudioClipVol);        
+        audioSource.PlayOneShot(audio, relativeVolume);        
     }
 
     public void PlaySecondaryAudio() {
-        audioSource.PlayOneShot(SecondaryAudio, SecondaryAudioVol);
+        audioSource.PlayOneShot(SecondaryAudio, relativeSecondaryVolume);
     }
 
 }

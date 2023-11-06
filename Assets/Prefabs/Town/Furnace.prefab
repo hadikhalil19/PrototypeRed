@@ -606,8 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9eb2ac1e6b6a44a9cadb0d9b95f0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenerTransform: {fileID: 0}
   audioSource: {fileID: 3638738635006434604}
-  minDist: 5
-  maxDist: 15
-  audioVolMax: 0.4
+  minDist: 2
+  maxDist: 10
+  audioVolMax: 0.2
