@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proto.Audio;
 
 public class Cacodaemon : MonoBehaviour, IEnemy
 {
@@ -23,6 +24,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
     private EnemyAnimController enemyAnimController;
     private CacoAI EnemyAI;
     private EnemyHealth enemyHealth;
+    private GenericAudioPlayer genericAudioPlayer;
     Rigidbody2D rb;
 
     [SerializeField] float speed = 200f;
@@ -38,6 +40,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
         rb = GetComponent<Rigidbody2D>();
         EnemyAI = GetComponent<CacoAI>();
         enemyHealth = GetComponent<EnemyHealth>();
+        genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
     }
 
     private void OnValidate() {
@@ -152,6 +155,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
     public void SecondaryAttack() {
          
         enemyAnimController?.PlayAttackAnim();
+        genericAudioPlayer.PlaySecondaryAudio();
         myAnimator.SetFloat("idleX", transform.position.x - PlayerController.Instance.transform.position.x );
         myAnimator.SetFloat("idleY", PlayerController.Instance.transform.position.y - transform.position.y);
     }

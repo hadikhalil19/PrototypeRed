@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b4cbce2e4aecf447b31b919b7fba4b5, type: 3}
-  m_Name: AnvilAudioSamples
+  m_Name: CacoAttackAudio
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 8954de135fc35a445b4bb3ee94a67f32, type: 3}
-  - {fileID: 8300000, guid: c26cfabcb658aea4580b2adbae40d0f3, type: 3}
-  - {fileID: 8300000, guid: 6e2217b3028c47c41b0ea8ad9feac966, type: 3}
-  - {fileID: 8300000, guid: 1dbc0436a8b882640938d00b4cc5ed1f, type: 3}
+  - {fileID: 8300000, guid: 76b1eecbd87e4df4f9d3c72b078f7049, type: 3}
+  - {fileID: 8300000, guid: 81ba0a0a41d903d4eb31a6c6efb7cd5e, type: 3}
+  - {fileID: 8300000, guid: f948fb910ffdcbb4a920641f15dc7644, type: 3}
+  - {fileID: 8300000, guid: 76ba3cd4737b9cc4f80d45c3c0fb2848, type: 3}
