@@ -59,6 +59,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
     public void Attack() {
        if (!isShooting) {
             StartCoroutine(ShootRoutine());
+            genericAudioPlayer.PlayPrimaryAudio();
         }
         
     }

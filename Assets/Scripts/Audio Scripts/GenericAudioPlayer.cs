@@ -8,16 +8,19 @@ namespace Proto.Audio {
 public class GenericAudioPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSamplesArray defaultAudioSamples;
+    [SerializeField] private AudioSamplesArray SecondaryAudioSamples;
+
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip SecondaryAudio;
+    [SerializeField] private AudioClip PrimaryAudio;
     [SerializeField] private float AudioClipVol = 0.3f;
-    [SerializeField] private float SecondaryAudioVol = 0.5f;
+    [SerializeField] private float AudioSourceVol = 0.5f;
 
     public float minDist=1;
     public float maxDist=15;
-    private float relativeVolume = 0f;
+    private float relativeClipVolume = 0f;
     
-    private float relativeSecondaryVolume = 0f;
+    private float relativeSourceVolume = 0f;
 
     void Update()
     {
@@ -36,19 +39,29 @@ public class GenericAudioPlayer : MonoBehaviour
             volScale = 1 - ((dist - minDist) / (maxDist - minDist));
         }
 
-        relativeVolume = volScale*AudioClipVol;
-        relativeSecondaryVolume = volScale*SecondaryAudioVol;
+        relativeClipVolume = volScale*AudioClipVol;
+        relativeSourceVolume = volScale*AudioSourceVol;
     }
     
     public void PlayRandomAudioClip() {
-        var samples =defaultAudioSamples;
+        var samples = defaultAudioSamples;
         if (samples == null) return;
         var audio = samples.PickRandom();
-        audioSource.PlayOneShot(audio, relativeVolume);        
+        audioSource.PlayOneShot(audio, relativeClipVolume);        
+    }
+
+    public void PlayRandomSecondaryClip() {
+        var samples = SecondaryAudioSamples;
+        if (samples == null) return;
+        var audio = samples.PickRandom();
+        audioSource.PlayOneShot(audio, relativeClipVolume);        
     }
 
     public void PlaySecondaryAudio() {
-        audioSource.PlayOneShot(SecondaryAudio, relativeSecondaryVolume);
+        audioSource.PlayOneShot(SecondaryAudio, relativeSourceVolume);
+    }
+    public void PlayPrimaryAudio() {
+        audioSource.PlayOneShot(PrimaryAudio, relativeSourceVolume);
     }
 
 }

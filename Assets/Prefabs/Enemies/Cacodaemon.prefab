@@ -616,9 +616,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAudioSamples: {fileID: 11400000, guid: 6c47715aeec335d4dabd72d43a240a13, type: 2}
+  SecondaryAudioSamples: {fileID: 0}
   audioSource: {fileID: 7087352166582111446}
   SecondaryAudio: {fileID: 8300000, guid: 3ed90feec51f3404f84ede47f45c2cc0, type: 3}
+  PrimaryAudio: {fileID: 8300000, guid: 7f26743e2d461bf48b5d0898d7771d74, type: 3}
   AudioClipVol: 0.3
-  SecondaryAudioVol: 0.5
+  AudioSourceVol: 0.5
   minDist: 1
   maxDist: 15
