@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Abandoned Town.unity
     guid: 34c5293f1fff76c4485437364d837594
+  - enabled: 1
+    path: Assets/Scenes/BossTown.unity
+    guid: a54368b488535ed40a4bfc6f616d9ef1
   m_configObjects: {}
