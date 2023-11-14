@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7319657176444972369}
   - component: {fileID: 4144824609640207848}
   - component: {fileID: 8185715922078655621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RtOldBrokenBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 845766226982122512}
   - component: {fileID: 4333641158160855527}
   - component: {fileID: 6196652907740478054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VtOldBridgeNarrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

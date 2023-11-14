@@ -142,10 +142,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAudioSamples: {fileID: 11400000, guid: e9b4b82e1677bbb418d0a6258dd406e3, type: 2}
+  SecondaryAudioSamples: {fileID: 0}
   audioSource: {fileID: 73009603131376563}
   SecondaryAudio: {fileID: 8300000, guid: d9f4077641fec7542b219c2194f7c36e, type: 3}
+  PrimaryAudio: {fileID: 0}
   AudioClipVol: 0.3
-  SecondaryAudioVol: 0.5
+  AudioSourceVol: 0.5
+  minDist: 1
+  maxDist: 15
 --- !u!1 &797723135186031047
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +472,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967295
     useGraphRaycasting: 0
-  traversableTags: -1
+  traversableTags: -529
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1

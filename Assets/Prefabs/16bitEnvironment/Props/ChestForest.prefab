@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6628430745895823331}
   - component: {fileID: 6510642042404363850}
   - component: {fileID: 7577648884842205114}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ChestForest
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5407403414835493804}
   - component: {fileID: 2035270448954486187}
   - component: {fileID: 4609550696687118375}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ChestClean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
