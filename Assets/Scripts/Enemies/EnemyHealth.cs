@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] bool hasFlashAnim = true;
     [SerializeField] int staggerThreshold = 10;
     [SerializeField] int attackstaggerThreshold = 50;
+
+    [SerializeField] FloatingHealthBar floatingHealthBar;
     
     private int currentHealth;
     private KnockBack knockBack;
@@ -27,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
         flash = GetComponent<Flash>();
         enemyAnimController =  GetComponent<EnemyAnimController>();
         genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
+        floatingHealthBar = GetComponentInChildren<FloatingHealthBar>();
     }
 
    private void Start() {
@@ -38,6 +41,9 @@ public class EnemyHealth : MonoBehaviour
     if(knockBack.GettingKnockedBack) {return;}
     currentHealth -= damage;
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
+    if(floatingHealthBar) {
+        floatingHealthBar.UpdateFloatingHealthBar(currentHealth, startingHealth);
+    }
     if (genericAudioPlayer) {
         genericAudioPlayer.PlayRandomAudioClip();
     }
