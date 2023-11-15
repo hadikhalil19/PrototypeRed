@@ -28,5 +28,9 @@ namespace Proto.UI
         {
             uiContainer.SetActive(!uiContainer.activeSelf);
         }
+
+        public void SetVisibility(bool isVisible) {
+            uiContainer.SetActive(isVisible);
+        }
     }
 }

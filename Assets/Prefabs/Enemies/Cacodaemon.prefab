@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 8157790675249184043}
   - component: {fileID: 2388010455865639074}
   - component: {fileID: 3542787646770924703}
+  - component: {fileID: 7479391651573339661}
   m_Layer: 10
   m_Name: Cacodaemon
   m_TagString: Untagged
@@ -274,13 +275,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4f6c1a848e48459210d72c3ba3f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 40
+  startingHealth: 10
   knockBackForce: 3
   deathDelay: 2
   deathVFXPrefab: {fileID: 0}
   hasFlashAnim: 0
   staggerThreshold: 7
-  attackstaggerThreshold: 50
+  attackInteruptThreshold: 50
+  bossEnemy: 0
   floatingHealthBar: {fileID: 0}
   dying: 0
 --- !u!114 &7273883049103190045
@@ -476,6 +478,19 @@ MonoBehaviour:
   stagger: 1
   oscillate: 1
   speed: 9
+--- !u!114 &7479391651573339661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968245686617958050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3400c2632e0c6a94cb51a332c0379d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showBossHealth: 0
 --- !u!1 &8513021232484038554
 GameObject:
   m_ObjectHideFlags: 0

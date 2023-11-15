@@ -62,11 +62,14 @@ public class CacoAI : MonoBehaviour
 
     private EnemyHealth enemyHealth;
     //private int meleeAttackStage = 0;
+    private BossUI bossUI;
+    private bool BossHealthVisible = false;
 
     private void Awake() {
         state = State.Roaming;
         enemyPathfinding = GetComponent<AstarEnemyPathfinding>();
         enemyHealth = GetComponent<EnemyHealth>();    
+        bossUI = GetComponent<BossUI>();
     }
 
     public void Start()
@@ -199,6 +202,11 @@ public class CacoAI : MonoBehaviour
 
 
     private void Following() {
+        // if BossUI health is not visible, start it up when the boss first starts the following state.
+        if (!BossHealthVisible) { 
+            BossHealthVisible = true;
+            bossUI.BossHealthStartUp();
+        }
         if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > followRange) {
             if (!loosingInterest) {
                 loosingInterest = true;

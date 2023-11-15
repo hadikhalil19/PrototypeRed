@@ -11,13 +11,16 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject deathVFXPrefab;
     [SerializeField] bool hasFlashAnim = true;
     [SerializeField] int staggerThreshold = 10;
-    [SerializeField] int attackstaggerThreshold = 50;
+    [SerializeField] int attackInteruptThreshold = 50;
+    [SerializeField] bool bossEnemy = false;
 
     [SerializeField] FloatingHealthBar floatingHealthBar;
+    private BossUI bossUI;
     
     private int currentHealth;
     private KnockBack knockBack;
     private Flash flash;
+    private bool healthbarVisible = false;
 
     public bool dying = false;
 
@@ -30,10 +33,14 @@ public class EnemyHealth : MonoBehaviour
         enemyAnimController =  GetComponent<EnemyAnimController>();
         genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
         floatingHealthBar = GetComponentInChildren<FloatingHealthBar>();
+        bossUI = GetComponent<BossUI>();
     }
 
    private void Start() {
     currentHealth = startingHealth;
+    if(floatingHealthBar) {
+        floatingHealthBar.UpdateFloatingHealthBar(currentHealth, startingHealth);
+    }
    }
 
    public void TakeDamage(int damage) {
@@ -43,6 +50,9 @@ public class EnemyHealth : MonoBehaviour
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
     if(floatingHealthBar) {
         floatingHealthBar.UpdateFloatingHealthBar(currentHealth, startingHealth);
+    }
+    if(bossUI && bossEnemy) {
+        bossUI.UpdateBossHealthBar(currentHealth, startingHealth);
     }
     if (genericAudioPlayer) {
         genericAudioPlayer.PlayRandomAudioClip();
@@ -70,6 +80,7 @@ public class EnemyHealth : MonoBehaviour
     public IEnumerator DeathRoutine() {
         enemyAnimController?.PlayDeathAnim();
         yield return new WaitForSeconds(deathDelay);
+        if(bossUI && bossEnemy) {bossUI.SetActiveState(false);}
         //Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
         GetComponent<PickUpSpawner>().DropItems();
         Destroy(gameObject); 
