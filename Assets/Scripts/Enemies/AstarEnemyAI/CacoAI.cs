@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using UnityEditor.Tilemaps;
+using Proto.Audio;
+
 
 public class CacoAI : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class CacoAI : MonoBehaviour
 
     [SerializeField] float roamChangeDirTime = 2f;
     [SerializeField] bool hasCollisonDamage = false; 
+    [SerializeField] AudioSource firstEncounterAudio;
     public float nextWaypointDistance = 1f;
     
     private Path path;
@@ -206,6 +209,7 @@ public class CacoAI : MonoBehaviour
         if (!BossHealthVisible) { 
             BossHealthVisible = true;
             bossUI.BossHealthStartUp();
+            firstEncounterAudio.Play();
         }
         if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > followRange) {
             if (!loosingInterest) {
