@@ -18,8 +18,56 @@ MonoBehaviour:
   - 00e572e2-f64a-4bba-b77d-fd7935ae1e68
   rect:
     serializedVersion: 2
-    x: 253
+    x: 243
     y: -2
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &-7639194793606604609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 662a4c3f-d018-43a0-9cde-9cc96eee19eb
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Why would a God do something like this?
+  children:
+  - e9e53eee-213d-45ea-aab4-902c57787571
+  rect:
+    serializedVersion: 2
+    x: 1662
+    y: 716
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &-7129212395452376088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: b2f15223-ffa1-401d-af46-4a150f08a115
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Converse
+  children:
+  - 15079fc7-093a-4067-9c2a-9ca03ef76109
+  rect:
+    serializedVersion: 2
+    x: 244
+    y: 530
     width: 200
     height: 100
   onEnterAction: 
@@ -42,8 +90,8 @@ MonoBehaviour:
   - 7df55949-e506-4989-9b32-d6b6449a2396
   rect:
     serializedVersion: 2
-    x: 1001
-    y: -1
+    x: 953
+    y: -2
     width: 200
     height: 100
   onEnterAction: 
@@ -61,12 +109,61 @@ MonoBehaviour:
   m_Name: 194cefd8-c9a1-428f-b3b1-9d0ce0815c08
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Sure thing.
+  text: Don't look like you have anything I can repair. I only work with metal Lass.
   children: []
   rect:
     serializedVersion: 2
     x: 2060
     y: 122
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &-5712822316208087343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: e9e53eee-213d-45ea-aab4-902c57787571
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Aye, that there is a good question. Expect us mortals have done something
+    to inccur God's Wrath. We cant truely know how our creator's mind works.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1912
+    y: 716
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &-1023349345596038138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: e8756345-43c6-41f7-a8e4-628f75895419
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: There are all sorts of dangerous creatures running about killing everyone
+    and destorying everything.
+  children:
+  - d4c5320f-727e-4074-a198-5efa0f5e91e3
+  rect:
+    serializedVersion: 2
+    x: 688
+    y: 526
     width: 200
     height: 100
   onEnterAction: 
@@ -94,6 +191,39 @@ MonoBehaviour:
   - {fileID: 7939433843345910648}
   - {fileID: 3643019900404451951}
   - {fileID: -5842181666643315211}
+  - {fileID: -7129212395452376088}
+  - {fileID: 5248790111328148386}
+  - {fileID: -1023349345596038138}
+  - {fileID: 5858085274108757502}
+  - {fileID: 3026545973591361706}
+  - {fileID: 7685317232628400785}
+  - {fileID: -7639194793606604609}
+  - {fileID: -5712822316208087343}
+--- !u!114 &3026545973591361706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 55fb524c-a182-4616-8ee1-2bb2eab1bfd0
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Miasma, poison and corruption spreading through the lands killing everything
+    in its path. Although some areas like this one are still safe for now.
+  children:
+  - d247e4ae-1599-4e88-b5e7-4fccfd5242ab
+  rect:
+    serializedVersion: 2
+    x: 1162
+    y: 716
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &3643019900404451951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +241,32 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1795
-    y: 284
+    x: 1726
+    y: 584
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &5248790111328148386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 15079fc7-093a-4067-9c2a-9ca03ef76109
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Well as you might know, God has declared the world is to die.
+  children:
+  - e8756345-43c6-41f7-a8e4-628f75895419
+  rect:
+    serializedVersion: 2
+    x: 461
+    y: 530
     width: 200
     height: 100
   onEnterAction: 
@@ -137,8 +291,33 @@ MonoBehaviour:
   - 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
   rect:
     serializedVersion: 2
-    x: 751
-    y: -1
+    x: 708
+    y: 108
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &5858085274108757502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: d4c5320f-727e-4074-a198-5efa0f5e91e3
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Whole towns have been abandoned and capital cities have been wiped off the
+    face of the Earth.
+  children:
+  - 55fb524c-a182-4616-8ee1-2bb2eab1bfd0
+  rect:
+    serializedVersion: 2
+    x: 915
+    y: 634
     width: 200
     height: 100
   onEnterAction: 
@@ -161,8 +340,8 @@ MonoBehaviour:
   - 194cefd8-c9a1-428f-b3b1-9d0ce0815c08
   rect:
     serializedVersion: 2
-    x: 1799
-    y: 134
+    x: 1724
+    y: 455
     width: 200
     height: 100
   onEnterAction: 
@@ -185,8 +364,33 @@ MonoBehaviour:
   - 46ae6108-a5d4-4ca5-ae78-7ed3648421e4
   rect:
     serializedVersion: 2
-    x: 503
-    y: -2
+    x: 472
+    y: 108
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &7685317232628400785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: d247e4ae-1599-4e88-b5e7-4fccfd5242ab
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Tis truely the end of times. Not many survivors these days. May God have
+    mercy on those of us that remain.
+  children:
+  - 662a4c3f-d018-43a0-9cde-9cc96eee19eb
+  rect:
+    serializedVersion: 2
+    x: 1426
+    y: 718
     width: 200
     height: 100
   onEnterAction: 
@@ -209,7 +413,7 @@ MonoBehaviour:
   - a6b9cc7f-0696-4773-8c39-78ee96eb24f9
   rect:
     serializedVersion: 2
-    x: 1261
+    x: 1229
     y: -1
     width: 200
     height: 100
@@ -235,8 +439,8 @@ MonoBehaviour:
   - 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
   rect:
     serializedVersion: 2
-    x: 1501
-    y: -1
+    x: 1462
+    y: -3
     width: 200
     height: 100
   onEnterAction: 
@@ -258,11 +462,12 @@ MonoBehaviour:
   children:
   - 2ee47b36-df31-4d01-ad56-312be879d824
   - 14df4f9d-0a3f-4416-8ad3-cdbe415d4505
+  - b2f15223-ffa1-401d-af46-4a150f08a115
   - 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
   rect:
     serializedVersion: 2
-    x: 0
-    y: 0
+    x: 2
+    y: 218
     width: 200
     height: 100
   onEnterAction: 
