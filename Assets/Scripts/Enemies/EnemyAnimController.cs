@@ -19,6 +19,8 @@ public class EnemyAnimController : MonoBehaviour
     readonly int SECONDARY_HASH = Animator.StringToHash("Secondary");
     readonly int ISATTACKING_HASH = Animator.StringToHash("isAttacking");
     readonly int STAGGER_HASH = Animator.StringToHash("Stagger");
+    readonly int TIRED_HASH = Animator.StringToHash("Tired");
+    readonly int ISTIRED_HASH = Animator.StringToHash("isTired");
     private void Awake() {
         myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -105,5 +107,14 @@ public class EnemyAnimController : MonoBehaviour
         myAnimator.SetFloat("moveY", movement.y);
         myAnimator.SetFloat("speed", movement.sqrMagnitude);
         takeMoveSample = true;
+    }
+
+    public void PlayTiredAnim() {
+        myAnimator.SetTrigger(TIRED_HASH);
+        myAnimator.SetBool(ISTIRED_HASH, true);
+    }
+
+    public void TiredAnimEnd() {
+        myAnimator.SetBool(ISTIRED_HASH, false);
     }
 }

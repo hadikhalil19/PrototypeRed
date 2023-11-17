@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using UnityEditor.Tilemaps;
 using Proto.Audio;
+using UnityEditor.Rendering;
 
 
 public class CacoAI : MonoBehaviour
@@ -35,12 +36,14 @@ public class CacoAI : MonoBehaviour
         Attacking,
         MeleeAttack,
         Following,
-        Flanking
+        Flanking,
+        Tired
     }
 
     private State state;
 
     private AstarEnemyPathfinding enemyPathfinding;
+    private EnemyAnimController enemyAnimController;
 
     private float timeRoaming = 0f;
     private Vector2 roamPosition;
@@ -53,6 +56,8 @@ public class CacoAI : MonoBehaviour
     [SerializeField] private float looseInterestTime = 2f;
     [SerializeField] private float flankingTimeMin = 1.5f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
+    [SerializeField] private float tiredCooldownMin = 4f;
+    [SerializeField] private float tiredRandMax = 2f;
 
     private bool canAttack = true;
     private bool canMeleeAttack = true;
@@ -67,12 +72,17 @@ public class CacoAI : MonoBehaviour
     //private int meleeAttackStage = 0;
     private BossUI bossUI;
     private bool BossHealthVisible = false;
+    private int meleeAttackCounter = 0;
+    private bool isTired = false;
+    private bool playingTiredAnim = false;
+    [SerializeField] int meleeAttackLimit = 3; 
 
     private void Awake() {
         state = State.Roaming;
         enemyPathfinding = GetComponent<AstarEnemyPathfinding>();
         enemyHealth = GetComponent<EnemyHealth>();    
         bossUI = GetComponent<BossUI>();
+        enemyAnimController = GetComponent<EnemyAnimController>();
     }
 
     public void Start()
@@ -113,6 +123,11 @@ public class CacoAI : MonoBehaviour
 
             case State.Flanking:
                 Flanking();
+                
+            break;
+            
+            case State.Tired:
+                Tired();
                 
             break;
         }
@@ -177,6 +192,12 @@ public class CacoAI : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         canMeleeAttack = true;
     }
+    private IEnumerator TiredCooldownRoutine() {
+        float cooldown =  tiredCooldownMin + Random.Range(0,tiredRandMax);
+        yield return new WaitForSeconds(cooldown);
+        isTired = false;
+        enemyAnimController.TiredAnimEnd();
+    }
 
     private void MeleeAttack() {
         if (enemyHealth.dying) {return;}
@@ -189,14 +210,24 @@ public class CacoAI : MonoBehaviour
         if (canMeleeAttack && attackRange != 0) {
             canMeleeAttack = false;
             (enemyType as IEnemy).SecondaryAttack();
-
+            
+            
             if (stopMovingWhileAttacking) {
                 enemyPathfinding.StopMoving();
-            // } else {
-            //     enemyPathfinding.MoveTo(GetRoamingPosition());
             }
 
             StartCoroutine(MeleeCooldownRoutine());
+
+            if (meleeAttackCounter < meleeAttackLimit) {
+                meleeAttackCounter = meleeAttackCounter +1;
+            } else {
+                meleeAttackCounter = 0;
+                isTired = true;
+                StartCoroutine(TiredCooldownRoutine());
+            }
+
+        } else if (isTired) {
+            state = State.Tired;
         } else {
             state = State.Following;
         }
@@ -322,6 +353,22 @@ public class CacoAI : MonoBehaviour
             }
             
         }
+    }
+
+    private void Tired() {
+        if (enemyAnimController.isAttacking) {return;}
+
+        if (!playingTiredAnim) {
+            enemyPathfinding.StopMoving();
+            enemyAnimController.PlayTiredAnim();
+            playingTiredAnim = true;
+        }
+        
+        if (!isTired) {
+            playingTiredAnim = false;
+            state = State.Following;
+        }
+
     }
     
 }

@@ -441,8 +441,9 @@ MonoBehaviour:
   meleeRandMaxCD: 3
   looseInterestTime: 2
   flankingTimeMin: 1
-  stopMovingWhileAttacking: 1
+  stopMovingWhileAttacking: 0
   StartFlanking: 0
+  meleeAttackLimit: 3
 --- !u!114 &5353110927748314999
 MonoBehaviour:
   m_ObjectHideFlags: 0
