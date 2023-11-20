@@ -321,6 +321,13 @@ public class SwordAttack : MonoBehaviour, IWeapon
         }
     }
 
-
+    public void WeaponReset() {
+        swordAnimHandler.ResetSwordAnim();
+        isAttacking = false;
+        secondaryAttack = false;
+        shieldAction = false;
+        myAnimator.SetBool(ISATTACKING_HASH, false);
+        attackCounter = 0;
+    }
 
 }

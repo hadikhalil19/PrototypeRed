@@ -110,6 +110,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         IsDead = false;
         //CameraController.Instance.SetPlayerCameraFollow();
         ActiveWeapon.Instance.disableAttack = false; 
+        ActiveWeapon.Instance.WeaponReset();
         GetComponent<Animator>().SetTrigger(RELOAD_HASH);
         //UIFade.Instance.FadeOut();
         canTakeDamage = true;

@@ -39,4 +39,9 @@ public class SwordAnimHandler : MonoBehaviour
     public bool GetSlashHitbox  { get { return slashHitbox;}}
     public bool GetStabHitbox {get {return stabHitbox;}}
 
+    public void ResetSwordAnim() {
+        stabHitbox = false;
+        slashHitbox = false;
+    }
+
 }

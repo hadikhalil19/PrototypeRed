@@ -3,4 +3,6 @@ interface IWeapon {
     public void SecondaryAttackStart();
     public void SecondaryAttackStop();
     public WeaponInfo GetWeaponInfo();
+    public void WeaponReset();
+
 }

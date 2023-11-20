@@ -61,7 +61,10 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         if (CurrentActiveWeapon) {
             (CurrentActiveWeapon as IWeapon).SecondaryAttackStop();
         }
-        
+    }
+
+    public void WeaponReset() {
+        (CurrentActiveWeapon as IWeapon).WeaponReset();
     }
 
 }

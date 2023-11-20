@@ -140,5 +140,10 @@ public class Bow : MonoBehaviour, IWeapon
         myAnimator.ResetTrigger(ATTACK_HASH);
     }
 
+    public void WeaponReset() {
+        nockArrowAim = false;
+        bowAttacking = false;
+    }
+
 
 }

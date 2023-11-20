@@ -93,4 +93,9 @@ public class LightSpear : MonoBehaviour, IWeapon
         }
 
     }
+
+    public void WeaponReset() {
+        lightSpearAttacking = false;
+        myAnimator.SetBool(LIGHTSPEARATTACKING_HASH, false);
+    }
 }

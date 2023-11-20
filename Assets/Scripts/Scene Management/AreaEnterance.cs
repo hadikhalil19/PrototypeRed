@@ -18,6 +18,8 @@ public class AreaEnterance : MonoBehaviour
 
             PlayerController.Instance.transform.position = this.transform.position;
             CameraController.Instance.SetPlayerCameraFollow();
+            
+            PlayerController.Instance.ResetPlayerController();
 
             UIFade.Instance.FadeOut();
 

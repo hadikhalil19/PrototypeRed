@@ -290,6 +290,15 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
 
         
     }
+
+    public void ResetPlayerController() {
+        MoveLock = false;
+        AttackDirectionLock = false;
+        AttackLock = false;
+        sprint = false;
+        sprintAttack = false;
+        SpriteFlipLock = false;
+    }
     
 }
 
