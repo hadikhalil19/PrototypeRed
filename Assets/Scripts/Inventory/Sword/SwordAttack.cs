@@ -154,7 +154,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     }
 
     private void ShieldBlock() {
-        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShieldIdle")) {
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShieldIdle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShieldHit")) {
             PlayerHealth.Instance.shieldActive = true;
             PlayerHealth.Instance.shieldManaCost = weaponInfo.weaponManaCost;
         }

@@ -30,6 +30,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
     [SerializeField] float speed = 200f;
 
     private bool attackMove = false;
+    private bool playerCollision;
 
     private Vector2 attackDirection;
 
@@ -183,12 +184,20 @@ public class Cacodaemon : MonoBehaviour, IEnemy
 
     private void OnCollisionStay2D(Collision2D other) {
         if (!attackMove) {return;}
-        PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>(); // only works for older enemyAI with no A*
+        PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>(); 
         if(playerHealth) {
-            
-            playerHealth.TakeDamage(1, other.transform);
+            if (!playerCollision) {
+                playerCollision = true;
+                playerHealth.TakeDamage(1, other.transform);
+                StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
+            }
             
         }
 
+    }
+
+    private IEnumerator CollisionReloadRoutine(float cooldown) {
+        yield return new WaitForSeconds(cooldown);
+        playerCollision = false;
     }
 }

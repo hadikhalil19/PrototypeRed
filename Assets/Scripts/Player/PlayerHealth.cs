@@ -15,12 +15,12 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     public int shieldManaCost = 0;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private float knockBackThrustAmount = 5f;
-
     [SerializeField] private float ShieldKnockBackThrust = 2f;
-    [SerializeField] private float damageRecoveryTime = 0.5f;
+    
     [SerializeField] private string deathSceneTransitionName;
     [SerializeField] UnityEvent takeDamageEvent;
 
+    public float damageRecoveryTime = 0.5f;
     private int currentHealth;
     public bool canTakeDamage =  true;
     public bool rollInvulnerable = false;
@@ -66,14 +66,14 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         if (IsDead) { return; }
         if (rollInvulnerable) { return; }
         ScreenShakeManager.Instance.ShakeScreen();
-        takeDamageEvent.Invoke();
+        
         if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
             knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
             PlayerMana.Instance.UseMana(shieldManaCost);
             GetComponent<Animator>().SetTrigger(SHILEDHIT_HASH);
             return;
         }
-        
+        takeDamageEvent.Invoke();
         canTakeDamage = false;
         currentHealth -= damageAmount;
         knockback.GetKnockedBack(hitTransform, knockBackThrustAmount);
