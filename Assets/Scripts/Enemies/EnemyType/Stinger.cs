@@ -80,7 +80,7 @@ public class Stinger : MonoBehaviour, IEnemy
         if(playerHealth) {
             if (!playerCollision) {
                 playerCollision = true;
-                playerHealth.TakeDamage(1, other.transform);
+                playerHealth.TakeDamage(1, transform);
                 StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
             }
             

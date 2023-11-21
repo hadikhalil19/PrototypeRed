@@ -392,7 +392,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -555,6 +555,7 @@ MonoBehaviour:
   maxHealth: 5
   knockBackThrustAmount: 8
   ShieldKnockBackThrust: 4
+  shieldBlockAngle: 150
   deathSceneTransitionName: Camp_East
   takeDamageEvent:
     m_PersistentCalls:

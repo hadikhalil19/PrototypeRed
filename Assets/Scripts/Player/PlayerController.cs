@@ -29,8 +29,8 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     public Vector3 playerLookAt {get; set;}
     public bool sprint = false;
     public bool sprintAttack = false;
-
     Vector2 direction = new Vector2 (0,0);
+    //public Vector2 PlayerDirection {get {return direction;}}
     private float mouseFollowDelay = 0.2f;
     private MousePosition mousePosition;
     private KnockBack knockBack;
