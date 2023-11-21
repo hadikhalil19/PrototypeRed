@@ -211,7 +211,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -279,7 +279,9 @@ MonoBehaviour:
   deathVFXPrefab: {fileID: 0}
   hasFlashAnim: 1
   staggerThreshold: 10
-  attackstaggerThreshold: 50
+  attackInteruptThreshold: 50
+  bossEnemy: 0
+  floatingHealthBar: {fileID: 0}
   dying: 0
 --- !u!114 &8782692104922489063
 MonoBehaviour:
@@ -604,7 +606,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAudioSamples: {fileID: 11400000, guid: b766630a7b8cf1f4483181a8f2f12838, type: 2}
+  SecondaryAudioSamples: {fileID: 0}
   audioSource: {fileID: 3096623038141331423}
   SecondaryAudio: {fileID: 8300000, guid: 1eaafa9c42657bd4aa10100b8308a1eb, type: 3}
+  PrimaryAudio: {fileID: 0}
   AudioClipVol: 0.3
-  SecondaryAudioVol: 0.5
+  AudioSourceVol: 0.5
+  minDist: 1
+  maxDist: 15

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 3547666014498630624}
   - component: {fileID: -6858630859011831345}
   m_Layer: 0
-  m_Name: Bushling1
+  m_Name: OldBushling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

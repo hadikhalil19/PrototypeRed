@@ -275,6 +275,8 @@ MonoBehaviour:
   defaultAudioSamples: {fileID: 11400000, guid: ec6d131d454b90a43aefb85584d8cc2c, type: 2}
   audioSource: {fileID: 2094534116751783293}
   RollingAudio: {fileID: 8300000, guid: d0d42bc8c98476646a7b88be93b1948f, type: 3}
+  walkAudioVol: 0.2
+  runAudioVol: 0.4
 --- !u!1 &6475173484666347351
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +393,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1.5
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -419,9 +421,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
   sprintSpeed: 5.5
-  attackMoveThurst: 1
+  attackMoveThurst: 2
   attackMoveTime: 0.1
-  sprintAttackThurst: 1.2
+  sprintAttackThurst: 2
   sprintAttackTime: 0.3
   sprintStopDelay: 0.2
   MoveLock: 0
@@ -551,9 +553,8 @@ MonoBehaviour:
   shieldActive: 0
   shieldManaCost: 0
   maxHealth: 5
-  knockBackThrustAmount: 5
-  ShieldKnockBackThrust: 2
-  damageRecoveryTime: 0.5
+  knockBackThrustAmount: 8
+  ShieldKnockBackThrust: 4
   deathSceneTransitionName: Camp_East
   takeDamageEvent:
     m_PersistentCalls:
@@ -582,6 +583,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  damageRecoveryTime: 0.5
   canTakeDamage: 1
   rollInvulnerable: 0
 --- !u!114 &8859033387838843745
