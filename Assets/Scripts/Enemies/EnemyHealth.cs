@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
     private bool healthbarVisible = false;
 
     public bool dying = false;
+    public bool attacksBlocked = false;
 
     private EnemyAnimController enemyAnimController;
     private GenericAudioPlayer genericAudioPlayer;

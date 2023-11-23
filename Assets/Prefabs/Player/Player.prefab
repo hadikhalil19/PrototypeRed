@@ -550,12 +550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
-  shieldActive: 0
-  shieldManaCost: 0
   maxHealth: 5
   knockBackThrustAmount: 8
-  ShieldKnockBackThrust: 4
-  shieldBlockAngle: 150
   deathSceneTransitionName: Camp_East
   takeDamageEvent:
     m_PersistentCalls:

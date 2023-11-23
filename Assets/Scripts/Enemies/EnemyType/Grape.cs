@@ -60,8 +60,6 @@ public class Grape : MonoBehaviour, IEnemy
     }
 
     public void SecondaryAttackAnimEvent() {
-        Debug.Log("melee attack");
-
         Vector3 myPos = this.transform.position;
         Vector3 playerPos = PlayerController.Instance.transform.position;
         float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x -  myPos.x) * Mathf.Rad2Deg;

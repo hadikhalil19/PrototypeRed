@@ -43,21 +43,26 @@ public class Projectile : MonoBehaviour
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
         Indestructibles indestructibles = other.gameObject.GetComponent<Indestructibles>();
         PlayerHealth player = other.gameObject.GetComponent<PlayerHealth>();
+        ShieldBlock shieldBlock = other.gameObject.GetComponent<ShieldBlock>();
 
-        if ((player && isEnemyProjectile)) {
-                if (player.canTakeDamage) {
-                    player?.TakeDamage(1, transform);
-                    Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-                    Destroy(gameObject);
-                }
-            } else if (enemyHealth && !isEnemyProjectile) {
-                enemyHealth?.TakeDamage(projectileDamage);
-                Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-                Destroy(gameObject);
-            } else if (!other.isTrigger && indestructibles) {
+        if (shieldBlock && isEnemyProjectile) {
+            shieldBlock.TakeDamage(1,transform);
+            Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
+            Destroy(gameObject);
+        } else if (player && isEnemyProjectile) {
+            if (player.canTakeDamage) {
+                player?.TakeDamage(1, transform);
                 Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
+        } else if (enemyHealth && !isEnemyProjectile) {
+            enemyHealth?.TakeDamage(projectileDamage);
+            Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
+            Destroy(gameObject);
+        } else if (!other.isTrigger && indestructibles) {
+            Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     
     }
 

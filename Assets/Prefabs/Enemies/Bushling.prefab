@@ -332,8 +332,11 @@ MonoBehaviour:
   deathVFXPrefab: {fileID: 4764969303406464663, guid: d30f7f22970fc86448f12b746fb8dd7e, type: 3}
   hasFlashAnim: 1
   staggerThreshold: 10
-  attackstaggerThreshold: 50
+  attackInteruptThreshold: 50
+  bossEnemy: 0
+  floatingHealthBar: {fileID: 0}
   dying: 0
+  attacksBlocked: 0
 --- !u!114 &5736761326677697125
 MonoBehaviour:
   m_ObjectHideFlags: 0

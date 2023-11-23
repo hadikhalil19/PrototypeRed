@@ -23,7 +23,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
     private SpriteRenderer spriteRenderer;
     private EnemyAnimController enemyAnimController;
     private CacoAI EnemyAI;
-    private EnemyHealth enemyHealth;
+    private EnemyHealth myHealth;
     private GenericAudioPlayer genericAudioPlayer;
     Rigidbody2D rb;
 
@@ -40,7 +40,8 @@ public class Cacodaemon : MonoBehaviour, IEnemy
         enemyAnimController =  GetComponent<EnemyAnimController>();
         rb = GetComponent<Rigidbody2D>();
         EnemyAI = GetComponent<CacoAI>();
-        enemyHealth = GetComponent<EnemyHealth>();
+        myHealth = GetComponent<EnemyHealth>();
+        
         genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
     }
 
@@ -77,7 +78,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
 
         for (int i = 0; i < burstCount; i++)
         {
-            if(enemyHealth.dying) {
+            if(myHealth.dying) {
             isShooting = false;
             yield break;
             }
@@ -184,13 +185,23 @@ public class Cacodaemon : MonoBehaviour, IEnemy
 
     private void OnCollisionStay2D(Collision2D other) {
         if (!attackMove) {return;}
-        PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>(); 
-        if(playerHealth) {
-            if (!playerCollision) {
+        if (playerCollision) {return;}
+
+        PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+        ShieldBlock shieldBlock = other.gameObject.GetComponentInChildren<ShieldBlock>();
+
+        if (myHealth.attacksBlocked) {
+            if (shieldBlock) {
                 playerCollision = true;
-                playerHealth.TakeDamage(1, transform);
-                StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
-            }
+                shieldBlock.TakeDamage(1, transform);
+                Debug.Log("shield block");
+                StartCoroutine(CollisionReloadRoutine(0.3f));
+            }     
+        } else if(playerHealth) {
+            playerCollision = true;
+            playerHealth.TakeDamage(1, transform);    
+            StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
+                
             
         }
 

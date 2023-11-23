@@ -10,13 +10,13 @@ using UnityEngine.Events;
 public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 {
     public bool IsDead;
-    public bool shieldActive = false;
-
-    public int shieldManaCost = 0;
+    //public bool shieldActive = false;
+    //public bool shieldCollison = false;
+    //public int shieldManaCost = 0;
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private float knockBackThrustAmount = 5f;
-    [SerializeField] private float ShieldKnockBackThrust = 2f;
-    [SerializeField] float shieldBlockAngle = 90f;
+    // [SerializeField] private float ShieldKnockBackThrust = 2f;
+    // [SerializeField] float shieldBlockAngle = 90f;
     
     [SerializeField] private string deathSceneTransitionName;
     [SerializeField] UnityEvent takeDamageEvent;
@@ -68,6 +68,9 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         float angle = Vector2.SignedAngle(facingDirection, directionToTarget);
 
         // Check if the angle is within the margin of error
+        // Debug.Log(facingDirection);
+        // Debug.Log(directionToTarget);
+        // Debug.Log(Mathf.Abs(angle));
         return Mathf.Abs(angle) <= marginOfError / 2;
     }
 
@@ -77,15 +80,15 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         if (rollInvulnerable) { return; }
         ScreenShakeManager.Instance.ShakeScreen();
         
-        if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
-            Vector2 shieldDirection = PlayerController.Instance.LastFacingDirection;
-            if(IsFacingTarget(shieldDirection, hitTransform, shieldBlockAngle)) {
-                knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
-                PlayerMana.Instance.UseMana(shieldManaCost);
-                GetComponent<Animator>().SetTrigger(SHILEDHIT_HASH);
-                return;
-            }
-        }
+        // if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
+        //     Vector2 shieldDirection = PlayerController.Instance.LastFacingDirection;
+        //     if(IsFacingTarget(shieldDirection, hitTransform, shieldBlockAngle)) {
+        //         knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
+        //         PlayerMana.Instance.UseMana(shieldManaCost);
+        //         GetComponent<Animator>().SetTrigger(SHILEDHIT_HASH);
+        //         return;
+        //     }
+        // }
         
         takeDamageEvent.Invoke();
         canTakeDamage = false;

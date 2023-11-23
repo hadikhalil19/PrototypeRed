@@ -20,6 +20,8 @@ public class SwordAttack : MonoBehaviour, IWeapon
 
     [SerializeField] private Transform SlashCollider;
     [SerializeField] private Transform StabCollider;
+    [SerializeField] private Transform ShieldCollider;
+    
 
     [SerializeField] private AudioSource stabAttackAudio; 
     private SwordAnimHandler swordAnimHandler;
@@ -33,6 +35,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     private Vector2 stabMoveDirection;
 
     private bool delayedSecondaryStop;
+    private ShieldBlock shieldBlock;
 
     readonly int ATTACK_HASH = Animator.StringToHash("Attack");
     readonly int SECONDARY_HASH = Animator.StringToHash("Secondary");
@@ -47,6 +50,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     private void Awake() {
         myAnimator = PlayerController.Instance.GetComponent<Animator>();
         swordAnimHandler = FindObjectOfType<SwordAnimHandler>();
+        shieldBlock = GetComponentInChildren<ShieldBlock>();
     }
 
     
@@ -55,6 +59,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
         AttackAnimEnd();
         toggleSlashHitbox();
         toggleStabHitbox();
+        toggleShieldCollider();
         PlayerShieldAnim();
         MouseFollowWithOffset();
     }
@@ -130,14 +135,14 @@ public class SwordAttack : MonoBehaviour, IWeapon
         secondaryAttack = false;
         shieldAction = false;
         myAnimator.SetBool(SHIELDUP_HASH, false);
-        PlayerHealth.Instance.shieldActive = false;
+        shieldBlock.shieldActive = false;
         unlockMovement();
     }
 
     private void DelaySecondaryStop() {
         shieldAction = false;
         myAnimator.SetBool(SHIELDUP_HASH, false);
-        PlayerHealth.Instance.shieldActive = false;
+        shieldBlock.shieldActive = false;
         unlockMovement();
     }
 
@@ -149,18 +154,18 @@ public class SwordAttack : MonoBehaviour, IWeapon
             myAnimator.SetBool(SHIELDUP_HASH, true);
             lockMovement();
         } else if (shieldAction) {
-            ShieldBlock();
+            ShieldBlocking();
         }
     }
 
-    private void ShieldBlock() {
+    private void ShieldBlocking() {
         if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShieldIdle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("ShieldHit")) {
-            PlayerHealth.Instance.shieldActive = true;
-            PlayerHealth.Instance.shieldManaCost = weaponInfo.weaponManaCost;
+            shieldBlock.shieldActive = true;
+            shieldBlock.shieldManaCost = weaponInfo.weaponManaCost;
         }
         else {
-            PlayerHealth.Instance.shieldActive = false;
-            PlayerHealth.Instance.shieldManaCost = 0;
+            shieldBlock.shieldActive = false;
+            shieldBlock.shieldManaCost = 0;
         }
     }
 
@@ -192,6 +197,14 @@ public class SwordAttack : MonoBehaviour, IWeapon
             StabCollider.gameObject.SetActive(true);
         } else {
             StabCollider.gameObject.SetActive(false);
+        }
+    }
+    private void toggleShieldCollider() {
+        if (shieldBlock.shieldActive) {
+            ShieldCollider.gameObject.SetActive(true);
+            ShieldColliderFollow();
+        } else {
+            ShieldCollider.gameObject.SetActive(false);
         }
     }
 
@@ -318,6 +331,28 @@ public class SwordAttack : MonoBehaviour, IWeapon
             StabCollider.transform.rotation = Quaternion.Euler(0, 0, 135);
         } else if (angle > 157.5 || angle < -157.5 ) { // west
             StabCollider.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
+    private void ShieldColliderFollow() { // Sprint attack stabcollider follow
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);
+        float angle = Mathf.Atan2(mousePos.y - playerScreenPoint.y, mousePos.x - playerScreenPoint.x) * Mathf.Rad2Deg;
+        if (angle > 67.5 && angle <= 112.5) { // north
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 0, 90);
+        } else if (angle > 22.5 && angle <= 67.5) { // northeast
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 0, 45);
+        } else if (angle > -22.5 && angle <= 22.5) { // east
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
+        } else if (angle > -67.5 && angle <= -22.5) { // southeast
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 0, -45);
+        } else if (angle > -112.5 && angle <= -67.5) { // south
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 0, -90);
+        } else if (angle > -157.5 && angle <= -112.5) { // southwest
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 0, -135);
+        } else if (angle > 112.5 && angle <= 157.5) { // northwest
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 0, 135);
+        } else if (angle > 157.5 || angle < -157.5 ) { // west
+            ShieldCollider.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 

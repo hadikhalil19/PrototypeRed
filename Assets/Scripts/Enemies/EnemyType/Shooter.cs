@@ -23,6 +23,7 @@ public class Shooter : MonoBehaviour, IEnemy
     private SpriteRenderer spriteRenderer;
     private EnemyAnimController enemyAnimController;
     private ASEnemyAI aSEnemyAI;
+    private EnemyHealth myHealth;
     Rigidbody2D rb;
 
     [SerializeField] float speed = 200f;
@@ -38,6 +39,7 @@ public class Shooter : MonoBehaviour, IEnemy
         enemyAnimController =  GetComponent<EnemyAnimController>();
         rb = GetComponent<Rigidbody2D>();
         aSEnemyAI = GetComponent<ASEnemyAI>();
+        myHealth = GetComponent<EnemyHealth>();
     }
 
     private void OnValidate() {
@@ -168,15 +170,26 @@ public class Shooter : MonoBehaviour, IEnemy
         }
     }
 
+    // playerCollison = true means it has already collided
     private void OnCollisionStay2D(Collision2D other) {
         if (!attackMove) {return;}
-        PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>(); 
-        if(playerHealth) {
-            if (!playerCollision) {
+        if (playerCollision) {return;}
+
+        PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+        ShieldBlock shieldBlock = other.gameObject.GetComponentInChildren<ShieldBlock>();
+
+        if (myHealth.attacksBlocked) {
+            if (shieldBlock) {
                 playerCollision = true;
-                playerHealth.TakeDamage(1, transform);
-                StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
-            }
+                shieldBlock.TakeDamage(1, transform);
+                Debug.Log("shield block");
+                StartCoroutine(CollisionReloadRoutine(0.3f));
+            }     
+        } else if(playerHealth) {
+            playerCollision = true;
+            playerHealth.TakeDamage(1, transform);    
+            StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
+                
             
         }
 
