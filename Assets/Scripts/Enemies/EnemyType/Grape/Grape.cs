@@ -14,6 +14,7 @@ public class Grape : MonoBehaviour, IEnemy
     private EnemyAnimController enemyAnimController;
     private bool meleeAttack = false;
     private GenericAudioPlayer genericAudioPlayer;
+    private MovingCollider movingCollider;
 
 
     //readonly int ATTACK_HASH = Animator.StringToHash("Attack");
@@ -23,6 +24,7 @@ public class Grape : MonoBehaviour, IEnemy
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyAnimController =  GetComponent<EnemyAnimController>();
         genericAudioPlayer = GetComponentInChildren<GenericAudioPlayer>();
+        movingCollider = GetComponentInChildren<MovingCollider>();
     }
 
     public void Attack() { 
@@ -83,10 +85,15 @@ public class Grape : MonoBehaviour, IEnemy
 
         MeleeAttackCollider.gameObject.SetActive(true);
         StartCoroutine(MeleeColliderDisableRoutine());
+        movingCollider.ColliderStartMoving();
     }
 
     private IEnumerator MeleeColliderDisableRoutine() {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.35f);
+        MeleeAttackCollider.gameObject.SetActive(false);
+    }
+
+    public void DisableMeleeCollider() {
         MeleeAttackCollider.gameObject.SetActive(false);
     }
 
