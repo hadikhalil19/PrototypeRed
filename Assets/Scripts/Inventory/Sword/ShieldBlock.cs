@@ -9,8 +9,9 @@ public class ShieldBlock : MonoBehaviour
     public int shieldManaCost = 0;
     private KnockBack knockback;
     [SerializeField] private float ShieldKnockBackThrust = 2f;
+    readonly int SHILEDHIT_HASH = Animator.StringToHash("ShieldHit");
     private void Awake() {
-        knockback = GetComponent<KnockBack>();
+        knockback = GetComponentInParent<KnockBack>();
     }
 
     public void TakeDamage(int damageAmount,  Transform hitTransform) {
@@ -19,7 +20,7 @@ public class ShieldBlock : MonoBehaviour
         if (shieldActive && PlayerMana.Instance.CurrentMana > (shieldManaCost + damageAmount)) {
             //knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
             PlayerMana.Instance.UseMana(shieldManaCost + damageAmount);
-            //GetComponent<Animator>().SetTrigger(SHILEDHIT_HASH);
+            GetComponentInParent<Animator>().SetTrigger(SHILEDHIT_HASH);
             return;
         } else {
             PlayerHealth.Instance.TakeDamage(damageAmount, transform);
