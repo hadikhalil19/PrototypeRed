@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 1342145859518384858}
   - component: {fileID: 1295560084387138386}
   m_Layer: 0
-  m_Name: Bushling
+  m_Name: Bushling 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ Transform:
   m_GameObject: {fileID: 797723135186031047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.2, y: 8.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -494,13 +494,13 @@ MonoBehaviour:
   target: {fileID: 0}
   attackRange: 6
   followRange: 10
-  meleeRange: 1.5
+  meleeRange: 1.2
   roamChangeDirTime: 2
   hasCollisonDamage: 0
   nextWaypointDistance: 1.5
   pathUpdateSeconds: 0.8
   enemyType: {fileID: 3547666014498630624}
-  attackCooldownMin: 4
+  attackCooldownMin: 60
   meleeCooldownMin: 1
   looseInterestTime: 2
   flankingTimeMin: 1
@@ -736,7 +736,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!114 &6444250193750396053
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2976110243719624794}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1494a190a9d0ba143961e7d3f830b193, type: 3}
   m_Name: 

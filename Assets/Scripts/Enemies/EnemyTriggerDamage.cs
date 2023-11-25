@@ -55,6 +55,6 @@ public class EnemyTriggerDamage : MonoBehaviour
 
     void OnEnable()
     {
-    
+        playerCollision = false;
     }
 }

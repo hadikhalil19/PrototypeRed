@@ -41,6 +41,24 @@ public class ShieldBlock : MonoBehaviour
        }
     }
 
+
+    // private void OnCollisonEnter2D(Collider2D other) {
+    //    EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+    //    Debug.Log("collision");
+    //     if (enemyHealth) {
+    //         Debug.Log("enemy collision");
+    //         enemyHealth.attacksBlocked = true;
+    //    }
+    // }
+    // private void OnCollisonExit2D(Collider2D other) {
+    //     EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+    //     if (enemyHealth) {
+    //         Debug.Log("enemy collision end");
+    //         enemyHealth.attacksBlocked = false;
+    //     }
+    // }
+
+
     
     
 

@@ -4020,7 +4020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916554747770493590, guid: 8c95e60afc410564e8feabe18e266b63, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -244.99918
+      value: -245.00003
       objectReference: {fileID: 0}
     - target: {fileID: 1079361898878594921, guid: 8c95e60afc410564e8feabe18e266b63, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6874,6 +6874,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2851e00754936ce47b4bfc792aa3280b, type: 3}
+--- !u!1001 &771444393
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 797723135186031047, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_Name
+      value: Bushling
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -47.75636
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.268457
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914926590902948149, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50393c6516186d44bb65c3883d084b7a, type: 3}
 --- !u!1001 &800188215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6925,6 +6982,10 @@ PrefabInstance:
     - target: {fileID: 1199031138018798568, guid: 3c502eee4490c384bba39858d6edd227, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780807106831441109, guid: 3c502eee4490c384bba39858d6edd227, type: 3}
+      propertyPath: maxHealth
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5845608565179345203, guid: 3c502eee4490c384bba39858d6edd227, type: 3}
       propertyPath: m_Enabled
@@ -45568,7 +45629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7525122823613460848, guid: 5d9506852ba4a1e43b47f84e691db796, type: 3}
       propertyPath: showNavGraphs
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7525122823613460848, guid: 5d9506852ba4a1e43b47f84e691db796, type: 3}
       propertyPath: data.dataString
@@ -45595,3 +45656,4 @@ SceneRoots:
   - {fileID: 800188215}
   - {fileID: 1995093739}
   - {fileID: 1757136334167114165}
+  - {fileID: 771444393}
