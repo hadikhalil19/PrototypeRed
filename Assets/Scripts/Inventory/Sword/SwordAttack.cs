@@ -93,7 +93,6 @@ public class SwordAttack : MonoBehaviour, IWeapon
 
     private void RunStabAttack() {
         myAnimator.SetTrigger(ATTACK_HASH);
-        //myAnimator.SetBool(ISATTACKING_HASH, true);
         PlayerController.Instance.AttackMoving = true;
         PlayerController.Instance.sprintAttack = true;
         PlayerController.Instance.sprint = false;
@@ -103,7 +102,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
         myAnimator.SetFloat("rollX", stabMoveDirection.x);
         myAnimator.SetFloat("rollY", stabMoveDirection.y);
         lockMovement();
-        //PlayerController.Instance.AttackDirectionLock = true;
+        PlayerMana.Instance.UseMana(weaponInfo.weaponManaCost);
         StabAttackEffects();
         StartCoroutine(StabEndRoutine());
     }

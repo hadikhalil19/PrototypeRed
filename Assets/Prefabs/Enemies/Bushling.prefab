@@ -494,7 +494,7 @@ MonoBehaviour:
   target: {fileID: 0}
   attackRange: 6
   followRange: 10
-  meleeRange: 1.5
+  meleeRange: 1.2
   roamChangeDirTime: 2
   hasCollisonDamage: 0
   nextWaypointDistance: 1.5
