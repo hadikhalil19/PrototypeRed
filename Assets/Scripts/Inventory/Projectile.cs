@@ -46,12 +46,12 @@ public class Projectile : MonoBehaviour
         ShieldBlock shieldBlock = other.gameObject.GetComponent<ShieldBlock>();
 
         if (shieldBlock && isEnemyProjectile) {
-            shieldBlock.TakeDamage(1,transform);
+            shieldBlock.TakeDamage(projectileDamage,transform);
             Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
         } else if (player && isEnemyProjectile) {
             if (player.canTakeDamage) {
-                player?.TakeDamage(1, transform);
+                player?.TakeDamage(projectileDamage, transform);
                 Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
                 Destroy(gameObject);
             }

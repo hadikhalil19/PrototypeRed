@@ -14,6 +14,7 @@ public class Stinger : MonoBehaviour, IEnemy
     Rigidbody2D rb;
 
     [SerializeField] float speed = 200f;
+    [SerializeField] int meleeDamage = 1;
 
     private bool attackMove = false;
 
@@ -106,13 +107,13 @@ public class Stinger : MonoBehaviour, IEnemy
         if (myHealth.attacksBlocked) {
             if (shieldBlock) {
                 playerCollision = true;
-                shieldBlock.TakeDamage(1, transform);
+                shieldBlock.TakeDamage(meleeDamage, transform);
                 Debug.Log("shield block");
                 StartCoroutine(CollisionReloadRoutine(0.3f));
             }     
         } else if(playerHealth) {
             playerCollision = true;
-            playerHealth.TakeDamage(1, transform);    
+            playerHealth.TakeDamage(meleeDamage, transform);    
             StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
                 
             

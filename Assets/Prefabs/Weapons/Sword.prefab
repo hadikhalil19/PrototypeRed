@@ -284,6 +284,7 @@ MonoBehaviour:
   shieldActive: 0
   shieldManaCost: 0
   ShieldKnockBackThrust: 2
+  weaponInfo: {fileID: 11400000, guid: 7ff27184b8bad834c856f0a0cf594355, type: 2}
 --- !u!1 &6657302901635122088
 GameObject:
   m_ObjectHideFlags: 0

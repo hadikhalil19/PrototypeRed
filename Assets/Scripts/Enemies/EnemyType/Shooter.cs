@@ -17,6 +17,8 @@ public class Shooter : MonoBehaviour, IEnemy
     [SerializeField] private bool oscillate;
     [SerializeField] AudioSource spitAudio;
 
+    [SerializeField] int meleeDamage = 1;
+
     private bool isShooting = false;
 
     private Animator myAnimator;
@@ -181,13 +183,13 @@ public class Shooter : MonoBehaviour, IEnemy
         if (myHealth.attacksBlocked) {
             if (shieldBlock) {
                 playerCollision = true;
-                shieldBlock.TakeDamage(1, transform);
+                shieldBlock.TakeDamage(meleeDamage, transform);
                 Debug.Log("shield block");
                 StartCoroutine(CollisionReloadRoutine(0.3f));
             }     
         } else if(playerHealth) {
             playerCollision = true;
-            playerHealth.TakeDamage(1, transform);    
+            playerHealth.TakeDamage(meleeDamage, transform);    
             StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
                 
             

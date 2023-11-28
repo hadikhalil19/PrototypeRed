@@ -21,6 +21,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] private float popDuration = 1f;
 
     [SerializeField] private int manaGlobeValue = 25;
+    [SerializeField] private int healthGlobeValue = 25;
 
     private Vector3 moveDir;
     private Rigidbody2D rb;
@@ -84,7 +85,7 @@ public class PickUp : MonoBehaviour
                 
                 break;
             case PickUpType.HealthGlobe:
-                PlayerHealth.Instance.HealPlayer();
+                PlayerHealth.Instance.HealPlayer(healthGlobeValue);
                 
                 break;
             case PickUpType.ManaGlobe:

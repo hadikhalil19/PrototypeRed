@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5204019715231018852}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.59436333, y: 7.56717, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3543049111219791809
 SpriteRenderer:
@@ -165,4 +165,4 @@ MonoBehaviour:
   particleOnHitPrefabVFX: {fileID: 4764969303406464663, guid: e411402a6f5c6c1479c9d17cf78a2ce7, type: 3}
   isEnemyProjectile: 1
   projectileRange: 5
-  projectileDamage: 1
+  projectileDamage: 10

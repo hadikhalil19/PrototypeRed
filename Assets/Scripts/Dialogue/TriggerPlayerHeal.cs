@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TriggerPlayerHeal : MonoBehaviour
 {
+    [SerializeField] int healAmount = 30;
     public void TriggerHeal() {
-        PlayerHealth.Instance.HealPlayer();
+        PlayerHealth.Instance.HealPlayer(healAmount);
     }
     
     // private void Update() {

@@ -13,7 +13,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     //public bool shieldActive = false;
     //public bool shieldCollison = false;
     //public int shieldManaCost = 0;
-    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private int maxHealth = 100;
     [SerializeField] private float knockBackThrustAmount = 5f;
     // [SerializeField] private float ShieldKnockBackThrust = 2f;
     // [SerializeField] float shieldBlockAngle = 90f;
@@ -55,40 +55,33 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 
     }
 
-    public void HealPlayer() {
-        if (currentHealth < maxHealth) {
-            currentHealth += 1;
+    public void HealPlayer(int healValue) {
+        if (currentHealth + healValue < maxHealth) {
+            currentHealth += healValue;
+            UpdateHealthSlider();
+        } else {
+            currentHealth = maxHealth;
             UpdateHealthSlider();
         }
     }
 
-    bool IsFacingTarget(Vector2 facingDirection, Transform target, float marginOfError)
-    {
-        Vector2 directionToTarget = (target.position - transform.position).normalized;
-        float angle = Vector2.SignedAngle(facingDirection, directionToTarget);
+    // bool IsFacingTarget(Vector2 facingDirection, Transform target, float marginOfError)
+    // {
+    //     Vector2 directionToTarget = (target.position - transform.position).normalized;
+    //     float angle = Vector2.SignedAngle(facingDirection, directionToTarget);
 
-        // Check if the angle is within the margin of error
-        // Debug.Log(facingDirection);
-        // Debug.Log(directionToTarget);
-        // Debug.Log(Mathf.Abs(angle));
-        return Mathf.Abs(angle) <= marginOfError / 2;
-    }
+    //     // Check if the angle is within the margin of error
+    //     // Debug.Log(facingDirection);
+    //     // Debug.Log(directionToTarget);
+    //     // Debug.Log(Mathf.Abs(angle));
+    //     return Mathf.Abs(angle) <= marginOfError / 2;
+    // }
 
     public void TakeDamage(int damageAmount,  Transform hitTransform) {
         if (!canTakeDamage) { return; }
         if (IsDead) { return; }
         if (rollInvulnerable) { return; }
         ScreenShakeManager.Instance.ShakeScreen();
-        
-        // if (shieldActive && PlayerMana.Instance.CurrentMana > shieldManaCost) {
-        //     Vector2 shieldDirection = PlayerController.Instance.LastFacingDirection;
-        //     if(IsFacingTarget(shieldDirection, hitTransform, shieldBlockAngle)) {
-        //         knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);
-        //         PlayerMana.Instance.UseMana(shieldManaCost);
-        //         GetComponent<Animator>().SetTrigger(SHILEDHIT_HASH);
-        //         return;
-        //     }
-        // }
         
         takeDamageEvent.Invoke();
         canTakeDamage = false;

@@ -16,6 +16,7 @@ public class Cacodaemon : MonoBehaviour, IEnemy
     [SerializeField] private bool stagger;
     [Tooltip("Stagger has to be enabled for oscillate to work")]
     [SerializeField] private bool oscillate;
+    [SerializeField] int meleeDamage = 1;
 
     private bool isShooting = false;
 
@@ -193,13 +194,13 @@ public class Cacodaemon : MonoBehaviour, IEnemy
         if (myHealth.attacksBlocked) {
             if (shieldBlock) {
                 playerCollision = true;
-                shieldBlock.TakeDamage(1, transform);
+                shieldBlock.TakeDamage(meleeDamage, transform);
                 Debug.Log("shield block");
                 StartCoroutine(CollisionReloadRoutine(0.3f));
             }     
         } else if(playerHealth) {
             playerCollision = true;
-            playerHealth.TakeDamage(1, transform);    
+            playerHealth.TakeDamage(meleeDamage, transform);    
             StartCoroutine(CollisionReloadRoutine(playerHealth.damageRecoveryTime));
                 
             

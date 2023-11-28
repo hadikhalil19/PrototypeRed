@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb242aa31ff457438bd04d5dd3d33f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 20
   splashDamageDuration: 4
 --- !u!1 &6456571586753823317
 GameObject:

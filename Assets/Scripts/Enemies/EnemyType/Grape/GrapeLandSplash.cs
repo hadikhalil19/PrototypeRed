@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GrapeLandSplash : MonoBehaviour
 {
+    [SerializeField] int damageAmount;
+
     private SpriteFade spriteFade;
     [SerializeField] private float splashDamageDuration = 1f;
     private void Awake() {
@@ -18,7 +20,7 @@ public class GrapeLandSplash : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
-        playerHealth?.TakeDamage(1, transform);
+        playerHealth?.TakeDamage(damageAmount, transform);
     }
 
     private void DisableCollider() {
