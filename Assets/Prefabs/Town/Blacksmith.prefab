@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4034081451760094904}
   - component: {fileID: 2709699363134876859}
   - component: {fileID: 6981568033500387944}
+  - component: {fileID: -298595751067493920}
   m_Layer: 0
   m_Name: Blacksmith
   m_TagString: Untagged
@@ -238,6 +239,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b59803f08a537948939aaef06e16266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-298595751067493920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936514204224348339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1592fe1da6f046bdd4e160d057183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4423984339630160279
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,10 +393,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAudioSamples: {fileID: 11400000, guid: e7c64bfead286cd4d9c1f195494a87ad, type: 2}
+  SecondaryAudioSamples: {fileID: 0}
   audioSource: {fileID: 1166269943596068252}
   SecondaryAudio: {fileID: 0}
+  PrimaryAudio: {fileID: 0}
   AudioClipVol: 0.3
-  SecondaryAudioVol: 0.5
+  AudioSourceVol: 0.5
   minDist: 1
   maxDist: 15
 --- !u!1 &6022671949321855870

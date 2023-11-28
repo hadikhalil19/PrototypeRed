@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191828482163755809}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0009441376, y: 1.729502, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3922388982001912393}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7200971889508256300
 SpriteRenderer:
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5342514458428244384}
   - component: {fileID: 8311779691668562152}
   - component: {fileID: 7826161564696583240}
+  - component: {fileID: -1229579179701313094}
   m_Layer: 0
   m_Name: Empty Blue Tent
   m_TagString: Untagged
@@ -111,6 +112,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2847827771062458375}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.917578, y: 0.96910644, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -118,7 +120,6 @@ Transform:
   m_Children:
   - {fileID: 1362107591577556683}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9092263631351267918
 SpriteRenderer:
@@ -307,3 +308,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 2.152719}
   m_EdgeRadius: 0
+--- !u!114 &-1229579179701313094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847827771062458375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1592fe1da6f046bdd4e160d057183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

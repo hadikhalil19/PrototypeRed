@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5054402304799153630}
   - component: {fileID: 5354491595092695988}
   - component: {fileID: 3234181016586468461}
+  - component: {fileID: -2730100980001629107}
   m_Layer: 0
   m_Name: Potionmaking Table
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8136069747362772043}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.02, y: 0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5354491595092695988
 SpriteRenderer:
@@ -136,3 +137,15 @@ PolygonCollider2D:
       - {x: 0.6620989, y: -0.99585426}
       - {x: 0.7009516, y: 0.63885903}
   m_UseDelaunayMesh: 0
+--- !u!114 &-2730100980001629107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136069747362772043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1592fe1da6f046bdd4e160d057183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

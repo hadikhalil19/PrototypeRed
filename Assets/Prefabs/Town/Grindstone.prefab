@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4940896357082281579}
   - component: {fileID: 7199981049742056877}
   - component: {fileID: 7367923268530924672}
+  - component: {fileID: 8027131035882848976}
   m_Layer: 0
   m_Name: Grindstone
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8676548649857554080}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.45, y: 2.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7199981049742056877
 SpriteRenderer:
@@ -120,3 +121,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00000002011609, y: -0.16874601}
   m_Size: {x: 1.0000002, y: 0.5340951}
   m_Direction: 1
+--- !u!114 &8027131035882848976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676548649857554080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1592fe1da6f046bdd4e160d057183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7209034489931116064}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0812, y: 1.0558, z: 0}
   m_LocalScale: {x: 3.0652006, y: 3.111402, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5542124618429855165}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1995072114712766418
 SpriteRenderer:
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5542124618429855165}
   - component: {fileID: 6846524575070824500}
   - component: {fileID: 4225783750254370758}
+  - component: {fileID: 4789561477415958526}
   m_Layer: 0
   m_Name: Wagon
   m_TagString: Untagged
@@ -109,6 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8971630639922281390}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.46, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -116,7 +118,6 @@ Transform:
   m_Children:
   - {fileID: 3406436416072930430}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6846524575070824500
 SpriteRenderer:
@@ -226,3 +227,15 @@ PolygonCollider2D:
       - {x: 0.34844685, y: 0.3709097}
       - {x: 0.5481968, y: 0.08945894}
   m_UseDelaunayMesh: 0
+--- !u!114 &4789561477415958526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971630639922281390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1592fe1da6f046bdd4e160d057183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

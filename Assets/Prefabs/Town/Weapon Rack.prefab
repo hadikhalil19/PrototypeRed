@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2260699569998182972}
   - component: {fileID: 4802977562846188496}
   - component: {fileID: 4822895594308346085}
+  - component: {fileID: 4322067343539687056}
   m_Layer: 0
   m_Name: Weapon Rack
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8330541115044574329}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.49, y: 1.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4802977562846188496
 SpriteRenderer:
@@ -120,3 +121,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.000000056047494, y: 0.029839609}
   m_Size: {x: 1.3125004, y: 0.6988799}
   m_Direction: 1
+--- !u!114 &4322067343539687056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330541115044574329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1592fe1da6f046bdd4e160d057183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
