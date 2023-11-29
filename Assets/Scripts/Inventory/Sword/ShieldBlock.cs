@@ -19,8 +19,7 @@ public class ShieldBlock : MonoBehaviour
     public void TakeDamage(int damageAmount,  Transform hitTransform) {
         ScreenShakeManager.Instance.ShakeScreen();
         
-        int blockManaCost = (shieldManaCost + damageAmount)/2;
-        Debug.Log(blockManaCost);
+        int blockManaCost = Mathf.RoundToInt((shieldManaCost + damageAmount)/2);
         
         if (shieldActive && PlayerMana.Instance.CurrentMana > (blockManaCost)) {
             //knockback.GetKnockedBack(hitTransform, ShieldKnockBackThrust);

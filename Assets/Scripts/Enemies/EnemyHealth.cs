@@ -59,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
         genericAudioPlayer.PlayRandomAudioClip();
     }
     if (enemyAnimController) { // if it has enemyAnimController and a built in flash
-        int staggerValue = (int)(damage * 100.0/startingHealth);
+        int staggerValue = Mathf.RoundToInt(damage * 100f/startingHealth);
         if (staggerValue >= staggerThreshold) {
             enemyAnimController?.PlayHitAnim();
             
