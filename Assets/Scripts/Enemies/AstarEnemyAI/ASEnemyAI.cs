@@ -13,7 +13,7 @@ public class ASEnemyAI : MonoBehaviour
     [SerializeField] private float meleeRange = 1f;
 
     [SerializeField] float roamChangeDirTime = 2f;
-    [SerializeField] bool hasCollisonDamage = false; 
+    //[SerializeField] bool hasCollisonDamage = false; 
     public float nextWaypointDistance = 1f;
     
     private Path path;

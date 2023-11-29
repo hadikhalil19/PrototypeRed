@@ -15,7 +15,7 @@ public class CacoAI : MonoBehaviour
     [SerializeField] private float meleeRange = 1f;
 
     [SerializeField] float roamChangeDirTime = 2f;
-    [SerializeField] bool hasCollisonDamage = false; 
+    //[SerializeField] bool hasCollisonDamage = false; 
     [SerializeField] AudioSource firstEncounterAudio;
     public float nextWaypointDistance = 1f;
     
@@ -180,7 +180,7 @@ public class CacoAI : MonoBehaviour
     }
 
     private IEnumerator AttackCooldownRoutine() {
-        float cooldown =  attackCooldownMin + Random.Range(0,3f);
+        float cooldown =  attackCooldownMin + Random.Range(0,attckRandMaxCD);
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
     }

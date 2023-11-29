@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject deathVFXPrefab;
     [SerializeField] bool hasFlashAnim = true;
     [SerializeField] int staggerThreshold = 10;
-    [SerializeField] int attackInteruptThreshold = 50;
+    //[SerializeField] int attackInteruptThreshold = 50;
     [SerializeField] bool bossEnemy = false;
 
     [SerializeField] FloatingHealthBar floatingHealthBar;
