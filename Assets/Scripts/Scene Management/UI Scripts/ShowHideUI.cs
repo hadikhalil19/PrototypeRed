@@ -15,6 +15,11 @@ namespace Proto.UI
             uiContainer.SetActive(false);
         }
 
+        public void OnEnable()
+        {
+            uiContainer.SetActive(false);
+        }
+
         // Update is called once per frame
         void Update()
         {

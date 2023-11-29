@@ -86,4 +86,8 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<PickUpSpawner>().DropItems();
         Destroy(gameObject); 
     }
+
+    // public void PlayerIsDead() {
+    //     if(bossUI && bossEnemy) {bossUI.SetActiveState(false);}
+    // }
 }

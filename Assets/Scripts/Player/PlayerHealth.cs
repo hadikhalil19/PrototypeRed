@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Proto.Saving;
 using Proto.SceneManagement;
 using UnityEngine.Events;
+using Proto.UI;
 
 public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 {
@@ -20,6 +21,9 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     
     [SerializeField] private string deathSceneTransitionName;
     [SerializeField] UnityEvent takeDamageEvent;
+
+    private ShowHideUI showHideUI;
+    const string BOSSUI_TEXT = "BossUI";
 
     public float damageRecoveryTime = 0.5f;
     private int currentHealth;
@@ -117,6 +121,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         yield return  new WaitForSeconds(3f);
         currentHealth = maxHealth;
         UpdateHealthSlider();
+        GameOverReset();
         IsDead = false;
         //CameraController.Instance.SetPlayerCameraFollow();
         ActiveWeapon.Instance.disableAttack = false; 
@@ -154,6 +159,14 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         currentHealth = (int)state;
         UpdateHealthSlider();
         CheckIfPlayerDeath();
+    }
+
+    private void GameOverReset() {
+        showHideUI = GameObject.Find(BOSSUI_TEXT).GetComponent<ShowHideUI>();
+        if (showHideUI) {
+            showHideUI.SetVisibility(false);
+        }
+        
     }
 
 }

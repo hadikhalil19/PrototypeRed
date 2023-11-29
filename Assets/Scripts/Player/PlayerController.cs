@@ -31,7 +31,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     public bool sprintAttack = false;
     Vector2 direction = new Vector2 (0,0);
     //public Vector2 PlayerDirection {get {return direction;}}
-    private float mouseFollowDelay = 0.2f;
+    //private float mouseFollowDelay = 0.2f;
     private MousePosition mousePosition;
     private KnockBack knockBack;
     private Rigidbody2D myRigidBody;
