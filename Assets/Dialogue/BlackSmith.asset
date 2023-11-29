@@ -42,8 +42,8 @@ MonoBehaviour:
   - e9e53eee-213d-45ea-aab4-902c57787571
   rect:
     serializedVersion: 2
-    x: 1662
-    y: 716
+    x: 1084
+    y: 682
     width: 200
     height: 100
   onEnterAction: 
@@ -64,6 +64,8 @@ MonoBehaviour:
   text: Converse
   children:
   - 15079fc7-093a-4067-9c2a-9ca03ef76109
+  - d4c5320f-727e-4074-a198-5efa0f5e91e3
+  - 55fb524c-a182-4616-8ee1-2bb2eab1bfd0
   rect:
     serializedVersion: 2
     x: 244
@@ -137,8 +139,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1912
-    y: 716
+    x: 1298
+    y: 675
     width: 200
     height: 100
   onEnterAction: 
@@ -156,14 +158,13 @@ MonoBehaviour:
   m_Name: e8756345-43c6-41f7-a8e4-628f75895419
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: There are all sorts of dangerous creatures running about killing everyone
-    and destorying everything.
-  children:
-  - d4c5320f-727e-4074-a198-5efa0f5e91e3
+  text: However, the roads have been more dangerous lately. All sorts of dangerous
+    creatures running about killing everyone and destorying everything.
+  children: []
   rect:
     serializedVersion: 2
-    x: 688
-    y: 526
+    x: 732
+    y: 530
     width: 200
     height: 100
   onEnterAction: 
@@ -212,14 +213,13 @@ MonoBehaviour:
   m_Name: 55fb524c-a182-4616-8ee1-2bb2eab1bfd0
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Miasma, poison and corruption spreading through the lands killing everything
-    in its path. Although some areas like this one are still safe for now.
+  text: We have set up camp here for now as it seems to be a secure location.
   children:
   - d247e4ae-1599-4e88-b5e7-4fccfd5242ab
   rect:
     serializedVersion: 2
-    x: 1162
-    y: 716
+    x: 485
+    y: 659
     width: 200
     height: 100
   onEnterAction: 
@@ -260,13 +260,13 @@ MonoBehaviour:
   m_Name: 15079fc7-093a-4067-9c2a-9ca03ef76109
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Well as you might know, God has declared the world is to die.
+  text: We have been on the move since the day of Resolution.
   children:
   - e8756345-43c6-41f7-a8e4-628f75895419
   rect:
     serializedVersion: 2
-    x: 461
-    y: 530
+    x: 464
+    y: 531
     width: 200
     height: 100
   onEnterAction: 
@@ -291,8 +291,8 @@ MonoBehaviour:
   - 0ddfcf4d-ecd4-4c79-ab07-9c6121fd7756
   rect:
     serializedVersion: 2
-    x: 708
-    y: 108
+    x: 704
+    y: 53
     width: 200
     height: 100
   onEnterAction: 
@@ -310,14 +310,13 @@ MonoBehaviour:
   m_Name: d4c5320f-727e-4074-a198-5efa0f5e91e3
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Whole towns have been abandoned and capital cities have been wiped off the
-    face of the Earth.
-  children:
-  - 55fb524c-a182-4616-8ee1-2bb2eab1bfd0
+  text: There is an abondoned town up ahead, maybe you can clear it out and scavenge
+    anything useful.
+  children: []
   rect:
     serializedVersion: 2
-    x: 915
-    y: 634
+    x: 457
+    y: 805
     width: 200
     height: 100
   onEnterAction: 
@@ -364,8 +363,8 @@ MonoBehaviour:
   - 46ae6108-a5d4-4ca5-ae78-7ed3648421e4
   rect:
     serializedVersion: 2
-    x: 472
-    y: 108
+    x: 485
+    y: 34
     width: 200
     height: 100
   onEnterAction: 
@@ -383,14 +382,12 @@ MonoBehaviour:
   m_Name: d247e4ae-1599-4e88-b5e7-4fccfd5242ab
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Tis truely the end of times. Not many survivors these days. May God have
-    mercy on those of us that remain.
-  children:
-  - 662a4c3f-d018-43a0-9cde-9cc96eee19eb
+  text: We do what we can to survive.
+  children: []
   rect:
     serializedVersion: 2
-    x: 1426
-    y: 718
+    x: 771
+    y: 656
     width: 200
     height: 100
   onEnterAction: 

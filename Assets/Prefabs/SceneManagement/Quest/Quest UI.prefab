@@ -612,7 +612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -244.99998}
+  m_AnchoredPosition: {x: -0.00012207031, y: -244.99962}
   m_SizeDelta: {x: -58.33312, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7037081347758050210
@@ -1434,6 +1434,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2429964277533366511, guid: 4adc27ebcef9284499ba0137538cf961, type: 3}
+      propertyPath: m_text
+      value: Esc
+      objectReference: {fileID: 0}
     - target: {fileID: 5481112600056639365, guid: 4adc27ebcef9284499ba0137538cf961, type: 3}
       propertyPath: m_Name
       value: Quest (7)
@@ -1488,7 +1492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603698628182446705, guid: 4adc27ebcef9284499ba0137538cf961, type: 3}
       propertyPath: m_text
-      value: Example Quest
+      value: Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

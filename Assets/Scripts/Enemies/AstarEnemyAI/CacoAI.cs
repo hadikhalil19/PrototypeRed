@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using UnityEditor.Tilemaps;
 using Proto.Audio;
-using UnityEditor.Rendering;
 
 
 public class CacoAI : MonoBehaviour
