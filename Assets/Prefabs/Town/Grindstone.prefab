@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7199981049742056877}
   - component: {fileID: 7367923268530924672}
   - component: {fileID: 8027131035882848976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Grindstone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

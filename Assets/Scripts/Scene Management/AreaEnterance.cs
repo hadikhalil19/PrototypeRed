@@ -21,7 +21,7 @@ public class AreaEnterance : MonoBehaviour
             
             PlayerController.Instance.ResetPlayerController();
 
-            UIFade.Instance.FadeOut();
+            UIFade.Instance.FadeOut(1);
 
             StartCoroutine(checkpointSave());
         }

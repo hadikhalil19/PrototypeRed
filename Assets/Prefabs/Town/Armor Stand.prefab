@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2561086232976673143}
   - component: {fileID: 5338670807270126522}
   - component: {fileID: -4379826213473126851}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Armor Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

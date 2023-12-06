@@ -7,12 +7,13 @@ public class LocalExit : MonoBehaviour
 {
     [SerializeField] private Transform moveToLocation;
     [SerializeField] private float fadeDelay = 1f;
+    [SerializeField] private float fadeSpeedMult = 2f;
     [SerializeField] private bool moveIndoor = false;
    
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
-            UIFade.Instance.FadeIn();
+            UIFade.Instance.FadeIn(fadeSpeedMult);
             StartCoroutine(moveToRoutine());
         }
     }
@@ -31,7 +32,7 @@ public class LocalExit : MonoBehaviour
 
     private IEnumerator fadeOutWaitRoutine() {
         yield return  new WaitForSeconds(fadeDelay);
-        UIFade.Instance.FadeOut();
+        UIFade.Instance.FadeOut(fadeSpeedMult);
 
     }
 

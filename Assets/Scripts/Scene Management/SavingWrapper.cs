@@ -12,13 +12,13 @@ public class SavingWrapper : MonoBehaviour
     [SerializeField] float fadeInTime = 2f;
 
         IEnumerator Start() {
-            UIFade.Instance.FadeIn();
+            UIFade.Instance.FadeIn(1);
 
             yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
             CameraController.Instance.SetPlayerCameraFollow();
 
             yield return new WaitForSeconds(fadeInTime);
-            UIFade.Instance.FadeOut();
+            UIFade.Instance.FadeOut(1);
         }
     void Update()
     {
@@ -44,11 +44,11 @@ public class SavingWrapper : MonoBehaviour
         }
 
         private IEnumerator LoadFadeRoutine() {
-        UIFade.Instance.FadeIn();
+        UIFade.Instance.FadeIn(1);
         yield return  new WaitForSeconds(fadeInTime);
         Load();
         yield return  new WaitForSeconds(fadeInTime);
-        UIFade.Instance.FadeOut();
+        UIFade.Instance.FadeOut(1);
         }
 }
 

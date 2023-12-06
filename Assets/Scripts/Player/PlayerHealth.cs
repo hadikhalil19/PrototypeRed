@@ -113,7 +113,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         //Destroy(gameObject);
         //SceneManager.LoadScene(CAMP_TEXT);
         SceneManagement.Instance.SetTransitionName(deathSceneTransitionName);
-        UIFade.Instance.FadeIn();
+        UIFade.Instance.FadeIn(1);
         StartCoroutine(LoadSceneRoutine());
     }
 

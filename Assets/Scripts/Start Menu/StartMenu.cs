@@ -60,7 +60,7 @@ public class StartMenu : MonoBehaviour
         //SceneManager.LoadScene(1);
         Debug.Log("Start");
         SceneManagement.Instance.SetTransitionName(sceneTransitionName);
-        UIFade.Instance.FadeIn();
+        UIFade.Instance.FadeIn(1);
         StartCoroutine(LoadSceneRoutine());
         //CameraController.SetActive(true);
     }
