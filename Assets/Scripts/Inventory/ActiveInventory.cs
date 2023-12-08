@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActiveInventory : Singleton<ActiveInventory>
 {
@@ -36,10 +37,12 @@ public class ActiveInventory : Singleton<ActiveInventory>
         activeSlotIndexNum = indexNum;
 
         foreach (Transform inventorySlot in this.transform) {
-            inventorySlot.GetChild(0).gameObject.SetActive(false);
+            //inventorySlot.GetChild(0).gameObject.SetActive(false);
+            inventorySlot.GetComponent<Image>().color = new Color32(100,100,100,100);
         }
 
-        this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
+        //this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
+        this.transform.GetChild(indexNum).GetComponent<Image>().color = new Color32(255,255,255,255);
 
         ChangeActiveWeapon();
     }
