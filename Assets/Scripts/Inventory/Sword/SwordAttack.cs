@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Rendering.Universal;
+using UnityEngine.EventSystems;
 
 public class SwordAttack : MonoBehaviour, IWeapon
 {
@@ -65,6 +65,7 @@ public class SwordAttack : MonoBehaviour, IWeapon
     }
 
     public void Attack() {
+        if (EventSystem.current.IsPointerOverGameObject()) {return;}
         if (PlayerController.Instance.AttackLock) {return;}
         if (PlayerMana.Instance.CurrentMana < weaponInfo.weaponManaCost) {return;}
         if (PlayerController.Instance.sprint) {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class Bow : MonoBehaviour, IWeapon
 {
@@ -44,6 +45,7 @@ public class Bow : MonoBehaviour, IWeapon
 
 
     public void Attack() {
+        if (EventSystem.current.IsPointerOverGameObject()) {return;}
         if (PlayerController.Instance.AttackLock) {return;}
         if (PlayerMana.Instance.CurrentMana < weaponInfo.weaponManaCost) {return;}
         if (!bowAttacking && (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("NockArrow") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("ReloadArrow"))) {

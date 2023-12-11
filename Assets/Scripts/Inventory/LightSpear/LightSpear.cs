@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class LightSpear : MonoBehaviour, IWeapon
 {
@@ -36,6 +37,7 @@ public class LightSpear : MonoBehaviour, IWeapon
     }
 
     public void Attack() {
+        if (EventSystem.current.IsPointerOverGameObject()) {return;}
         if (PlayerController.Instance.AttackLock) {return;}
         if (PlayerMana.Instance.CurrentMana < weaponInfo.weaponManaCost) {return;} 
         if (lightSpearAttacking) {return;}

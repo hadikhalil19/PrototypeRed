@@ -47,7 +47,7 @@ public class ActiveInventory : Singleton<ActiveInventory>
         ChangeActiveWeapon();
     }
 
-    private void ChangeActiveWeapon() {
+    public void ChangeActiveWeapon() {
         if (PlayerHealth.Instance.IsDead) return;
         if (ActiveWeapon.Instance.CurrentActiveWeapon != null) {
             Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
