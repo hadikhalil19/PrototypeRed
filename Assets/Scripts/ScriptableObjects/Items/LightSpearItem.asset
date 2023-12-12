@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LightSpearItem
   m_EditorClassIdentifier: 
   itemType: 1
-  actionType: 0
+  actionType: 1
   range: {x: 5, y: 4}
   weaponInfo: {fileID: 11400000, guid: 9259a3f7f5d09bb4f81ffb0b53c70f94, type: 2}
-  stackable: 1
+  stackable: 0
   image: {fileID: 21300000, guid: 29763ff2256631d4da31739c8f717e4d, type: 3}

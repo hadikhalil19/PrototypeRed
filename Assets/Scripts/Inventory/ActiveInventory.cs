@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,10 +45,10 @@ public class ActiveInventory : Singleton<ActiveInventory>
         //this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
         this.transform.GetChild(indexNum).GetComponent<Image>().color = new Color32(255,255,255,255);
 
-        ChangeActiveWeapon();
+        ChangeEquipedItem();
     }
 
-    public void ChangeActiveWeapon() {
+    public void ChangeEquipedItem() {
         if (PlayerHealth.Instance.IsDead) return;
         if (ActiveWeapon.Instance.CurrentActiveWeapon != null) {
             Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
@@ -55,19 +56,42 @@ public class ActiveInventory : Singleton<ActiveInventory>
 
         Transform childTransform = transform.GetChild(activeSlotIndexNum);
         InventorySlot inventorySlot = childTransform.GetComponentInChildren<InventorySlot>();
+        
+        if (inventorySlot.GetItemType() == 1)
+        {
+            ChangeActiveWeapon(inventorySlot);
+        }
+        if (inventorySlot.GetItemType() == 2)
+        {
+            ChangeActiveMiscItem(inventorySlot);
+        }
+        if (inventorySlot.GetItemType() == 10)
+        {
+            ActiveWeapon.Instance.WeaponNull();
+        }
+
+
+    }
+
+    private void ChangeActiveMiscItem(InventorySlot inventorySlot)
+    {
+        ItemInfo itemInfo = inventorySlot.GetIteminfo();
+        ActiveWeapon.Instance.WeaponNull();
+    }
+
+    private static void ChangeActiveWeapon(InventorySlot inventorySlot)
+    {
         WeaponInfo weaponInfo = inventorySlot.GetWeaponInfo();
-        
-        
-        if (weaponInfo == null) {
+
+        if (weaponInfo == null)
+        {
             ActiveWeapon.Instance.WeaponNull();
             return;
         }
-        
+
         GameObject weaponToSpawn = weaponInfo.weaponPrefab;
-        
-        //GameObject weaponToSpawn = transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().weaponPrefab;
+
         GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
-        
         ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
         newWeapon.transform.parent = ActiveWeapon.Instance.transform;
         ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());

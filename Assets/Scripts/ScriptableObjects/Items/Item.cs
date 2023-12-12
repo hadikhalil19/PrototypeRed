@@ -26,7 +26,7 @@ public enum ItemType {
 }
 
 public enum ActionType {
-    EquipWeapon,
     UseTool,
+    EquipWeapon,
     UseMiscItem
 }

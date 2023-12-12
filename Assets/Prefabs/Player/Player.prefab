@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5542193421471576450}
   - component: {fileID: 3107673041163266173}
   m_Layer: 8
-  m_Name: ActiveWeapon
+  m_Name: ActiveEquipment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

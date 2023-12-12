@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d67767447ba71441bb8f299f579e231, type: 3}
-  m_Name: SwordItem
+  m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  itemType: 1
-  actionType: 1
+  itemType: 2
+  actionType: 2
   range: {x: 5, y: 4}
-  weaponInfo: {fileID: 11400000, guid: 7ff27184b8bad834c856f0a0cf594355, type: 2}
-  stackable: 0
-  image: {fileID: 21300000, guid: c799170ed2b79874a82efa2e14ac7d6a, type: 3}
+  weaponInfo: {fileID: 0}
+  stackable: 1
+  image: {fileID: 287462923, guid: 61ca443d3efd1ad42a874fd6706ee612, type: 3}

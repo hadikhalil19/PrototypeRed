@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d67767447ba71441bb8f299f579e231, type: 3}
   m_Name: BowItem
   m_EditorClassIdentifier: 
-  itemType: 0
-  actionType: 0
+  itemType: 1
+  actionType: 1
   range: {x: 5, y: 4}
   weaponInfo: {fileID: 11400000, guid: 0b27627e31f30f04fb621258058032ad, type: 2}
-  stackable: 1
+  stackable: 0
   image: {fileID: 21300000, guid: f4bf28f53ee7d694fab07ce9b975de09, type: 3}

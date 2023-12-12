@@ -1623,6 +1623,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2993580155090900590, guid: 8c95e60afc410564e8feabe18e266b63, type: 3}
+      propertyPath: weaponInfo
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3048588496764620058, guid: 8c95e60afc410564e8feabe18e266b63, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3196,7 +3200,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8730696000310105080, guid: 8c95e60afc410564e8feabe18e266b63, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c95e60afc410564e8feabe18e266b63, type: 3}

@@ -60,10 +60,10 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         ActiveInventory activeInventory = parentAfterDrag.GetComponentInParent<ActiveInventory>();
         if (activeInventory) {
-            activeInventory.ChangeActiveWeapon();
+            activeInventory.ChangeEquipedItem();
         }
         if (activeInventoryOld) {
-            activeInventoryOld.ChangeActiveWeapon();
+            activeInventoryOld.ChangeEquipedItem();
         }
 
         Debug.Log("Stopped dragging " + this.name + "and new parent is" + parentAfterDrag.name);
