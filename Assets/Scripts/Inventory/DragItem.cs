@@ -20,6 +20,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void InitialiizeItem(Item newitem) {
         if (newitem != null) {
+            item = newitem;
             image.sprite = newitem.image;
         }
         
