@@ -76,7 +76,19 @@ public class ActiveInventory : Singleton<ActiveInventory>
     private void ChangeActiveMiscItem(InventorySlot inventorySlot)
     {
         ItemInfo itemInfo = inventorySlot.GetIteminfo();
-        ActiveWeapon.Instance.WeaponNull();
+
+        if (itemInfo == null)
+        {
+            ActiveWeapon.Instance.WeaponNull();
+            return;
+        }
+
+        GameObject itemToSpawn = itemInfo.itemPrefab;
+
+        GameObject newMiscItem = Instantiate(itemToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
+        ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
+        newMiscItem.transform.parent = ActiveWeapon.Instance.transform;
+        ActiveWeapon.Instance.NewWeapon(newMiscItem.GetComponent<MonoBehaviour>());
     }
 
     private static void ChangeActiveWeapon(InventorySlot inventorySlot)
