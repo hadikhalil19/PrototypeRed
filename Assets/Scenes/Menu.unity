@@ -619,14 +619,6 @@ PrefabInstance:
       value: Managers
       objectReference: {fileID: 0}
     - target: {fileID: 8380509692440649881, guid: 2851e00754936ce47b4bfc792aa3280b, type: 3}
-      propertyPath: equipedItemPrefab
-      value: 
-      objectReference: {fileID: 7028240756918943051, guid: 3dd4e92f5f1238b49acaffc7e49ae616, type: 3}
-    - target: {fileID: 8380509692440649881, guid: 2851e00754936ce47b4bfc792aa3280b, type: 3}
-      propertyPath: inventorySlots.Array.size
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 8380509692440649881, guid: 2851e00754936ce47b4bfc792aa3280b, type: 3}
       propertyPath: inventorySlots.Array.data[0]
       value: 
       objectReference: {fileID: 1440278263}

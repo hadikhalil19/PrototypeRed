@@ -16,10 +16,11 @@ MonoBehaviour:
   text: What can I do for you?
   children:
   - d5a70094-a678-4f01-8e9f-868134e38b1a
+  - f8fd5f89-60ca-4902-93ba-fa06881db503
   - d09ec9fb-4c7f-4aa2-b5de-dbf7c5dbcba2
   rect:
     serializedVersion: 2
-    x: 38
+    x: 37
     y: 20
     width: 200
     height: 100
@@ -48,6 +49,54 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+--- !u!114 &-4075290032270550513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 555372d9-fa3a-471e-a818-7fa895bcb9ba
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Here you go, first one is free.
+  children:
+  - 0b881a91-3b11-470c-ab3d-9170cd8806cf
+  rect:
+    serializedVersion: 2
+    x: 530
+    y: 127
+    width: 200
+    height: 100
+  onEnterAction: HealthPotion
+  onExitAction: 
+--- !u!114 &-463843599615670997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: f8fd5f89-60ca-4902-93ba-fa06881db503
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Buy a health potion
+  children:
+  - 555372d9-fa3a-471e-a818-7fa895bcb9ba
+  rect:
+    serializedVersion: 2
+    x: 280
+    y: 127
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +115,9 @@ MonoBehaviour:
   - {fileID: 6432644366445623419}
   - {fileID: 3589441291879626489}
   - {fileID: -5115894008975784797}
+  - {fileID: -463843599615670997}
+  - {fileID: -4075290032270550513}
+  - {fileID: 5048687705233897523}
 --- !u!114 &3589441291879626489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,8 +135,31 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 286
-    y: 125
+    x: 271
+    y: 228
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+--- !u!114 &5048687705233897523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d017e9b3b031c742affc55f09fa6932, type: 3}
+  m_Name: 0b881a91-3b11-470c-ab3d-9170cd8806cf
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Leave
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 780
+    y: 127
     width: 200
     height: 100
   onEnterAction: 
@@ -102,7 +177,7 @@ MonoBehaviour:
   m_Name: d5a70094-a678-4f01-8e9f-868134e38b1a
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
-  text: Ask to buy a healing potion
+  text: Ask for a healing potion sample
   children:
   - 8138d568-bf9d-41d1-b0a3-82d61cc7d011
   rect:
@@ -127,8 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Sure thing honey, this should fix you up.
-  children:
-  - 5479d41b-c97c-4075-a2e0-311a3c7d0015
+  children: []
   rect:
     serializedVersion: 2
     x: 537

@@ -44,6 +44,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fadbd069262384786f428e6c32bf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorySlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  equipedItemPrefab: {fileID: 7028240756918943051, guid: 3dd4e92f5f1238b49acaffc7e49ae616, type: 3}
 --- !u!1 &4792518472894084396
 GameObject:
   m_ObjectHideFlags: 0

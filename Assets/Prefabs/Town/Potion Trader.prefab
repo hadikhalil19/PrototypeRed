@@ -98,9 +98,11 @@ GameObject:
   - component: {fileID: 1806099365235654763}
   - component: {fileID: 1059994672225419386}
   - component: {fileID: 2256390977398102520}
+  - component: {fileID: 4424087313270907544}
   - component: {fileID: 317347154213754399}
   - component: {fileID: 1497135423394789142}
   - component: {fileID: 1444519740114437919}
+  - component: {fileID: 144836987570450412}
   m_Layer: 0
   m_Name: Potion Trader
   m_TagString: Untagged
@@ -275,6 +277,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &4424087313270907544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332502563839239535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a24b075fa7f954489e29c5a5236b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: HealthPotion
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 144836987570450412}
+        m_TargetAssemblyTypeName: GivePlayerItem, Assembly-CSharp
+        m_MethodName: PickUpItem
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!70 &317347154213754399
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -335,3 +365,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba1592fe1da6f046bdd4e160d057183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &144836987570450412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332502563839239535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29663939d975d541abaee95f2a4a5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 0}
+  itemsToPickup:
+  - {fileID: 11400000, guid: 2fb6ec933e8cb604386d1e5f769810e5, type: 2}

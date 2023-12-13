@@ -8,10 +8,11 @@ public class InventoryManager : MonoBehaviour
     public GameObject equipedItemPrefab;
     
     public void AddItem(Item item) {
-
+        // look for empty slot and then spawn Equiped Item in it and add the item ScriptableObject to the equiped item gameobject
         for(int i = 0; i < inventorySlots.Length; i++) {
             InventorySlot slot = inventorySlots[i];
             DragItem itemInSlot = slot.GetComponentInChildren<DragItem>();
+            
             if (itemInSlot == null) {
                 SpawnNewItem(item, slot);
                 return;
