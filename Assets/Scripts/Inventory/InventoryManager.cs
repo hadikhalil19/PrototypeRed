@@ -36,7 +36,9 @@ public class InventoryManager : MonoBehaviour
     private void SpawnNewItem(Item item, InventorySlot slot) {
         GameObject newItemGo = Instantiate(equipedItemPrefab, slot.transform);
         DragItem dragItem = newItemGo.GetComponent<DragItem>();
+        
         dragItem.InitialiizeItem(item);
+        slot.InfoUpdate();
     }
 
     public Item GetSelectedItem(bool consumeItem) {

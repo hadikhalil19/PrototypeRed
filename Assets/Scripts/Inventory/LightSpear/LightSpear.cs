@@ -87,7 +87,7 @@ public class LightSpear : MonoBehaviour, IWeapon
     }
 
     private void LightSpearAnimEnd() {
-        if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("SideLightSpear")) 
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("LightSpear")) 
         {
             lightSpearAttacking = false;
             myAnimator.SetBool(LIGHTSPEARATTACKING_HASH, false);
