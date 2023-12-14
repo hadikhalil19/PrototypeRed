@@ -39,13 +39,16 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Start dragging " + this.name + "and current parent is" + transform.parent.name);
+        
         inventorySlotOld = transform.parent.GetComponent<InventorySlot>();
         activeInventoryOld = transform.parent.GetComponentInParent<ActiveInventory>();
         
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+        
         image.raycastTarget =false;
+        countText.raycastTarget = false;
 
         
     }
@@ -60,8 +63,10 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnEndDrag(PointerEventData eventData)
     {
         //Debug.Log("Stopped dragging " + this.name + "and new parent is" + parentAfterDrag.name);
+        
         transform.SetParent(parentAfterDrag);
         image.raycastTarget =true;
+        countText.raycastTarget = true;
         
         parentAfterDrag.GetComponent<InventorySlot>().InfoUpdate();
         

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ActiveInventory : Singleton<ActiveInventory>
 {
-    private int activeSlotIndexNum = 0;
+    public int activeSlotIndexNum = 0;
     private PlayerControls playerControls;
     
     protected override void Awake() {

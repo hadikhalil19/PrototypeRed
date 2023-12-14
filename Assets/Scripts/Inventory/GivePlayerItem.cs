@@ -20,4 +20,8 @@ public class GivePlayerItem : MonoBehaviour
             Debug.Log("Inventory full");
         }
     }
+
+    // public void GetSelectedItem() {
+    //     Item receivedItem = inventoryManager.GetSelectedItem();
+    // }
 }

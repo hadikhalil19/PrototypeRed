@@ -15,7 +15,6 @@ public class InventoryManager : MonoBehaviour
             DragItem itemInSlot = slot.GetComponentInChildren<DragItem>();
             
             if (itemInSlot != null && itemInSlot.item.stackable && itemInSlot.item == item && itemInSlot.stackCount < itemInSlot.item.maxStack) {
-                SpawnNewItem(item, slot);
                 itemInSlot.stackCount++;
                 itemInSlot.RefreshCount();
                 return true;
@@ -39,4 +38,28 @@ public class InventoryManager : MonoBehaviour
         DragItem dragItem = newItemGo.GetComponent<DragItem>();
         dragItem.InitialiizeItem(item);
     }
+
+    public Item GetSelectedItem(bool consumeItem) {
+        int activeSlotIndexNum = ActiveInventory.Instance.activeSlotIndexNum;
+        InventorySlot slot = inventorySlots[activeSlotIndexNum];
+        DragItem itemInSlot = slot.GetComponentInChildren<DragItem>();
+        if (itemInSlot != null) {
+            Item item = itemInSlot.item;
+            if (consumeItem == true) {
+                itemInSlot.stackCount--;
+                if (itemInSlot.stackCount < 1) {
+                    Destroy(itemInSlot.gameObject);
+                } else {
+                    itemInSlot.RefreshCount();
+                }
+            }
+            return item;
+        } else {
+            return null;
+        }
+    }
+
+    // public void ConsumeItem() {
+
+    // }
 }
