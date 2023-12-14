@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -12,6 +13,8 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     [Header("UI")]
     public Image image;
+    public int stackCount = 1;
+    public TextMeshProUGUI countText;
     [HideInInspector] public Transform parentAfterDrag;
 
     private void Start() {
@@ -22,8 +25,15 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (newitem != null) {
             item = newitem;
             image.sprite = newitem.image;
+            RefreshCount();
         }
         
+    }
+
+    public void RefreshCount() {
+        countText.text = stackCount.ToString();
+        bool textActive = stackCount > 1;
+        countText.gameObject.SetActive(textActive);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

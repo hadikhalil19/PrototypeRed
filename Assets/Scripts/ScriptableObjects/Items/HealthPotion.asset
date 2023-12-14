@@ -18,4 +18,5 @@ MonoBehaviour:
   weaponInfo: {fileID: 11400000, guid: dbf1dee7260c85046bf1958446a472fb, type: 2}
   itemInfo: {fileID: 11400000, guid: a4886662f927e934f97ca4b91b0672eb, type: 2}
   stackable: 1
+  maxStack: 3
   image: {fileID: 287462923, guid: 61ca443d3efd1ad42a874fd6706ee612, type: 3}

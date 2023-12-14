@@ -13,7 +13,11 @@ public class GivePlayerItem : MonoBehaviour
     }
 
     public void PickUpItem(int id) {
-        inventoryManager.AddItem(itemsToPickup[id]);
-        
+       bool result = inventoryManager.AddItem(itemsToPickup[id]);
+        if (result == true) {
+            Debug.Log("Item added");
+        } else {
+            Debug.Log("Inventory full");
+        }
     }
 }
