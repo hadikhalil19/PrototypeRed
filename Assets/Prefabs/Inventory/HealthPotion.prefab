@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 11400000, guid: dbf1dee7260c85046bf1958446a472fb, type: 2}
-  healAmount: 30
+  healAmount: 50

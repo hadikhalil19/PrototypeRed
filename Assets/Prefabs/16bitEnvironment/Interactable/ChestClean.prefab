@@ -210,14 +210,14 @@ MonoBehaviour:
   healthGlobe: {fileID: 1696456785040461994, guid: a6ce4e5cdc061074b9e12aab1e4c7741, type: 3}
   ManaGlobe: {fileID: 1696456785040461994, guid: 572868c365504e5479cd95226ed3a3aa, type: 3}
   maxRandRange: 10
-  healthRnumMin: 1
-  healthRnumMax: 2
-  manaRnumMin: 3
-  manaRnumMax: 4
-  goldRnumMin: 5
-  goldRnumMax: 8
-  goldDropMax: 4
-  goldDropMin: 1
+  healthRnumMin: 0
+  healthRnumMax: 0
+  manaRnumMin: 0
+  manaRnumMax: 0
+  goldRnumMin: 1
+  goldRnumMax: 10
+  goldDropMax: 5
+  goldDropMin: 3
 --- !u!1 &5674153959495589382
 GameObject:
   m_ObjectHideFlags: 0

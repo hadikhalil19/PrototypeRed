@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5179679801334074448}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.782671, y: 0.924494, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6241279277812812448
 SpriteRenderer:
@@ -150,3 +150,12 @@ MonoBehaviour:
   goldCoin: {fileID: 1696456785040461994, guid: 3017d9252b1277a4ea99af864601f10d, type: 3}
   healthGlobe: {fileID: 1696456785040461994, guid: a6ce4e5cdc061074b9e12aab1e4c7741, type: 3}
   ManaGlobe: {fileID: 1696456785040461994, guid: 572868c365504e5479cd95226ed3a3aa, type: 3}
+  maxRandRange: 10
+  healthRnumMin: 1
+  healthRnumMax: 1
+  manaRnumMin: 3
+  manaRnumMax: 4
+  goldRnumMin: 5
+  goldRnumMax: 6
+  goldDropMax: 3
+  goldDropMin: 1

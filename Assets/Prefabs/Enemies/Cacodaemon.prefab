@@ -409,7 +409,6 @@ MonoBehaviour:
   deathVFXPrefab: {fileID: 0}
   hasFlashAnim: 0
   staggerThreshold: 7
-  attackInteruptThreshold: 50
   bossEnemy: 1
   floatingHealthBar: {fileID: 0}
   dying: 0
@@ -431,7 +430,6 @@ MonoBehaviour:
   followRange: 20
   meleeRange: 6
   roamChangeDirTime: 2
-  hasCollisonDamage: 0
   firstEncounterAudio: {fileID: 4194767491460904399}
   nextWaypointDistance: 1
   pathUpdateSeconds: 0.5
@@ -560,6 +558,15 @@ MonoBehaviour:
   goldCoin: {fileID: 1696456785040461994, guid: 3017d9252b1277a4ea99af864601f10d, type: 3}
   healthGlobe: {fileID: 1696456785040461994, guid: a6ce4e5cdc061074b9e12aab1e4c7741, type: 3}
   ManaGlobe: {fileID: 1696456785040461994, guid: 572868c365504e5479cd95226ed3a3aa, type: 3}
+  maxRandRange: 10
+  healthRnumMin: 1
+  healthRnumMax: 3
+  manaRnumMin: 1
+  manaRnumMax: 4
+  goldRnumMin: 1
+  goldRnumMax: 8
+  goldDropMax: 10
+  goldDropMin: 3
 --- !u!114 &2388010455865639074
 MonoBehaviour:
   m_ObjectHideFlags: 0

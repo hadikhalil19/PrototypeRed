@@ -19,6 +19,7 @@ public class PickUpSpawner : MonoBehaviour
 
     public void DropItems() {
         int randomNum = Random.Range(1, maxRandRange);
+        Debug.Log(randomNum);
 
         if (randomNum >= healthRnumMin && randomNum <= healthRnumMax) {
             Instantiate(healthGlobe, transform.position, Quaternion.identity); 

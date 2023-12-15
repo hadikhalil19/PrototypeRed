@@ -7,6 +7,8 @@ public class AreaEnterance : MonoBehaviour
 {
    [SerializeField] private string transitionName;
    [SerializeField] private float autoSaveDelay = 0.2f;
+   [SerializeField] private float fadeSpeedMult = 1f;
+   [SerializeField] private float fadeDelay = 1f;
 
     private void Start() {
         if (transitionName == SceneManagement.Instance.SceneTransitionName) {
@@ -21,7 +23,8 @@ public class AreaEnterance : MonoBehaviour
             
             PlayerController.Instance.ResetPlayerController();
 
-            UIFade.Instance.FadeOut(1);
+            //UIFade.Instance.FadeOut(fadeSpeedMult);
+            StartCoroutine(fadeOutWaitRoutine());
 
             StartCoroutine(checkpointSave());
         }
@@ -32,5 +35,12 @@ public class AreaEnterance : MonoBehaviour
         SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
         wrapper.Save();
     }
+
+     private IEnumerator fadeOutWaitRoutine() {
+        yield return  new WaitForSeconds(fadeDelay);
+        UIFade.Instance.FadeOut(fadeSpeedMult);
+
+    }
+
 }
 }

@@ -7,7 +7,7 @@ public class HealthPotion : MonoBehaviour, IWeapon
 {
    [SerializeField] private WeaponInfo weaponInfo;
 
-   [SerializeField] int healAmount = 30;
+   [SerializeField] int healAmount = 50;
 
    private InventoryManager inventoryManager;
 

@@ -16,4 +16,4 @@ MonoBehaviour:
   weaponCooldown: 1
   weaponDamage: 1
   weaponRange: 20
-  weaponManaCost: 12
+  weaponManaCost: 8
