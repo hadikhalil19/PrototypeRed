@@ -81,7 +81,10 @@ public class EnemyHealth : MonoBehaviour
     public IEnumerator DeathRoutine() {
         enemyAnimController?.PlayDeathAnim();
         yield return new WaitForSeconds(deathDelay);
-        if(bossUI && bossEnemy) {bossUI.SetActiveState(false);}
+        if (bossUI && bossEnemy) {
+            bossUI.SetActiveState(false); //hide health bar
+            bossUI.BlockAllExits(false); //reopen exits
+        }
         //Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
         GetComponent<PickUpSpawner>().DropItems();
         Destroy(gameObject); 

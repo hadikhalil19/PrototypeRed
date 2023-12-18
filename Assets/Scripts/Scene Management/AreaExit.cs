@@ -9,6 +9,7 @@ public class AreaExit : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
     [SerializeField] private string sceneTransitionName;
+    [SerializeField] GameObject blockExitObject = null;
 
     private float waitToLoadTime = 1f;
    
@@ -29,6 +30,10 @@ public class AreaExit : MonoBehaviour
         yield return  new WaitForSeconds(waitToLoadTime);
         SceneManager.LoadScene(sceneToLoad);
         
+    }
+
+    public void SetBlockExit(bool blockExit) {
+        blockExitObject.SetActive(blockExit);
     }
 }
 
