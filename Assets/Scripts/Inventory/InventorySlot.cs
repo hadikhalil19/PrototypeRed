@@ -18,7 +18,12 @@ public class InventorySlot : MonoBehaviour
 
     public void InfoUpdate() {
         item = GetComponentInChildren<DragItem>().item;
-        weaponInfo = item.weaponInfo;
+        if (item) {
+            weaponInfo = item.weaponInfo;
+        } else {
+            weaponInfo = null;
+        }
+        
     }
 
     public void InfoMakeEmpty() {

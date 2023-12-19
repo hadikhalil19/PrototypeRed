@@ -42,6 +42,7 @@ public class HealthPotion : MonoBehaviour, IWeapon
 
         PlayerHealth.Instance.HealPlayer(healAmount);
         Item item = inventoryManager.GetSelectedItem(potionsAreConsumable);
+        
         // item can be used to do something if not consumable
         // if (item != null) {
         //     PlayerMana.Instance.UseMana(weaponInfo.weaponManaCost); 
@@ -67,12 +68,25 @@ public class HealthPotion : MonoBehaviour, IWeapon
             isDrinkingPotion = false;
             myAnimator.SetBool(DRINKINGPOTION_HASH, false);
             unlockMovement();
+            if (inventoryManager.lastStackUsed) {
+                ConsumeActiveWeapon();
+                inventoryManager.lastStackUsed = false;
+            }
         }
 
     }
 
+    // this is temp and needs to be changed with item info instead of weaponinfo
     public void WeaponReset() {
         isDrinkingPotion = false;
         myAnimator.SetBool(DRINKINGPOTION_HASH, false);
+    }
+
+    private void ConsumeActiveWeapon() {
+        unlockMovement();
+        WeaponReset();
+        if (ActiveWeapon.Instance.CurrentActiveWeapon != null) {
+            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        }
     }
 }

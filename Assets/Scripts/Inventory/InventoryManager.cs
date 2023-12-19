@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     public InventorySlot [] inventorySlots;
     public GameObject equipedItemPrefab;
+    public bool lastStackUsed = false;
     
     public bool AddItem(Item item) {
         
@@ -51,6 +52,11 @@ public class InventoryManager : MonoBehaviour
                 itemInSlot.stackCount--;
                 if (itemInSlot.stackCount < 1) {
                     Destroy(itemInSlot.gameObject);
+                    slot.InfoMakeEmpty();
+                    lastStackUsed = true;
+                    //ActiveInventory activeInventory = slot.GetComponentInParent<ActiveInventory>();
+                    //activeInventory.ChangeEquipedItem();
+                    // 
                 } else {
                     itemInSlot.RefreshCount();
                 }
