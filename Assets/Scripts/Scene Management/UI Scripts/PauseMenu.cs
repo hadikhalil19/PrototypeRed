@@ -1,3 +1,5 @@
+//Pause the game and control the pause menu and allow the player to resume or quit the game.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,5 +20,12 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
     
+    private void Update() {
+        if (uiContainer.activeSelf) {
+            Time.timeScale = 0f;
+        } else {
+            Time.timeScale = 1f;
+        }
+    }
 }
 }
