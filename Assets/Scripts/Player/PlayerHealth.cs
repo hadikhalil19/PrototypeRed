@@ -1,3 +1,5 @@
+// Player health and death logic
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +53,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         UpdateHealthSlider();
     }
 
+// player collison damage logic that only works for older enemyAI with no A*. 
     private void OnCollisionStay2D(Collision2D other) {
         EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>(); // only works for older enemyAI with no A*
         if (enemy) {
@@ -59,6 +62,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
 
     }
 
+// method for player healing and updating health bar.
     public void HealPlayer(int healValue) {
         if (currentHealth + healValue < maxHealth) {
             currentHealth += healValue;
@@ -81,6 +85,9 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     //     return Mathf.Abs(angle) <= marginOfError / 2;
     // }
 
+// method for player taking damage and updating health bar. Also calls checkifplayerdeath.
+// also checks if player is invulnerable from roll, and if so, does not take damage.
+
     public void TakeDamage(int damageAmount,  Transform hitTransform) {
         if (!canTakeDamage) { return; }
         if (IsDead) { return; }
@@ -98,6 +105,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         CheckIfPlayerDeath();
     }
 
+// method for checking if player is dead, and if so, calls deathloadsceneroutine.
     private void CheckIfPlayerDeath() {
         if (currentHealth <= 0 && !IsDead) {
             IsDead = true;
@@ -108,6 +116,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         }
     }
 
+// method for initiating reloading scene on death. Calls UIFade and starts loadsceneroutine.
     private IEnumerator DeathLoadSceneRoutine() {
         yield return new WaitForSeconds(1f);
         //Destroy(gameObject);
@@ -117,6 +126,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         StartCoroutine(LoadSceneRoutine());
     }
 
+// method for loading new scene on death. Resets player health, weapon, and camera.
     private IEnumerator LoadSceneRoutine() {
         yield return  new WaitForSeconds(3f);
         currentHealth = maxHealth;
@@ -134,12 +144,13 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     }
 
 
-
+// makes player invulnerable for a short time after taking damage.
     private IEnumerator DamageRecoveryRoutine() {
         yield return new WaitForSeconds(damageRecoveryTime);
         canTakeDamage = true;
     }
 
+// updates health bar slider.
     private void UpdateHealthSlider() {
         if (healthSlider == null) {
             healthSlider = GameObject.Find(HEALTH_SLIDER_TEXT).GetComponent<Slider>();
@@ -149,11 +160,13 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         healthSlider.value = currentHealth;
     }
 
+// method for saving player health.
     public object CaptureState()
     {
         return currentHealth;
     }
 
+// method for reloading player health.
     public void RestoreState(object state)
     {
         currentHealth = (int)state;
@@ -161,6 +174,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         CheckIfPlayerDeath();
     }
 
+// method for resetting boss UI on playerdeath.
     private void GameOverReset() {
         showHideUI = GameObject.Find(BOSSUI_TEXT).GetComponent<ShowHideUI>();
         if (showHideUI) {

@@ -1,3 +1,5 @@
+// logic for player mana and mana recovery. Also updates mana bar.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,6 +47,7 @@ public class PlayerMana : Singleton<PlayerMana>, ISaveable
         }
     }
 
+// mana recovery logic for mana globes.
     public void ManaGlobeRefresh(int manaGlobeValue) {
         if (CurrentMana < maxMana - manaGlobeValue) {
             CurrentMana = CurrentMana + manaGlobeValue;
@@ -54,6 +57,7 @@ public class PlayerMana : Singleton<PlayerMana>, ISaveable
         UpdateManaSlider();
     }
 
+// method for updating mana bar.Also call coroutine for mana recovery.
     private void UpdateManaSlider() {
         if (healthSlider == null) {
             healthSlider = GameObject.Find(MANA_SLIDER_TEXT).GetComponent<Slider>();
@@ -69,11 +73,13 @@ public class PlayerMana : Singleton<PlayerMana>, ISaveable
 
     }
 
+// method for saving player mana.
     public object CaptureState()
         {
             return CurrentMana;
         }
 
+// method for reloading player mana.
         public void RestoreState(object state)
         {
             CurrentMana = (int)state;

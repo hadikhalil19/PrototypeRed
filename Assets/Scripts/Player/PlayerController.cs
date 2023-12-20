@@ -1,3 +1,6 @@
+// PlayerController.cs is a script that is attached to the player. It is responsible for the player's movement, animation, and input.
+
+
 using System.Collections;
 using System.Collections.Generic;
 using Proto.Dialogue;
@@ -112,6 +115,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         //WeaponSwap();
     }
 
+// manages player movement input and movement animator values
     private void PlayerInput() {
         if (MoveLock == false && !playerConversant.isTalking) { // if not movelock and not currently in a dialogue
             movement = playerControls.Movement.Move.ReadValue<Vector2>();
@@ -119,13 +123,13 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
             movement = new Vector2 (0,0);
         }
         
-
         myAnimator.SetFloat("moveX", movement.x);
         myAnimator.SetFloat("moveY", movement.y);
         myAnimator.SetFloat("speed", movement.sqrMagnitude);
         
     }
 
+// method for player attack movement with a thurst and move duration
     private void attackMove(float MoveThurst, float MoveTime) {
         //if (MoveLock == false) {return;} // movelock becomes true as soon as attacking so this checks if attacking and returns if not 
         Vector2 direction = playerControls.Movement.Move.ReadValue<Vector2>();
@@ -144,6 +148,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         attackMoveAudio = true;
     }
 
+// method for player movement. Moves the player rigidbody based on the movement vector if not knockbacked or dead or movelocked.
     private void Move() {
         if (knockBack.GettingKnockedBack || PlayerHealth.Instance.IsDead) { return; }
         if (MoveLock) {return;}
@@ -159,6 +164,8 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         
     }
 
+
+// method for player sprinting. Sets the sprint bool to true and triggers the sprint animation
     private void Sprint() {
         if (movement.magnitude < 0.1f) { return;}
         if (MoveLock) {return;}
@@ -168,6 +175,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         myAnimator.SetTrigger(SPRINT_HASH);
     }
 
+// method to adjust the player facing direction based on the mouse position or movement direction. Calls AdjustIdleAnimDirection if the player is not moving.
     private void AdjustPlayerFacingDirection() { // Update Player Anim method
         if (AttackDirectionLock == true) {return;} // Slash hitbox is active
         if (myAnimator.GetBool("isRolling")) {return;}
@@ -199,7 +207,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         } 
     }
 
-
+// method to stop sprinting after a delay. Resets control variables and triggers the sprint animation to end
     private void SprintStop() {
         sprint = false;
         myAnimator.SetBool(SPRINTING_HASH, false);
@@ -212,6 +220,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         sprintStop = false;
     }
 
+// method to adjust the idle animation direction based on the mouse position.
     private void AdjustIdleAnimDirection() {
         if (SpriteFlipLock == true) {return;}
         Vector3 mousePos = Input.mousePosition;
@@ -233,6 +242,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     //     direction = (mousePos - playerScreenPoint).normalized;
     //  }
 
+// method to handle weapon swapping. Currently not in use.
      private void WeaponSwap() {
         if (activeWeapon.WeaponChanged) {
             activeWeapon.WeaponChanged = false;
@@ -247,6 +257,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         }
      }
 
+// method to force the player to look at a specific position. Used for dialogue.
     private void ForcePlayerLookAt() {
         Vector2 lookAtDirection = (playerLookAt - transform.position).normalized;
         myAnimator.SetFloat("idleX", lookAtDirection.x);
@@ -259,11 +270,13 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
 
     }
 
+// used for SaveSystem to capture the player's position
     public object CaptureState()
     {
         return new SerializableVector3(transform.position);
     }
 
+// used for SaveSystem to restore the player's position
     public void RestoreState(object state)
     {
         SerializableVector3 position = (SerializableVector3)state;
@@ -271,6 +284,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
             
     }
 
+// animation event for footstep Audio
     public void FootstepLeftAnimEvent() {
         footstepLeft = true;
     }
@@ -279,6 +293,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         footstepRight = true;
     }
 
+// method to trigger footstep audio
     private void TriggerFootstepAudio() {
         if (footstepLeft) {
             footstepAudioPlayer.PlayFootstepAudioClip();
@@ -291,6 +306,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
         
     }
 
+// method to reset the player controller variables and animator states to their default state on scene load.
     public void ResetPlayerController() {
         MoveLock = false;
         AttackDirectionLock = false;

@@ -1,3 +1,5 @@
+// logic for player dodge rolls. 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,7 +63,7 @@ public class PlayerRoll : MonoBehaviour
 
 
 
-
+// method for player dodge rolls. Called from player controls input. Sets roll direction and triggers roll animation. Locks player movement and attack.
     private void Roll() {
         if  (PlayerHealth.Instance.IsDead) { return; }
         if (playerController.movement.magnitude < 0.1f) {return;}
@@ -81,12 +83,14 @@ public class PlayerRoll : MonoBehaviour
         }
     }
 
+// method for cooldown between rolls.
     private IEnumerator RollCooldownRoutine(){
         float rollCooldown = 1f;
         yield return new WaitForSeconds(rollCooldown);
         canRoll = true;
     }
 
+// method for ending roll animation. Unlocks player movement and attack. Stops trail renderer.
     private void RollAnimEnd() {
         if (!isRolling) {return;}
         if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Rolling")) 
@@ -106,6 +110,7 @@ public class PlayerRoll : MonoBehaviour
         }
     }
 
+// rigidbody movement for roll.
      private void RollMove() {
         myRigidBody.MovePosition(myRigidBody.position + (rollMoveDirection.normalized * rollSpeed * Time.fixedDeltaTime));
         
