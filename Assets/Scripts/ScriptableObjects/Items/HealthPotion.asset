@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d67767447ba71441bb8f299f579e231, type: 3}
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  itemType: 1
-  actionType: 1
+  itemType: 2
+  actionType: 2
   range: {x: 5, y: 4}
   weaponInfo: {fileID: 11400000, guid: dbf1dee7260c85046bf1958446a472fb, type: 2}
   itemInfo: {fileID: 11400000, guid: a4886662f927e934f97ca4b91b0672eb, type: 2}

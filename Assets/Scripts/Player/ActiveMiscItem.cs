@@ -24,7 +24,7 @@ public class ActiveMiscItem : Singleton<ActiveMiscItem>
 
     }
 
-    public void NewWeapon(MonoBehaviour newMiscItem) {
+    public void NewItem(MonoBehaviour newMiscItem) {
         CurrentActiveMiscItem = newMiscItem;
         MiscItemChanged = true;
     }
@@ -33,7 +33,18 @@ public class ActiveMiscItem : Singleton<ActiveMiscItem>
     private void UseActiveItem()
     {
         if (CurrentActiveMiscItem) {
-            //(CurrentActiveMiscItem as IWeapon).Attack();
+            (CurrentActiveMiscItem as IMiscItem).UseActiveItem();
         }
     }
+
+    public void MiscItemNull() {
+        CurrentActiveMiscItem = null;
+    }
+
+    public void MiscItemReset() {
+        (CurrentActiveMiscItem as IMiscItem).ItemReset();
+    }
+
+
+
 }

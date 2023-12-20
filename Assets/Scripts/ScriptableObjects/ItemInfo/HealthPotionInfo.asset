@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb30e679e9861b41bde8123c4aa5b1e, type: 3}
   m_Name: HealthPotionInfo
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 6644075649969535992, guid: a1318b5c58b07f84ba172ac9b71c2b41, type: 3}
+  itemPrefab: {fileID: 6644075649969535992, guid: 928cd4ec6299e514d840d67959490324, type: 3}
   itemCooldown: 0
-  itemGoldCost: 1
+  itemGoldCost: 0
   itemManaCost: 0
+  itemHealthCost: 0
+  itemHealAmount: 0

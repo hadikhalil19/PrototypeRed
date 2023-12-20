@@ -1,13 +1,13 @@
-// Old script that was used for the health potion as a weapon. This script is no longer used and is replaced by the HealthPotionItem.cs script.
+// Main script for handling Health Potion Item, its usage and player animation. This script is attached to the Health Potion Item prefab.
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HealthPotion : MonoBehaviour, IWeapon
+public class HealthPotionItem : MonoBehaviour, IMiscItem
 {
-   [SerializeField] private WeaponInfo weaponInfo;
+   [SerializeField] private ItemInfo itemInfo;
 
    [SerializeField] int healAmount = 50;
 
@@ -31,7 +31,9 @@ public class HealthPotion : MonoBehaviour, IWeapon
         DrinkPotionAnimEnd(); // this is temp and needs to be changed with AnimEvents once there is a proper potion drink animation
     }
 
-    public void Attack(){
+
+    // Use active item when not over UI and not attacking and not drinking potion. 
+    public void UseActiveItem(){
         if (EventSystem.current.IsPointerOverGameObject()) {return;}
         if (PlayerController.Instance.AttackLock) {return;}
         if (isDrinkingPotion) {return;}
@@ -43,7 +45,7 @@ public class HealthPotion : MonoBehaviour, IWeapon
         lockMovement();
 
         PlayerHealth.Instance.HealPlayer(healAmount);
-        Item item = inventoryManager.GetSelectedItem(potionsAreConsumable);
+        Item item = inventoryManager.GetSelectedItem(potionsAreConsumable); // if item is consumable stack count will be decrease by 1
         
         // item can be used to do something if not consumable
         // if (item != null) {
@@ -57,13 +59,12 @@ public class HealthPotion : MonoBehaviour, IWeapon
     private void unlockMovement() {
         PlayerController.Instance.MoveLock = false;
     }
-
-    public void SecondaryAttackStart(){}
-    public void SecondaryAttackStop(){}
-    public WeaponInfo GetWeaponInfo(){
-        return weaponInfo;
+    public ItemInfo GetItemInfo(){
+        return itemInfo;
 
     }
+
+    // Check if the drink potion animation is done and manage the animator and unlock movement and also consume the item if it is the last stack
     private void DrinkPotionAnimEnd() {
         if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9 && myAnimator.GetCurrentAnimatorStateInfo(0).IsName("DrinkPotion")) 
         {
@@ -71,24 +72,26 @@ public class HealthPotion : MonoBehaviour, IWeapon
             myAnimator.SetBool(DRINKINGPOTION_HASH, false);
             unlockMovement();
             if (inventoryManager.lastStackUsed) {
-                ConsumeActiveWeapon();
+                ConsumeActiveItem();
                 inventoryManager.lastStackUsed = false;
             }
         }
 
     }
 
+    //Reset the item usage for player animator
     // this is temp and needs to be changed with item info instead of weaponinfo
-    public void WeaponReset() {
+    public void ItemReset() {
         isDrinkingPotion = false;
         myAnimator.SetBool(DRINKINGPOTION_HASH, false);
     }
-
-    private void ConsumeActiveWeapon() {
+    
+    // consume the active item and destroy it and reset the Item usage and unlock movement
+    private void ConsumeActiveItem() {
         unlockMovement();
-        WeaponReset();
-        if (ActiveWeapon.Instance.CurrentActiveWeapon != null) {
-            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        ItemReset();
+        if (ActiveMiscItem.Instance.CurrentActiveMiscItem != null) {
+            Destroy(ActiveMiscItem.Instance.CurrentActiveMiscItem.gameObject);
         }
     }
 }

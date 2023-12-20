@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5542193421471576450}
   - component: {fileID: 3107673041163266173}
+  - component: {fileID: 2670375395565354852}
   m_Layer: 8
   m_Name: ActiveEquipment
   m_TagString: Untagged
@@ -131,6 +132,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponChanged: 0
   disableAttack: 0
+--- !u!114 &2670375395565354852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2452002258542438879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e133c124131d9504e87c8452e8293305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MiscItemChanged: 0
 --- !u!1 &2558642022950968420
 GameObject:
   m_ObjectHideFlags: 0

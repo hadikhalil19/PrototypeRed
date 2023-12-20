@@ -1,3 +1,5 @@
+// Scriptable Object for Item Info
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,4 +11,6 @@ public class ItemInfo : ScriptableObject
     public float itemCooldown;
     public int itemGoldCost;
     public int itemManaCost;
+    public int itemHealthCost;
+    public int itemHealAmount;
 }

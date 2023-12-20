@@ -1,3 +1,5 @@
+// Info: InventorySlot class that holds and updates information about the items equiped in the inventory slots
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,12 +18,26 @@ public class InventorySlot : MonoBehaviour
         return itemInfo;
     }
 
+    // update the info of the item in the slot according to the item type 
     public void InfoUpdate() {
         item = GetComponentInChildren<DragItem>().item;
         if (item) {
-            weaponInfo = item.weaponInfo;
+            if (item.itemType == ItemType.Tool) {
+                itemInfo = item.itemInfo;
+                weaponInfo = null;
+            } else if (item.itemType == ItemType.Weapon) {
+                weaponInfo = item.weaponInfo;
+                itemInfo = null;
+            } else if (item.itemType == ItemType.Misc) {
+                itemInfo = item.itemInfo;
+                weaponInfo = null;
+            } else {
+                itemInfo = null;
+                weaponInfo = null;
+            }
         } else {
             weaponInfo = null;
+            itemInfo = null;
         }
         
     }
@@ -29,6 +45,7 @@ public class InventorySlot : MonoBehaviour
     public void InfoMakeEmpty() {
         item = null;
         weaponInfo = null;
+        itemInfo = null;
     }
     
     public int GetItemType() {

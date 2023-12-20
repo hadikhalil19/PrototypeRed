@@ -1,3 +1,7 @@
+// Active Weapon is a singleton that keeps track of the current weapon the player is using and calls the attack function on that weapon when the player presses the attack button. 
+// It also keeps track of the player's input and calls the secondary attack function on the weapon when the player presses the secondary attack button. 
+// It also has a function to reset the weapon related attributes, checks, and animator states to its default state.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
