@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Proto.UI;
 using UnityEngine;
 
 public class ChestInteract : MonoBehaviour
@@ -8,11 +9,16 @@ public class ChestInteract : MonoBehaviour
     private PlayerControls playerControls;
     [SerializeField] private GameObject interactIcon;
 
+    private ShowHideUI showHideUI;
+    private ContainerManager containerManager;
+
     private bool inRange = false;
     bool chestOpen = false;
 
     private void Awake() {
         playerControls = new PlayerControls();
+        showHideUI = GetComponentInChildren<ShowHideUI>();
+        containerManager = GetComponent<ContainerManager>();
     }
 
     private void OnEnable() {
@@ -35,8 +41,11 @@ public class ChestInteract : MonoBehaviour
             myAnimator.Play("ChestOpen");
             PickUpSpawner pickUpSpawner = GetComponent<PickUpSpawner>();
             pickUpSpawner?.DropItems();
+            containerManager.InitialiizeContainer();
+            showHideUI.SetVisibility(chestOpen);
         } else {
             myAnimator.Play("ChestClosed");
+            showHideUI.SetVisibility(chestOpen);
         }
     }
 
@@ -57,10 +66,12 @@ public class ChestInteract : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.tag == "Player" && !chestOpen)
+        if(other.gameObject.tag == "Player") // && !chestOpen)
         {
             inRange = false;
             interactIcon.SetActive(false);
+            chestOpen = false;
+            SwitchState(chestOpen);
         }
     }
 

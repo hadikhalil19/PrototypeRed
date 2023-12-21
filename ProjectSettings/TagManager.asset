@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - DialogueUI
+  - HUD
+  - QuestUI
   layers:
   - Default
   - TransparentFX
@@ -50,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3754188929
+    locked: 0
+  - name: UI
+    uniqueID: 2212460163
     locked: 0

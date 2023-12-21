@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -38,13 +39,24 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Start dragging " + this.name + "and current parent is" + transform.parent.name);
+        //Debug.Log("Start dragging " + this.name + "and current parent is" + transform.parent.name);
         
         inventorySlotOld = transform.parent.GetComponent<InventorySlot>();
         activeInventoryOld = transform.parent.GetComponentInParent<ActiveInventory>();
         
         parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
+
+        if (transform.root.gameObject.name == "UI_Canvas") {
+            //Debug.Log("Root is UI_Canvas");
+           transform.SetParent(transform.root);
+        } else {
+            Transform CanvasTransform = GetComponentInParent<Canvas>().transform; 
+            transform.SetParent(CanvasTransform);
+            //Debug.Log("Root is: " + transform.root.gameObject.name + " and setparent is: " +  CanvasTransform.gameObject.name);
+            
+        }
+
+        
         transform.SetAsLastSibling();
         
         image.raycastTarget =false;
@@ -56,7 +68,11 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnDrag(PointerEventData eventData)
     {
         //Debug.Log("Dragging");
-        transform.position = Input.mousePosition;
+        //transform.position = Input.mousePosition;
+        var screenPoint = new Vector3 (Input.mousePosition.x,Input.mousePosition.y, 10.0f);
+        transform.position = screenPoint;
+        //transform.position = Camera.main.ScreenToWorldPoint(screenPoint);
+        //Debug.Log (Input.mousePosition.x + " " + Input.mousePosition.y +" "+ itemDragged.transform.localPosition);
 
     }
 

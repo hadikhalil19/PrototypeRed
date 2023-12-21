@@ -1,20 +1,34 @@
-// manages the main inventory UI and the inventory itself for the player
-// stores inventory items and updates the UI itemslots accordingly
-// allows adding and removing items from the inventory
+// manages the container UI and the container itself
+// stores container items and updates the UI itemslots accordingly
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class ContainerManager : MonoBehaviour
 {
     public InventorySlot [] inventorySlots;
+    public Item [] itemsInContainer;
     public GameObject equipedItemPrefab;
     public bool lastStackUsed = false;
     
 
-    // inventorySlots hold a reference to "InventorySlot slot" for active inventory slots and main inventory slots in an array
-    // AddItem method takes a given item and checks if the item is stackable and if the item is already in the inventory
+    // InitialiizeContainer method is called when the container is opened
+    // it initializes the container inventory slots using itemsInContainer array
+    // it then updates the inventory slot info for each slot using additem method
+    public void InitialiizeContainer() {
+        for(int i = 0; i < itemsInContainer.Length; i++) {
+            Item item = itemsInContainer[i];
+            if (item != null) {
+                bool itemAdded = AddItem(item);
+                Debug.Log("Item added: " + itemAdded);
+            }
+        }
+
+    }
+
+    // inventorySlots hold a reference to "InventorySlot slot" for container inventory slots in an array
+    // AddItem method takes a given item and checks if the item is stackable and if the item is already in the Container inventory slots
     // if the item is stackable and already in the inventory, it increases the stack count of the item
     // if the item is not in the inventory, it spawns a new item in the inventory using SpawnNewItem method
     public bool AddItem(Item item) {
@@ -83,8 +97,4 @@ public class InventoryManager : MonoBehaviour
             return null;
         }
     }
-
-    // public void ConsumeItem() {
-
-    // }
 }

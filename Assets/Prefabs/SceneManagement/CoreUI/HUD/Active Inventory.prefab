@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb1c52a1ac289b4e890008c3c3cce93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSlotIndexNum: 0
 --- !u!1 &2336000282743197014
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 11400000, guid: 7ff27184b8bad834c856f0a0cf594355, type: 2}
+  itemInfo: {fileID: 0}
   item: {fileID: 0}
 --- !u!1 &3257525015274485213
 GameObject:
@@ -489,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 11400000, guid: 0b27627e31f30f04fb621258058032ad, type: 2}
+  itemInfo: {fileID: 0}
   item: {fileID: 0}
 --- !u!1 &3392658923938628850
 GameObject:
@@ -806,6 +809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 11400000, guid: 9259a3f7f5d09bb4f81ffb0b53c70f94, type: 2}
+  itemInfo: {fileID: 0}
   item: {fileID: 0}
 --- !u!1 &8192632414379007584
 GameObject:
@@ -1048,6 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 0}
+  itemInfo: {fileID: 0}
   item: {fileID: 0}
 --- !u!1001 &3502723334543439243
 PrefabInstance:
