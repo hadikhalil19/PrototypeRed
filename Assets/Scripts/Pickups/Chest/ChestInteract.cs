@@ -15,6 +15,7 @@ public class ChestInteract : MonoBehaviour
     private bool inRange = false;
     bool chestOpen = false;
 
+
     private void Awake() {
         playerControls = new PlayerControls();
         showHideUI = GetComponentInChildren<ShowHideUI>();
@@ -46,6 +47,7 @@ public class ChestInteract : MonoBehaviour
         } else {
             myAnimator.Play("ChestClosed");
             showHideUI.SetVisibility(chestOpen);
+            containerManager.ItemsInContainerUpdate();
         }
     }
 
