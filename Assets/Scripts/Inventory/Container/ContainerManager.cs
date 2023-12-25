@@ -31,7 +31,9 @@ public class ContainerManager : MonoBehaviour
             Item item = itemsInContainer[i];
             if (item != null) {
                 bool itemAdded = AddItem(item);
-                
+                if (itemAdded == false) {
+                    Debug.Log("Item not added to container as inventory is full");
+                }
             }
             
         }

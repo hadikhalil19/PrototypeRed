@@ -40,8 +40,8 @@ public class ChestInteract : MonoBehaviour
     public void SwitchState(bool chestOpen) {
         if (chestOpen) {
             myAnimator.Play("ChestOpen");
-            PickUpSpawner pickUpSpawner = GetComponent<PickUpSpawner>();
-            pickUpSpawner?.DropItems();
+            //PickUpSpawner pickUpSpawner = GetComponent<PickUpSpawner>();
+            //pickUpSpawner?.DropItems();
             containerManager.InitialiizeContainer();
             showHideUI.SetVisibility(chestOpen);
         } else {
