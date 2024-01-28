@@ -1,3 +1,7 @@
+// GivePlayerItem.cs is used to give the player an item when the player interacts with the gameobject that has this script attached to it
+// it is used for giving the player an item when the player selects the dialog option to buy the item
+// it is also used to pay the gold cost of the item if it is being purchased through the dialog option
+
 using System.Collections;
 using System.Collections.Generic;
 using Proto.SceneManagement;
@@ -42,8 +46,9 @@ public class GivePlayerItem : MonoBehaviour
         bool hasEnoughGold = PayItemGoldCost(id);
         if (hasEnoughGold == true) {
             PickUpItem(id);
+            Debug.Log("Item added");
         }
-       
+       Debug.Log("Not enough gold");
     }
 
     // public void GetSelectedItem() {

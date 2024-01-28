@@ -62,13 +62,13 @@ MonoBehaviour:
   m_Name: 555372d9-fa3a-471e-a818-7fa895bcb9ba
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Here you go, first one is free.
+  text: Here you go, that would be 10 gold coins.
   children:
   - 0b881a91-3b11-470c-ab3d-9170cd8806cf
   rect:
     serializedVersion: 2
-    x: 530
-    y: 127
+    x: 551
+    y: 126
     width: 200
     height: 100
   onEnterAction: HealthPotion

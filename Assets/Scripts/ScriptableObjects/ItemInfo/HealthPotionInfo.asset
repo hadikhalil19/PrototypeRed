@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 6644075649969535992, guid: 928cd4ec6299e514d840d67959490324, type: 3}
   itemCooldown: 0
-  itemGoldCost: 2
+  itemGoldCost: 10
   itemManaCost: 0
   itemHealthCost: 0
   itemHealAmount: 0
