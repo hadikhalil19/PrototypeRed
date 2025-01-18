@@ -36,11 +36,13 @@ public class SavingWrapper : MonoBehaviour
         public void Save()
         {
             GetComponent<SavingSystem>().Save(defaultSaveFile);
+            Debug.Log("Game Saved");
         }
 
         public void Load()
         {
             GetComponent<SavingSystem>().Load(defaultSaveFile);
+            Debug.Log("Game Loaded");
         }
 
         private IEnumerator LoadFadeRoutine() {
