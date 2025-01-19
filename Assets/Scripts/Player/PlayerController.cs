@@ -243,19 +243,19 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     //  }
 
 // method to handle weapon swapping. Currently not in use.
-     private void WeaponSwap() {
-        if (activeWeapon.WeaponChanged) {
-            activeWeapon.WeaponChanged = false;
-            myAnimator.SetTrigger(CHANGEWEAPON_HASH);
-            myAnimator.SetBool(ISATTACKING_HASH, false);
-            myAnimator.SetBool(LIGHTSPEARATTACKING_HASH, false);
-            myAnimator.SetBool(BOWAIM_HASH, false);
-            myAnimator.SetBool(BOWATTACK_HASH, false);
-            myAnimator.SetBool(SHOOTARROW_HASH, false);
-            myAnimator.SetBool(NOCKINGARROW_HASH, false);
-            myAnimator.SetBool(RELOADARROW_HASH, false);
-        }
-     }
+    //  private void WeaponSwap() {
+    //     if (activeWeapon.WeaponChanged) {
+    //         activeWeapon.WeaponChanged = false;
+    //         myAnimator.SetTrigger(CHANGEWEAPON_HASH);
+    //         myAnimator.SetBool(ISATTACKING_HASH, false);
+    //         myAnimator.SetBool(LIGHTSPEARATTACKING_HASH, false);
+    //         myAnimator.SetBool(BOWAIM_HASH, false);
+    //         myAnimator.SetBool(BOWATTACK_HASH, false);
+    //         myAnimator.SetBool(SHOOTARROW_HASH, false);
+    //         myAnimator.SetBool(NOCKINGARROW_HASH, false);
+    //         myAnimator.SetBool(RELOADARROW_HASH, false);
+    //     }
+    //  }
 
 // method to force the player to look at a specific position. Used for dialogue.
     private void ForcePlayerLookAt() {
