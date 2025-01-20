@@ -118,11 +118,13 @@ public class PlayerRoll : MonoBehaviour
 
     private void RollIframeStartEvent () {
         PlayerHealth.Instance.rollInvulnerable = true;
+        Debug.Log("Roll iframe start");
 
     }
 
     private void RollIframeEndEvent () {
         PlayerHealth.Instance.rollInvulnerable = false;
+        Debug.Log("Roll iframe end");
     }
 
 
