@@ -22,6 +22,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     [SerializeField] float sprintAttackThurst = 10f; 
     [SerializeField] float sprintAttackTime = 0.5f;
     [SerializeField] float sprintStopDelay = 0.2f;
+    
     public Vector2 LastFacingDirection { get {return lastFacingDirection;}}
     public bool AttackMoving {get; set;}
     public bool AttackDirectionLock {get; set;}
@@ -32,6 +33,7 @@ public class PlayerController : Singleton<PlayerController>, ISaveable
     public Vector3 playerLookAt {get; set;}
     public bool sprint = false;
     public bool sprintAttack = false;
+    public bool ElfControl = false;
     Vector2 direction = new Vector2 (0,0);
     //public Vector2 PlayerDirection {get {return direction;}}
     //private float mouseFollowDelay = 0.2f;

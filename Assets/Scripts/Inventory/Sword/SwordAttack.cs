@@ -172,13 +172,19 @@ public class SwordAttack : MonoBehaviour, IWeapon
     public WeaponInfo GetWeaponInfo() {
         return weaponInfo;
     }
+
+    // instantiate the slash effect prefab/gameobject and call the slash effect follow mouse function and use mana
     private void slashEffectTrigger() {
-        slashEffectAnim = Instantiate(slashEffectPrefab, slashEffectSpawn.position, Quaternion.identity); // Slash effect
-        slashEffectAnim.transform.parent = this.transform.parent; // Slash effect
+        if (!PlayerController.Instance.ElfControl) {
+            slashEffectAnim = Instantiate(slashEffectPrefab, slashEffectSpawn.position, Quaternion.identity); // Slash effect
+            slashEffectAnim.transform.parent = this.transform.parent; // Slash effect
+        }
+        
         SlashEffectFollowMouse(); // Slash effect   
         PlayerMana.Instance.UseMana(weaponInfo.weaponManaCost);
     }
 
+// toggle the slash hitbox 
     private void toggleSlashHitbox(){
         if (swordAnimHandler.GetSlashHitbox) {
             if (!hasSlashEffect) {
@@ -281,30 +287,66 @@ public class SwordAttack : MonoBehaviour, IWeapon
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);
         float angle = Mathf.Atan2(mousePos.y - playerScreenPoint.y, mousePos.x - playerScreenPoint.x) * Mathf.Rad2Deg;
-        if (angle > 67.5 && angle <= 112.5) { // north
+        if (angle > 67.5 && angle <= 112.5) { // north faceing
                 Clockwise = true;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-        } else if (angle > 22.5 && angle <= 67.5) { // northeast
-            Clockwise = false;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 45);
+            if (!PlayerController.Instance.ElfControl) {slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);}
+        } else if (angle > 22.5 && angle <= 67.5) { // northeast facing
+            //Clockwise = false; 
+            if (PlayerController.Instance.ElfControl) {
+                Clockwise = true;
+            } else {
+                Clockwise = false;
+                slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 45);
+            }
+            
         } else if (angle > -22.5 && angle <= 22.5) { // east
-            Clockwise = true;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
+            //Clockwise = true;
+            if (PlayerController.Instance.ElfControl) {
+                Clockwise = false;
+            } else {
+                Clockwise = true;
+                slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
+            }
+            
         } else if (angle > -67.5 && angle <= -22.5) { // southeast
-            Clockwise = false;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, -45);
+            //Clockwise = false;
+            if (PlayerController.Instance.ElfControl) {
+                Clockwise = true;
+            } else {
+                Clockwise = false;
+                slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, -45);
+            }
+            
         } else if (angle > -112.5 && angle <= -67.5) { // south
             Clockwise = true;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+            if (!PlayerController.Instance.ElfControl) {slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);}
         } else if (angle > -157.5 && angle <= -112.5) { // southwest
-            Clockwise = true;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, -135);
+            //Clockwise = true;
+            if (PlayerController.Instance.ElfControl) {
+                Clockwise = false;
+            } else {
+                Clockwise = true;
+                slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, -135);
+            }
+            
         } else if (angle > 112.5 && angle <= 157.5) { // northwest
-            Clockwise = true;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 135);
+            //Clockwise = true;
+            if (PlayerController.Instance.ElfControl) {
+                Clockwise = false;
+            } else {
+                Clockwise = true;
+                slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 135);
+            }
+            
         } else if (angle > 157.5 || angle < -157.5 ) { // west
-            Clockwise = true;
-            slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 180, 0);
+            //Clockwise = true;
+            if (PlayerController.Instance.ElfControl) {
+                Clockwise = false;
+            } else {
+                Clockwise = true;
+                slashEffectAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 180, 0);
+            }
+            
         }
         if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("SwordA3")) {
             Clockwise = !Clockwise;
