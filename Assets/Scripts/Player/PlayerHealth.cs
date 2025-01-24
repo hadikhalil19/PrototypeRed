@@ -24,6 +24,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     [SerializeField] private string deathSceneTransitionName;
     [SerializeField] UnityEvent takeDamageEvent;
 
+    private PlayerController playerController;
     private ShowHideUI showHideUI;
     const string BOSSUI_TEXT = "BossUI";
 
@@ -40,10 +41,12 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     readonly int RELOAD_HASH = Animator.StringToHash("Reload");
     readonly int SHILEDHIT_HASH = Animator.StringToHash("ShieldHit");
 
+    readonly int PLAYERHIT_HASH = Animator.StringToHash("PlayerHit");
+
 
     protected override void Awake() {
         base.Awake();
-
+        playerController = GetComponent<PlayerController>();
         flash = GetComponent<Flash>();
         knockback = GetComponent<KnockBack>();
     }
@@ -51,6 +54,20 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     private void Start() {
         currentHealth = maxHealth;
         UpdateHealthSlider();
+    }
+
+    private void lockMovement() {
+        playerController.MoveLock = true;
+    }
+    private void unlockMovement() {
+        playerController.MoveLock = false;
+    }
+
+    private void lockAttack() {
+        playerController.AttackLock = true;
+    }
+    private void unlockAttack() {
+        playerController.AttackLock = false;
     }
 
 // player collison damage logic that only works for older enemyAI with no A*. 
@@ -98,9 +115,13 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
         canTakeDamage = false;
         currentHealth -= damageAmount;
         knockback.GetKnockedBack(hitTransform, knockBackThrustAmount);
-        StartCoroutine(flash.FlashRoutine());
-
-        StartCoroutine(DamageRecoveryRoutine());
+        //StartCoroutine(flash.FlashRoutine());
+        if (currentHealth > 0) {
+            PlayerHitStagger();
+            StartCoroutine(DamageRecoveryRoutine());
+        }
+        
+        
         UpdateHealthSlider();
         CheckIfPlayerDeath();
     }
@@ -114,6 +135,13 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
             GetComponent<Animator>().SetTrigger(DEATH_HASH);
             StartCoroutine(DeathLoadSceneRoutine());
         }
+    }
+
+    private void PlayerHitStagger() {
+        GetComponent<Animator>().SetTrigger(PLAYERHIT_HASH);
+        ActiveWeapon.Instance.WeaponReset();
+        lockMovement();
+        lockAttack();
     }
 
 // method for initiating reloading scene on death. Calls UIFade and starts loadsceneroutine.
@@ -148,6 +176,8 @@ public class PlayerHealth : Singleton<PlayerHealth>, ISaveable
     private IEnumerator DamageRecoveryRoutine() {
         yield return new WaitForSeconds(damageRecoveryTime);
         canTakeDamage = true;
+        unlockMovement();
+        unlockAttack(); 
     }
 
 // updates health bar slider.
